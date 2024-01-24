@@ -1,5 +1,6 @@
 import logo from './logo.svg';
 import './App.css';
+import Accordion from 'react-bootstrap/Accordion';
 
 function App() {
   return (
@@ -22,4 +23,22 @@ function App() {
   );
 }
 
-export default App;
+function RecipeAccordion() {
+  return (
+    <Accordion defaultActiveKey={0}>
+      <Accordion.Item eventKey='0'>
+        <Accordion.Header>Accordion Header Text</Accordion.Header>
+        <Accordion.Body>
+          Accordion body text.
+        </Accordion.Body>
+      </Accordion.Item>
+      <Accordion.Item eventKey='1'>
+        <Accordion.Header>Accordion Header Text</Accordion.Header>
+        <Accordion.Body>
+          Accordion body text.
+        </Accordion.Body>
+      </Accordion.Item>
+    </Accordion>
+  )
+}
+export default RecipeAccordion;
