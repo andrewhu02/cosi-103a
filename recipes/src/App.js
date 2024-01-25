@@ -167,6 +167,36 @@ function RecipeAccordion() {
           </div>
         </Accordion.Body>
       </Accordion.Item>
+      <Accordion.Item eventKey='2'>
+        <Accordion.Header>Accordion Header Text</Accordion.Header>
+        <Accordion.Body>
+          Accordion body text.
+        </Accordion.Body>
+      </Accordion.Item>
+      <Accordion.Item eventKey='3'>
+        <Accordion.Header>Accordion Header Text</Accordion.Header>
+        <Accordion.Body>
+          Accordion body text.
+        </Accordion.Body>
+      </Accordion.Item>
+      <Accordion.Item eventKey='4'>
+        <Accordion.Header>Accordion Header Text</Accordion.Header>
+        <Accordion.Body>
+          Accordion body text.
+        </Accordion.Body>
+      </Accordion.Item>
+      <Accordion.Item eventKey='5'>
+        <Accordion.Header>Accordion Header Text</Accordion.Header>
+        <Accordion.Body>
+          Accordion body text.
+        </Accordion.Body>
+      </Accordion.Item>
+      <Accordion.Item eventKey='6'>
+        <Accordion.Header>Accordion Header Text</Accordion.Header>
+        <Accordion.Body>
+          Accordion body text.
+        </Accordion.Body>
+      </Accordion.Item>
     </Accordion>
   )
 }
