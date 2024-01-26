@@ -1,18 +1,17 @@
 .App {
   text-align: center;
 }
-
 .App-header {
   background-color: white;
   min-height: 10vh;
   display: flex;
   flex-direction: column;
   align-items: center;
+  text-align: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: black;
 }
-
 /* body {
   display: flex;
   align-items: center;
@@ -31,16 +30,21 @@
   display: flex;
 }
 .column1, .column2 {
+  text-align: left;
   flex: 1;
   padding: 20px;
 }
-
+.subheader {
+  text-align: center;
+}
 .column1 {
-  background-color: #f0f0f0;
+  /*background-color: #f0f0f0;*/
+  background-color: #e9f5ff;
 }
 
 .column2 {
-  background-color: #e0e0e0;
+  /* background-color: #e0e0e0; */
+  background-color: #d9ebff;
 }
 
 .center {
@@ -59,4 +63,8 @@
   padding-right: 20px;
   padding-bottom: 15px;
   padding-left: 25px;
+}
+
+.accordion-body {
+  background-color: #f4f4f4;
 }

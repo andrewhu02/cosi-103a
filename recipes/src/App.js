@@ -29,19 +29,29 @@ function RecipeAccordion() {
       <Accordion.Item eventKey='0'>
         <Accordion.Header>Recipe 1</Accordion.Header>
         <Accordion.Body>
-          <img src="https://design4users.com/wp-content/uploads/2023/03/food-illustration-helen-lee.jpg" alt="Recipe Image" class="center scaled-image padded-image"/>
+          <img src="https://everylittlecrumb.com/wp-content/uploads/halalguyschickenandrice-5.jpg" alt="Sample Recipe" class="center scaled-image padded-image"/>
           <div class="container">
             <div class="column1">
-                <h2>Ingredients</h2>
+                <h2 class = "subheader">Ingredients</h2>
                 <ul>
-                  <li>ingredient 1</li>
-                  <li>ingredient 2</li>
-                  <li>ingredient 3</li>
+                  <li>2 lbs chicken thighs</li>
+                  <li>1/4 cup olive oil</li>
+                  <li>2 tablespoon lemon juice</li>
+                  <li>1 tablespoon white vinegar</li>
+                  <li>3 cloves garlic, minced</li>
+                  <li>1 teaspoon salt, or to taste</li>
+                  <li>1/2 teaspoon black pepper, or to taste</li>
+                  <li>1 teaspoon oregano powder</li>
+                  <li>1 teaspoon all spice</li>
+                  <li>1/2 teaspoon ginger powder</li>
+                  <li>1/2 teaspoon cumin powder</li>
+                  <li>1/2 teaspoon paprika powder</li>
                 </ul>
             </div>
             <div class="column2">
-                <h2>Cooking method</h2>
-                <p>This is how to cook this dish...</p>
+                <h2 class = "subheader">Cooking Instructions</h2>
+                <p>Recipe taken from <a href="everylittlecrumb.com">everylittlecrumb.com</a></p>
+                <p></p>
             </div>
           </div>
         </Accordion.Body>
@@ -50,10 +60,10 @@ function RecipeAccordion() {
       <Accordion.Item eventKey='1'>
         <Accordion.Header>Recipe 2</Accordion.Header>
         <Accordion.Body>
-          <img src="https://design4users.com/wp-content/uploads/2023/03/food-illustration-helen-lee.jpg" alt="Recipe Image" class="center scaled-image padded-image"/>
+          <img src="https://design4users.com/wp-content/uploads/2023/03/food-illustration-helen-lee.jpg" alt="Sample Recipe" class="center scaled-image padded-image"/>
           <div class="container">
             <div class="column1">
-                <h2>Ingredients</h2>
+                <h2 class = "subheader">Ingredients</h2>
                 <ul>
                   <li>ingredient 1</li>
                   <li>ingredient 2</li>
@@ -61,7 +71,7 @@ function RecipeAccordion() {
                 </ul>
             </div>
             <div class="column2">
-                <h2>Cooking method</h2>
+                <h2 class = "subheader">Cooking Instructions</h2>
                 <p>This is how to cook this dish...</p>
             </div>
           </div>
@@ -70,10 +80,10 @@ function RecipeAccordion() {
       <Accordion.Item eventKey='2'>
         <Accordion.Header>Recipe 3</Accordion.Header>
         <Accordion.Body>
-          <img src="https://design4users.com/wp-content/uploads/2023/03/food-illustration-helen-lee.jpg" alt="Recipe Image" class="center scaled-image padded-image"/>
+          <img src="https://design4users.com/wp-content/uploads/2023/03/food-illustration-helen-lee.jpg" alt="Sample Recipe" class="center scaled-image padded-image"/>
           <div class="container">
             <div class="column1">
-                <h2>Ingredients</h2>
+                <h2 class = "subheader">Ingredients</h2>
                 <ul>
                   <li>ingredient 1</li>
                   <li>ingredient 2</li>
@@ -81,7 +91,7 @@ function RecipeAccordion() {
                 </ul>
             </div>
             <div class="column2">
-                <h2>Cooking method</h2>
+                <h2 class = "subheader">Cooking Instructions</h2>
                 <p>This is how to cook this dish...</p>
             </div>
           </div>
@@ -90,10 +100,10 @@ function RecipeAccordion() {
       <Accordion.Item eventKey='3'>
         <Accordion.Header>Recipe 4</Accordion.Header>
         <Accordion.Body>
-          <img src="https://design4users.com/wp-content/uploads/2023/03/food-illustration-helen-lee.jpg" alt="Recipe Image" class="center scaled-image padded-image"/>
+          <img src="https://design4users.com/wp-content/uploads/2023/03/food-illustration-helen-lee.jpg" alt="Sample Recipe" class="center scaled-image padded-image"/>
           <div class="container">
             <div class="column1">
-                <h2>Ingredients</h2>
+                <h2 class = "subheader">Ingredients</h2>
                 <ul>
                   <li>ingredient 1</li>
                   <li>ingredient 2</li>
@@ -101,7 +111,7 @@ function RecipeAccordion() {
                 </ul>
             </div>
             <div class="column2">
-                <h2>Cooking method</h2>
+                <h2 class = "subheader">Cooking Instructions</h2>
                 <p>This is how to cook this dish...</p>
             </div>
           </div>
@@ -110,10 +120,10 @@ function RecipeAccordion() {
       <Accordion.Item eventKey='4'>
         <Accordion.Header>Recipe 5</Accordion.Header>
         <Accordion.Body>
-          <img src="https://design4users.com/wp-content/uploads/2023/03/food-illustration-helen-lee.jpg" alt="Recipe Image" class="center scaled-image padded-image"/>
+          <img src="https://design4users.com/wp-content/uploads/2023/03/food-illustration-helen-lee.jpg" alt="Sample Recipe" class="center scaled-image padded-image"/>
           <div class="container">
             <div class="column1">
-                <h2>Ingredients</h2>
+                <h2 class = "subheader">Ingredients</h2>
                 <ul>
                   <li>ingredient 1</li>
                   <li>ingredient 2</li>
@@ -121,7 +131,7 @@ function RecipeAccordion() {
                 </ul>
             </div>
             <div class="column2">
-                <h2>Cooking method</h2>
+                <h2 class = "subheader">Cooking Instructions</h2>
                 <p>This is how to cook this dish...</p>
             </div>
           </div>
@@ -130,10 +140,10 @@ function RecipeAccordion() {
       <Accordion.Item eventKey='5'>
         <Accordion.Header>Recipe 6</Accordion.Header>
         <Accordion.Body>
-          <img src="https://design4users.com/wp-content/uploads/2023/03/food-illustration-helen-lee.jpg" alt="Recipe Image" class="center scaled-image padded-image"/>
+          <img src="https://design4users.com/wp-content/uploads/2023/03/food-illustration-helen-lee.jpg" alt="Sample Recipe" class="center scaled-image padded-image"/>
           <div class="container">
             <div class="column1">
-                <h2>Ingredients</h2>
+                <h2 class = "subheader">Ingredients</h2>
                 <ul>
                   <li>ingredient 1</li>
                   <li>ingredient 2</li>
@@ -141,7 +151,7 @@ function RecipeAccordion() {
                 </ul>
             </div>
             <div class="column2">
-                <h2>Cooking method</h2>
+                <h2 class = "subheader">Cooking Instructions</h2>
                 <p>This is how to cook this dish...</p>
             </div>
           </div>
@@ -150,10 +160,10 @@ function RecipeAccordion() {
       <Accordion.Item eventKey='6'>
         <Accordion.Header>Recipe 7</Accordion.Header>
         <Accordion.Body>
-          <img src="https://design4users.com/wp-content/uploads/2023/03/food-illustration-helen-lee.jpg" alt="Recipe Image" class="center scaled-image padded-image"/>
+          <img src="https://design4users.com/wp-content/uploads/2023/03/food-illustration-helen-lee.jpg" alt="Sample Recipe" class="center scaled-image padded-image"/>
           <div class="container">
             <div class="column1">
-                <h2>Ingredients</h2>
+                <h2 class = "subheader">Ingredients</h2>
                 <ul>
                   <li>ingredient 1</li>
                   <li>ingredient 2</li>
@@ -161,7 +171,7 @@ function RecipeAccordion() {
                 </ul>
             </div>
             <div class="column2">
-                <h2>Cooking method</h2>
+                <h2>Cooking Instructions</h2>
                 <p>This is how to cook this dish...</p>
             </div>
           </div>
