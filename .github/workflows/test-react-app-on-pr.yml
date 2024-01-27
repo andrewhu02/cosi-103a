@@ -7,11 +7,11 @@ jobs:
         runs-on: ubuntu-latest
         defaults:
           run:
-            working-directory: ./recipes/
+            working-directory: ./recipes/ # npm test must be run from this directory
         steps:
             - uses: actions/checkout@v4
-            - uses: actions/setup-node@v3
+            - uses: actions/setup-node@v3 # install node
               with:
                 node-version: '14'
-            - run: npm install
-            - run: CI=true npm test
+            - run: npm install # install dependencies
+            - run: CI=true npm test # run ALL tests in App.test.js once
