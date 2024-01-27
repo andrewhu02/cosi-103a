@@ -14,4 +14,4 @@ jobs:
               with:
                 node-version: '14'
             - run: npm install # install dependencies
-            - run: CI=true npm test # run ALL tests in App.test.js once
+            - run: CI=true npm test # run ALL tests in .test.js files
