@@ -1,0 +1,12 @@
+name: test-react-app
+run-name: testing React app
+
+on: [pull_request]
+jobs: 
+    test-react-components: 
+        runs-on: ubuntu-latest
+        defaults:
+            run:
+                working-directory: ./recipes
+        steps:
+            - run: CI=true npm test
