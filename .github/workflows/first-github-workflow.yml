@@ -1,7 +1,7 @@
 name: test-react-app
 run-name: testing React app
 
-on: [push]
+on: [pull_request]
 jobs: 
     test-react-components: 
         runs-on: ubuntu-latest
