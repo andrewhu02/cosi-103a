@@ -1,6 +1,8 @@
 import logo from './logo.svg';
 import './App.css';
 import Accordion from 'react-bootstrap/Accordion';
+import chickenandrice from './chickenandrice.jpg';
+import food from './food.jpg';
 
 function App() {
   return (
@@ -29,7 +31,7 @@ function RecipeAccordion() {
       <Accordion.Item eventKey='0'>
         <Accordion.Header>Recipe 1</Accordion.Header>
         <Accordion.Body>
-          <img src="https://everylittlecrumb.com/wp-content/uploads/halalguyschickenandrice-5.jpg" alt="Sample Recipe" class="center scaled-image padded-image"/>
+          <img src={chickenandrice} alt="Sample Recipe" class="center scaled-image padded-image"/>
           <div class="container">
             <div class="column1">
                 <h2 class = "subheader">Ingredients</h2>
@@ -60,7 +62,7 @@ function RecipeAccordion() {
       <Accordion.Item eventKey='1'>
         <Accordion.Header>Recipe 2</Accordion.Header>
         <Accordion.Body>
-          <img src="https://design4users.com/wp-content/uploads/2023/03/food-illustration-helen-lee.jpg" alt="Sample Recipe" class="center scaled-image padded-image"/>
+          <img src={food} alt="Sample Recipe" class="center scaled-image padded-image"/>
           <div class="container">
             <div class="column1">
                 <h2 class = "subheader">Ingredients</h2>
@@ -80,7 +82,7 @@ function RecipeAccordion() {
       <Accordion.Item eventKey='2'>
         <Accordion.Header>Recipe 3</Accordion.Header>
         <Accordion.Body>
-          <img src="https://design4users.com/wp-content/uploads/2023/03/food-illustration-helen-lee.jpg" alt="Sample Recipe" class="center scaled-image padded-image"/>
+          <img src={food} alt="Sample Recipe" class="center scaled-image padded-image"/>
           <div class="container">
             <div class="column1">
                 <h2 class = "subheader">Ingredients</h2>
@@ -100,7 +102,7 @@ function RecipeAccordion() {
       <Accordion.Item eventKey='3'>
         <Accordion.Header>Recipe 4</Accordion.Header>
         <Accordion.Body>
-          <img src="https://design4users.com/wp-content/uploads/2023/03/food-illustration-helen-lee.jpg" alt="Sample Recipe" class="center scaled-image padded-image"/>
+          <img src={food} alt="Sample Recipe" class="center scaled-image padded-image"/>
           <div class="container">
             <div class="column1">
                 <h2 class = "subheader">Ingredients</h2>
@@ -120,7 +122,7 @@ function RecipeAccordion() {
       <Accordion.Item eventKey='4'>
         <Accordion.Header>Recipe 5</Accordion.Header>
         <Accordion.Body>
-          <img src="https://design4users.com/wp-content/uploads/2023/03/food-illustration-helen-lee.jpg" alt="Sample Recipe" class="center scaled-image padded-image"/>
+          <img src={food} alt="Sample Recipe" class="center scaled-image padded-image"/>
           <div class="container">
             <div class="column1">
                 <h2 class = "subheader">Ingredients</h2>
@@ -140,7 +142,7 @@ function RecipeAccordion() {
       <Accordion.Item eventKey='5'>
         <Accordion.Header>Recipe 6</Accordion.Header>
         <Accordion.Body>
-          <img src="https://design4users.com/wp-content/uploads/2023/03/food-illustration-helen-lee.jpg" alt="Sample Recipe" class="center scaled-image padded-image"/>
+          <img src={food} alt="Sample Recipe" class="center scaled-image padded-image"/>
           <div class="container">
             <div class="column1">
                 <h2 class = "subheader">Ingredients</h2>
@@ -160,7 +162,7 @@ function RecipeAccordion() {
       <Accordion.Item eventKey='6'>
         <Accordion.Header>Recipe 7</Accordion.Header>
         <Accordion.Body>
-          <img src="https://design4users.com/wp-content/uploads/2023/03/food-illustration-helen-lee.jpg" alt="Sample Recipe" class="center scaled-image padded-image"/>
+          <img src={food} alt="Sample Recipe" class="center scaled-image padded-image"/>
           <div class="container">
             <div class="column1">
                 <h2 class = "subheader">Ingredients</h2>
