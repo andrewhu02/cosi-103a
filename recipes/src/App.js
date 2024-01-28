@@ -4,26 +4,6 @@ import Accordion from 'react-bootstrap/Accordion';
 import chickenandrice from './chickenandrice.jpg';
 import food from './food.jpg';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
 
 function RecipeAccordion() {
   return (
@@ -31,7 +11,7 @@ function RecipeAccordion() {
       <Accordion.Item eventKey='0'>
         <Accordion.Header>Recipe 1</Accordion.Header>
         <Accordion.Body>
-          <img src={chickenandrice} alt="Sample Recipe" class="center scaled-image padded-image"/>
+          <img src={chickenandrice} alt="Sample Recipe" className="center scaled-image padded-image"/>
           <div class="container">
             <div class="column1">
                 <h2 class = "subheader">Ingredients</h2>
