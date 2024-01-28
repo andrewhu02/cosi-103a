@@ -12,9 +12,9 @@ function RecipeAccordion() {
         <Accordion.Header>Recipe 1</Accordion.Header>
         <Accordion.Body>
           <img src={chickenandrice} alt="Sample Recipe" className="center scaled-image padded-image"/>
-          <div class="container">
-            <div class="column1">
-                <h2 class = "subheader">Ingredients</h2>
+          <div className="container">
+            <div className="column1">
+                <h2 className= "subheader">Ingredients</h2>
                 <ul>
                   <li>2 lbs chicken thighs</li>
                   <li>1/4 cup olive oil</li>
@@ -30,8 +30,8 @@ function RecipeAccordion() {
                   <li>1/2 teaspoon paprika powder</li>
                 </ul>
             </div>
-            <div class="column2">
-                <h2 class = "subheader">Cooking Instructions</h2>
+            <div className="column2">
+                <h2 className= "subheader">Cooking Instructions</h2>
                 <p>Recipe taken from <a href="everylittlecrumb.com">everylittlecrumb.com</a></p>
                 <p></p>
             </div>
@@ -42,18 +42,18 @@ function RecipeAccordion() {
       <Accordion.Item eventKey='1'>
         <Accordion.Header>Recipe 2</Accordion.Header>
         <Accordion.Body>
-          <img src={food} alt="Sample Recipe" class="center scaled-image padded-image"/>
-          <div class="container">
-            <div class="column1">
-                <h2 class = "subheader">Ingredients</h2>
+          <img src={food} alt="Sample Recipe" className="center scaled-image padded-image"/>
+          <div className="container">
+            <div className="column1">
+                <h2 className= "subheader">Ingredients</h2>
                 <ul>
                   <li>ingredient 1</li>
                   <li>ingredient 2</li>
                   <li>ingredient 3</li>
                 </ul>
             </div>
-            <div class="column2">
-                <h2 class = "subheader">Cooking Instructions</h2>
+            <div className="column2">
+                <h2 className= "subheader">Cooking Instructions</h2>
                 <p>This is how to cook this dish...</p>
             </div>
           </div>
@@ -62,18 +62,18 @@ function RecipeAccordion() {
       <Accordion.Item eventKey='2'>
         <Accordion.Header>Recipe 3</Accordion.Header>
         <Accordion.Body>
-          <img src={food} alt="Sample Recipe" class="center scaled-image padded-image"/>
-          <div class="container">
-            <div class="column1">
-                <h2 class = "subheader">Ingredients</h2>
+          <img src={food} alt="Sample Recipe" className="center scaled-image padded-image"/>
+          <div className="container">
+            <div className="column1">
+                <h2 className= "subheader">Ingredients</h2>
                 <ul>
                   <li>ingredient 1</li>
                   <li>ingredient 2</li>
                   <li>ingredient 3</li>
                 </ul>
             </div>
-            <div class="column2">
-                <h2 class = "subheader">Cooking Instructions</h2>
+            <div className="column2">
+                <h2 className= "subheader">Cooking Instructions</h2>
                 <p>This is how to cook this dish...</p>
             </div>
           </div>
@@ -82,18 +82,18 @@ function RecipeAccordion() {
       <Accordion.Item eventKey='3'>
         <Accordion.Header>Recipe 4</Accordion.Header>
         <Accordion.Body>
-          <img src={food} alt="Sample Recipe" class="center scaled-image padded-image"/>
-          <div class="container">
-            <div class="column1">
-                <h2 class = "subheader">Ingredients</h2>
+          <img src={food} alt="Sample Recipe" className="center scaled-image padded-image"/>
+          <div className="container">
+            <div className="column1">
+                <h2 className= "subheader">Ingredients</h2>
                 <ul>
                   <li>ingredient 1</li>
                   <li>ingredient 2</li>
                   <li>ingredient 3</li>
                 </ul>
             </div>
-            <div class="column2">
-                <h2 class = "subheader">Cooking Instructions</h2>
+            <div className="column2">
+                <h2 className= "subheader">Cooking Instructions</h2>
                 <p>This is how to cook this dish...</p>
             </div>
           </div>
@@ -102,18 +102,18 @@ function RecipeAccordion() {
       <Accordion.Item eventKey='4'>
         <Accordion.Header>Recipe 5</Accordion.Header>
         <Accordion.Body>
-          <img src={food} alt="Sample Recipe" class="center scaled-image padded-image"/>
-          <div class="container">
-            <div class="column1">
-                <h2 class = "subheader">Ingredients</h2>
+          <img src={food} alt="Sample Recipe" className="center scaled-image padded-image"/>
+          <div className="container">
+            <div className="column1">
+                <h2 className= "subheader">Ingredients</h2>
                 <ul>
                   <li>ingredient 1</li>
                   <li>ingredient 2</li>
                   <li>ingredient 3</li>
                 </ul>
             </div>
-            <div class="column2">
-                <h2 class = "subheader">Cooking Instructions</h2>
+            <div className="column2">
+                <h2 className= "subheader">Cooking Instructions</h2>
                 <p>This is how to cook this dish...</p>
             </div>
           </div>
@@ -122,18 +122,18 @@ function RecipeAccordion() {
       <Accordion.Item eventKey='5'>
         <Accordion.Header>Recipe 6</Accordion.Header>
         <Accordion.Body>
-          <img src={food} alt="Sample Recipe" class="center scaled-image padded-image"/>
-          <div class="container">
-            <div class="column1">
-                <h2 class = "subheader">Ingredients</h2>
+          <img src={food} alt="Sample Recipe" className="center scaled-image padded-image"/>
+          <div className="container">
+            <div className="column1">
+                <h2 className= "subheader">Ingredients</h2>
                 <ul>
                   <li>ingredient 1</li>
                   <li>ingredient 2</li>
                   <li>ingredient 3</li>
                 </ul>
             </div>
-            <div class="column2">
-                <h2 class = "subheader">Cooking Instructions</h2>
+            <div className="column2">
+                <h2 className= "subheader">Cooking Instructions</h2>
                 <p>This is how to cook this dish...</p>
             </div>
           </div>
@@ -142,17 +142,17 @@ function RecipeAccordion() {
       <Accordion.Item eventKey='6'>
         <Accordion.Header>Recipe 7</Accordion.Header>
         <Accordion.Body>
-          <img src={food} alt="Sample Recipe" class="center scaled-image padded-image"/>
-          <div class="container">
-            <div class="column1">
-                <h2 class = "subheader">Ingredients</h2>
+          <img src={food} alt="Sample Recipe" className="center scaled-image padded-image"/>
+          <div className="container">
+            <div className="column1">
+                <h2 className= "subheader">Ingredients</h2>
                 <ul>
                   <li>ingredient 1</li>
                   <li>ingredient 2</li>
                   <li>ingredient 3</li>
                 </ul>
             </div>
-            <div class="column2">
+            <div className="column2">
                 <h2>Cooking Instructions</h2>
                 <p>This is how to cook this dish...</p>
             </div>

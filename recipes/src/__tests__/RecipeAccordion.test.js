@@ -1,6 +1,6 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
-import RecipeAccordion from './App';  // Assuming 'RecipeAccordion' is in the same file as 'App'
+import RecipeAccordion from '../App';  
 
 test('renders RecipeAccordion component with Recipe 1', () => {
   render(<RecipeAccordion />);
