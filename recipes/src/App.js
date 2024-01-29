@@ -104,7 +104,7 @@ function RecipeAccordion() {
       <Accordion.Item eventKey='3'>
         <Accordion.Header>Recipe 4</Accordion.Header>
         <Accordion.Body>
-          <img src={chocchip} alt="Sample Recipe" class="center scaled-image padded-image"/>
+          <img src={food} alt="Sample Recipe" class="center scaled-image padded-image"/>
           <div class="container">
             <div class="column1">
                 <h2 class = "subheader">Ingredients</h2>
@@ -124,7 +124,7 @@ function RecipeAccordion() {
       <Accordion.Item eventKey='4'>
         <Accordion.Header>Recipe 5</Accordion.Header>
         <Accordion.Body>
-          <img src={food} alt="Sample Recipe" class="center scaled-image padded-image"/>
+          <img src={chocchip} alt="Sample Recipe" class="center scaled-image padded-image"/>
           <div class="container">
             <div class="column1">
                 <h2 class = "subheader">Ingredients</h2>
