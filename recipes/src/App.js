@@ -5,6 +5,7 @@ import chickenandrice from './img/chickenandrice.jpg';
 import food from './img/food.jpg';
 import chocchip from './img/choc_chip_cookies.jpg';
 import nmeatpie from './img/nigerian_meatpie.jpg';
+import bolognese from './img/pasta_bolognese.jpg';
 
 
 function RecipeAccordion() {
@@ -44,14 +45,18 @@ function RecipeAccordion() {
       <Accordion.Item eventKey='1'>
         <Accordion.Header>Recipe 2</Accordion.Header>
         <Accordion.Body>
-          <img src={food} alt="Sample Recipe" className="center scaled-image padded-image"/>
+          <img src={bolognese} alt="Sample Recipe" className="center scaled-image padded-image"/>
           <div className="container">
             <div className="column1">
                 <h2 className= "subheader">Ingredients</h2>
                 <ul>
-                  <li>ingredient 1</li>
-                  <li>ingredient 2</li>
-                  <li>ingredient 3</li>
+                  <li>Olive oil 1</li>
+                  <li>Onion, celery, and carrots</li>
+                  <li>Garlic</li>
+                  <li>Lean ground beef</li>
+                  <li>Whole milk</li>
+                  <li>Crushed tomatoes</li>
+                  <li>Tomato paste</li>
                 </ul>
             </div>
             <div className="column2">
