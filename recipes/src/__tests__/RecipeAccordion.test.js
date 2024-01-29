@@ -19,7 +19,7 @@ test('check recipe accordion', () => {
 test('check recipe 1', () => {
   render(<RecipeAccordion />);
   const recipeHead = screen.getByText('Recipe 1').parentNode;
-  const recipeBody = recipeHead.parentNode.parentNode.children[1];
+  const recipeBody = recipeHead.parentNode.children[1].firstChild;
   expect(recipeHead).toBeInTheDocument();
   expect(recipeBody).toBeInTheDocument();
   // expect(recipeBody).not.toBeVisible();
@@ -32,7 +32,7 @@ test('check recipe 1', () => {
 test('check recipe 2', () => {
   render(<RecipeAccordion />);
   const recipeHead = screen.getByText('Recipe 2').parentNode;
-  const recipeBody = recipeHead.parentNode.parentNode.children[1];
+  const recipeBody = recipeHead.parentNode.children[1].firstChild;
   expect(recipeHead).toBeInTheDocument();
   expect(recipeBody).toBeInTheDocument();
   // expect(recipeBody).not.toBeVisible();
@@ -45,7 +45,7 @@ test('check recipe 2', () => {
 test('check recipe 3', () => {
   render(<RecipeAccordion />);
   const recipeHead = screen.getByText('Recipe 3').parentNode;
-  const recipeBody = recipeHead.parentNode.parentNode.children[1];
+  const recipeBody = recipeHead.parentNode.children[1].firstChild;
   expect(recipeHead).toBeInTheDocument();
   expect(recipeBody).toBeInTheDocument();
   // expect(recipeBody).not.toBeVisible();
@@ -58,7 +58,7 @@ test('check recipe 3', () => {
 test('check recipe 4', () => {
   render(<RecipeAccordion />);
   const recipeHead = screen.getByText('Recipe 4').parentNode;
-  const recipeBody = recipeHead.parentNode.parentNode.children[1];
+  const recipeBody = recipeHead.parentNode.children[1].firstChild;
   expect(recipeHead).toBeInTheDocument();
   expect(recipeBody).toBeInTheDocument();
   // expect(recipeBody).not.toBeVisible();
@@ -71,7 +71,7 @@ test('check recipe 4', () => {
 test('check recipe 5', () => {
   render(<RecipeAccordion />);
   const recipeHead = screen.getByText('Recipe 5').parentNode;
-  const recipeBody = recipeHead.parentNode.parentNode.children[1];
+  const recipeBody = recipeHead.parentNode.children[1].firstChild;
   expect(recipeHead).toBeInTheDocument();
   expect(recipeBody).toBeInTheDocument();
   // expect(recipeBody).not.toBeVisible();
@@ -84,7 +84,7 @@ test('check recipe 5', () => {
 test('check recipe 6', () => {
   render(<RecipeAccordion />);
   const recipeHead = screen.getByText('Recipe 6').parentNode;
-  const recipeBody = recipeHead.parentNode.parentNode.children[1];
+  const recipeBody = recipeHead.parentNode.children[1].firstChild;
   expect(recipeHead).toBeInTheDocument();
   expect(recipeBody).toBeInTheDocument();
   // expect(recipeBody).not.toBeVisible();
@@ -97,7 +97,7 @@ test('check recipe 6', () => {
 test('check recipe 7', () => {
   render(<RecipeAccordion />);
   const recipeHead = screen.getByText('Recipe 7').parentNode;
-  const recipeBody = recipeHead.parentNode.parentNode.children[1];
+  const recipeBody = recipeHead.parentNode.children[1].firstChild;
   expect(recipeHead).toBeInTheDocument();
   expect(recipeBody).toBeInTheDocument();
   // expect(recipeBody).not.toBeVisible();
