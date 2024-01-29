@@ -32,7 +32,7 @@ test('check recipe 1', () => {
 
 test('check recipe 2', () => {
   render(<RecipeAccordion />);
-  const recipeHead = screen.getByText('Recipe 2').parentNode;
+  const recipeHead = screen.getByText('Guacamole').parentNode;
   const recipeBody = recipeHead.parentNode.children[1];
   expect(recipeHead).toBeInTheDocument();
   expect(recipeBody).toBeInTheDocument();

@@ -5,7 +5,7 @@ import chickenandrice from './img/chickenandrice.jpg';
 import food from './img/food.jpg';
 import chocchip from './img/choc_chip_cookies.jpg';
 import nmeatpie from './img/nigerian_meatpie.jpg';
-import bolognese from './img/pasta_bolognese.jpg';
+import guac from './img/guac.jpg';
 
 
 function RecipeAccordion() {
@@ -43,25 +43,29 @@ function RecipeAccordion() {
       </Accordion.Item>
 
       <Accordion.Item eventKey='1'>
-        <Accordion.Header>Recipe 2</Accordion.Header>
+        <Accordion.Header>Guacamole</Accordion.Header>
         <Accordion.Body>
-          <img src={bolognese} alt="Sample Recipe" className="center scaled-image padded-image"/>
+          <img src={guac} alt="Sample Recipe" className="center scaled-image padded-image"/>
           <div className="container">
             <div className="column1">
                 <h2 className= "subheader">Ingredients</h2>
                 <ul>
-                  <li>Olive oil 1</li>
-                  <li>Onion, celery, and carrots</li>
-                  <li>Garlic</li>
-                  <li>Lean ground beef</li>
-                  <li>Whole milk</li>
-                  <li>Crushed tomatoes</li>
-                  <li>Tomato paste</li>
+                  <li>1/2 cup finely chopped white onion (from 1 small onion)</li>
+                  <li>2 tablespoons fresh lime juice (from about 1 lime)</li>
+                  <li>Salt and black pepper</li>
+                  <li>1 jalapeño</li>
+                  <li>2 ripe avocados</li>
                 </ul>
             </div>
             <div className="column2">
                 <h2 className= "subheader">Cooking Instructions</h2>
-                <p>This is how to cook this dish...</p>
+                <ol>
+                  <li>In a medium bowl, combine the onion and lime juice, and season with salt and pepper.</li>
+                  <li>Cut the hard stem end off of the jalapeño and discard, then slice the chile in half lengthwise</li>
+                  <li>Chop the jalapeño as finely as you can and add to the bowl with the onion and lime juice.</li>
+                  <li>Cut the avocados in half lengthwise and pull the halves apart. Use your hands to squeeze the avocado flesh out into the bowl with the other ingredients, or scoop it out with a spoon.</li>
+                  <li>Using a fork, gently mash the avocados against the side of the bowl until they are mashed to your desired consistency, then stir them into the other ingredients until well combined. Taste and add more salt if desired.</li>
+                </ol>
             </div>
           </div>
         </Accordion.Body>
@@ -81,7 +85,7 @@ function RecipeAccordion() {
             </div>
             <div className="column2">
                 <h2 className= "subheader">Cooking Instructions</h2>
-                <p>This is how to cook this dish...</p>
+
             </div>
           </div>
         </Accordion.Body>
