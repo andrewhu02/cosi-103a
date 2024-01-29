@@ -1,8 +1,10 @@
 import logo from './logo.svg';
 import './App.css';
 import Accordion from 'react-bootstrap/Accordion';
-import chickenandrice from './chickenandrice.jpg';
-import food from './food.jpg';
+import chickenandrice from './img/chickenandrice.jpg';
+import food from './img/food.jpg';
+import chocchip from './img/choc_chip_cookies.jpg';
+
 
 function App() {
   return (
@@ -102,7 +104,7 @@ function RecipeAccordion() {
       <Accordion.Item eventKey='3'>
         <Accordion.Header>Recipe 4</Accordion.Header>
         <Accordion.Body>
-          <img src={food} alt="Sample Recipe" class="center scaled-image padded-image"/>
+          <img src={chocchip} alt="Sample Recipe" class="center scaled-image padded-image"/>
           <div class="container">
             <div class="column1">
                 <h2 class = "subheader">Ingredients</h2>
