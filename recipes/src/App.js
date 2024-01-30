@@ -5,6 +5,8 @@ import chickenandrice from './img/chickenandrice.jpg';
 import food from './img/food.jpg';
 import chocchip from './img/choc_chip_cookies.jpg';
 import nmeatpie from './img/nigerian_meatpie.jpg';
+import guac from './img/guac.jpg';
+import pesto from './img/pesto.jpg'
 import jambalaya from './img/jambalaya.jpg';
 import dumplings from './img/soup_dumplings.jpg';
 
@@ -81,41 +83,57 @@ function RecipeAccordion() {
       </Accordion.Item>
 
       <Accordion.Item eventKey='1'>
-        <Accordion.Header>Recipe 2</Accordion.Header>
+        <Accordion.Header>Guacamole</Accordion.Header>
         <Accordion.Body>
-          <img src={food} alt="Sample Recipe" className="center scaled-image padded-image" />
+          <img src={guac} alt="Sample Recipe" className="center scaled-image padded-image"/>
           <div className="container">
             <div className="column1">
-              <h2 className="subheader">Ingredients</h2>
-              <ul>
-                <li>ingredient 1</li>
-                <li>ingredient 2</li>
-                <li>ingredient 3</li>
-              </ul>
+                <h2 className= "subheader">Ingredients</h2>
+                <ul>
+                  <li>1/2 cup finely chopped white onion (from 1 small onion)</li>
+                  <li>2 tablespoons fresh lime juice (from about 1 lime)</li>
+                  <li>Salt and black pepper</li>
+                  <li>1 jalapeño</li>
+                  <li>2 ripe avocados</li>
+                </ul>
             </div>
             <div className="column2">
-              <h2 className="subheader">Cooking Instructions</h2>
-              <p>This is how to cook this dish...</p>
+                <h2 className= "subheader">Cooking Instructions</h2>
+                <ol>
+                  <li>In a medium bowl, combine the onion and lime juice, and season with salt and pepper.</li>
+                  <li>Cut the hard stem end off of the jalapeño and discard, then slice the chile in half lengthwise</li>
+                  <li>Chop the jalapeño as finely as you can and add to the bowl with the onion and lime juice.</li>
+                  <li>Cut the avocados in half lengthwise and pull the halves apart. Use your hands to squeeze the avocado flesh out into the bowl with the other ingredients, or scoop it out with a spoon.</li>
+                  <li>Using a fork, gently mash the avocados against the side of the bowl until they are mashed to your desired consistency, then stir them into the other ingredients until well combined. Taste and add more salt if desired.</li>
+                </ol>
             </div>
           </div>
         </Accordion.Body>
       </Accordion.Item>
       <Accordion.Item eventKey='2'>
-        <Accordion.Header>Recipe 3</Accordion.Header>
+        <Accordion.Header>Pasta with pesto</Accordion.Header>
         <Accordion.Body>
-          <img src={food} alt="Sample Recipe" className="center scaled-image padded-image" />
+          <img src={pesto} alt="Sample Recipe" className="center scaled-image padded-image"/>
           <div className="container">
             <div className="column1">
-              <h2 className="subheader">Ingredients</h2>
-              <ul>
-                <li>ingredient 1</li>
-                <li>ingredient 2</li>
-                <li>ingredient 3</li>
-              </ul>
+                <h2 className= "subheader">Ingredients</h2>
+                <ul>
+                  <li>1/2 cup walnuts or pine nuts</li>
+                  <li>Big bunch basil, about 10 stems</li>
+                  <li>2 cloves garlic, peeled, or to taste</li>
+                  <li>Olive oil as needed</li>
+                  <li>Salt and pepper</li>
+                  <li>Grated Parmesan to taste</li>
+                  <li>1 pound pasta, any shape</li>
+                </ul>
             </div>
             <div className="column2">
-              <h2 className="subheader">Cooking Instructions</h2>
-              <p>This is how to cook this dish...</p>
+                <h2 className= "subheader">Cooking Instructions</h2>
+                <ol>
+                  <li>Toast nuts in a dry skillet over medium heat, shaking frequently, until fragrant, browned and not burned. Pulse them in a food processor until chopped but not at all powdery.</li>
+                  <li>Wash the basil; dry it in a salad spinner. Put it in the food processor with the garlic and as much oil as you need to allow the machine to do its work. Process, adding salt, pepper and oil as needed. When the pesto is smooth and delicious, stir in or pulse in the cheese.</li>
+                  <li>Cook the pasta in boiling salted water until it's tender but not mushy. Dress with the pesto, thinning with a little of the cooking water if necessary. Serve immediately.</li>
+                </ol>
             </div>
           </div>
         </Accordion.Body>
