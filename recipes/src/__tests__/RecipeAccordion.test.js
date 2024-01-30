@@ -22,7 +22,7 @@ test('check recipe 1', () => {
   const recipeBody = recipeHead.parentNode.children[1];
   expect(recipeHead).toBeInTheDocument();
   expect(recipeBody).toBeInTheDocument();
-  expect(recipeBody).toHaveClass('show');
+  expect(recipeBody).not.toHaveClass('show');
 
   // Check if clicking on the title will show the content
   fireEvent.click(recipeHead,()=>{
