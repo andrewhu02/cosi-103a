@@ -54,7 +54,7 @@
 }
 
 .scaled-image {
-  width: 30%;  
+  width: 50%;  
   height: auto;
 }
 
@@ -67,4 +67,9 @@
 
 .accordion-body {
   background-color: #f4f4f4;
+}
+
+.accordion-container {
+  max-width: 1000px; 
+  margin: 0 auto; 
 }

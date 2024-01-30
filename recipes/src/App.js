@@ -13,7 +13,7 @@ import dumplings from './img/soup_dumplings.jpg';
 
 function RecipeAccordion() {
   return (
-    <Accordion defaultActiveKey='0'>
+    <Accordion className="accordion-container">
       <Accordion.Item eventKey='0'>
         <Accordion.Header>Halal Guys Chicken and Rice</Accordion.Header>
         <Accordion.Body>
@@ -141,7 +141,7 @@ function RecipeAccordion() {
       <Accordion.Item eventKey='3'>
         <Accordion.Header>Nigerian Meat Pies</Accordion.Header>
         <Accordion.Body>
-          <img src={nmeatpie} alt="Sample Recipe" class="center scaled-image padded-image" />
+          <img src={nmeatpie} alt="Sample Recipe" className="center scaled-image padded-image" />
           <div class="container">
             <div class="column1">
               <h2 class="subheader">Ingredients</h2>
