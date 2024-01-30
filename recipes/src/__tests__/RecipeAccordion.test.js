@@ -26,7 +26,7 @@ test('check recipe 1', () => {
 
   // Check if clicking on the title will show the content
   fireEvent.click(recipeHead,()=>{
-    expect(recipeBody).not.toHaveClass('show');
+    expect(recipeBody).toHaveClass('show');
   });
 });
 
