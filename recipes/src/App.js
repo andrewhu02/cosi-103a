@@ -4,10 +4,12 @@ import chickenandrice from './img/chickenandrice.jpg';
 import food from './img/food.jpg';
 import chocchip from './img/choc_chip_cookies.jpg';
 import nmeatpie from './img/nigerian_meatpie.jpg';
+import nmeatpie2 from './img/nigerian_meatpie_2.jpg';
 import guac from './img/guac.jpg';
 import pesto from './img/pesto.jpg'
 import jambalaya from './img/jambalaya.jpg';
 import dumplings from './img/soup_dumplings.jpg';
+import pesto2 from './img/pesto2.jpg';
 
 
 function RecipeAccordion() {
@@ -16,7 +18,19 @@ function RecipeAccordion() {
       <Accordion.Item eventKey='0'>
         <Accordion.Header>Halal Guys Chicken and Rice</Accordion.Header>
         <Accordion.Body>
-          <img src={chickenandrice} alt="Sample Recipe" className="center scaled-image padded-image" />
+        <div className="container">
+            <div className="upper-column1">
+              <p className="recipe-description">Halal Guys chicken and rice is the perfect combination of delicious marinated chicken, buttery turmeric and cumin spiced rice, and an addictive white sauce that brings the whole thing together. Amazing!</p>
+              <h5 className="subheader">What is halal guys chicken and rice?</h5>
+              <p className="recipe-description">It’s a famous dish that originated from a street cart in NYC. My husband and I actively sought out the food cart on our honeymoon! The chicken used in the NYC cart is halal (can be consumed by Muslims) so it became a flocking point to Muslim locals, tourists, then basically anyone wanting great street food. The definition of a great street food meal, every component of this dish works together so well.</p>
+              <h5 className="subheader">Why you should try this recipe?</h5>
+              <p className="recipe-description">The rice is buttery and full of flavor - I think it’s the best rice I’ve cooked at home. The chicken is tender and juicy and full of flavor from the marination, and the white sauce is a creamy and just a little sweet.</p>
+            </div>
+            <div className="upper-column2">
+              <img src={chickenandrice} alt="Sample Recipe" className="center scaled-image padded-image" />
+            </div>
+          </div>
+          {/* <img src={chickenandrice} alt="Sample Recipe" className="center scaled-image padded-image" /> */}
           <div className="container">
             <div className="column1">
               <h2 className="subheader">Ingredients</h2>
@@ -84,7 +98,16 @@ function RecipeAccordion() {
       <Accordion.Item eventKey='1'>
         <Accordion.Header>Guacamole</Accordion.Header>
         <Accordion.Body>
-          <img src={guac} alt="Sample Recipe" className="center scaled-image padded-image"/>
+          <div className="container">
+            <div className="upper-column1">
+              <h5 className="subheader">What is guacamole?</h5>
+              <p className="recipe-description">Guacamole is a delicious and popular Mexican dip made primarily from ripe avocados. Mashed to a creamy consistency, it features a perfect blend of flavors enhanced by ingredients such as finely chopped white onions, fresh lime juice, and a touch of salt and pepper. The result is a smooth and flavorful concoction, ideal for dipping tortilla chips or complementing a variety of dishes. With its rich, buttery texture and a hint of zesty acidity, guacamole is a versatile and crowd-pleasing addition to any gathering. Whether as a party snack or a topping for tacos, this classic dip never fails to deliver a burst of fresh, vibrant taste.</p>
+            </div>
+            <div className="upper-column2">
+              <img src={guac} alt="Sample Recipe" className="center scaled-image padded-image"/>
+            </div>
+          </div>
+          {/* <img src={guac} alt="Sample Recipe" className="center scaled-image padded-image"/> */}
           <div className="container">
             <div className="column1">
                 <h2 className= "subheader">Ingredients</h2>
@@ -112,7 +135,19 @@ function RecipeAccordion() {
       <Accordion.Item eventKey='2'>
         <Accordion.Header>Pasta with pesto</Accordion.Header>
         <Accordion.Body>
-          <img src={pesto} alt="Sample Recipe" className="center scaled-image padded-image"/>
+          <div className="container">
+            <div className="upper-column1">
+              <h5 className="subheader">Why you should make pasta with pesto</h5>
+              <p className="recipe-description">Pasta with Pesto is a delightful and classic Italian dish that combines simple yet exquisite flavors. Al dente pasta, cooked to perfection, is generously coated with a vibrant green pesto sauce. The pesto, made from fresh basil, garlic, toasted nuts, and Parmesan cheese, imparts a burst of herbaceous and nutty notes to the dish.</p>
+              <p className="recipe-description">The pasta, entwined with the velvety green goodness of the pesto, creates a harmonious blend of flavors and textures. Each bite offers a satisfying balance between the tender pasta and the rich, aromatic sauce. The dish is often garnished with additional Parmesan cheese, adding a final layer of savory indulgence.</p>
+              <p className="recipe-description">Pasta with Pesto is a celebration of simplicity and freshness, showcasing the beauty of high-quality ingredients. It's a timeless favorite that brings the essence of Italian cuisine to the table, promising a satisfying and flavorful dining experience.</p>
+            </div>
+            <div className="upper-column2">
+              <img src={pesto} alt="Sample Recipe" className="center scaled-image padded-image"/>
+              <img src={pesto2} alt="Sample Recipe" className="center scaled-image padded-image"/>
+            </div>
+          </div>
+          {/* <img src={pesto} alt="Sample Recipe" className="center scaled-image padded-image"/> */}
           <div className="container">
             <div className="column1">
                 <h2 className= "subheader">Ingredients</h2>
@@ -140,7 +175,19 @@ function RecipeAccordion() {
       <Accordion.Item eventKey='3'>
         <Accordion.Header>Nigerian Meat Pies</Accordion.Header>
         <Accordion.Body>
-          <img src={nmeatpie} alt="Sample Recipe" className="center scaled-image padded-image" />
+          <div className="container">
+            <div className="upper-column1">
+              <h5 className="subheader">What is nigerian meat pie?</h5>
+              <p className="recipe-description">Nigerian Meat Pie is a savory and comforting pastry that holds a delicious filling of seasoned ground meat and vegetables. The golden-brown, flaky crust encases a flavorful mixture of minced meat, often beef or a combination of beef and chicken, along with finely chopped potatoes, carrots, and onions.</p>
+              <p className="recipe-description">The filling is cooked to perfection with a blend of aromatic spices and herbs, creating a savory and hearty concoction. The pastry itself is tender and buttery, providing a delightful contrast to the well-seasoned interior. Nigerian Meat Pies are commonly enjoyed as a snack or appetizer, offering a satisfying combination of textures and tastes in every bite.</p>
+              <p className="recipe-description">Whether served at gatherings, celebrations, or enjoyed as a snack on the go, Nigerian Meat Pie is a beloved treat that showcases the rich culinary traditions of Nigeria. The pastry's golden exterior and the savory filling make it a flavorful and comforting choice for those seeking a taste of Nigerian culinary delights.</p>
+            </div>
+            <div className="upper-column2">
+              <img src={nmeatpie} alt="Sample Recipe" className="center scaled-image padded-image" />
+              <img src={nmeatpie2} alt="Sample Recipe" className="center scaled-image padded-image" />
+            </div>
+          </div>
+          {/* <img src={nmeatpie} alt="Sample Recipe" className="center scaled-image padded-image" /> */}
           <div class="container">
             <div class="column1">
               <h2 class="subheader">Ingredients</h2>
@@ -207,7 +254,17 @@ function RecipeAccordion() {
       <Accordion.Item eventKey='4'>
         <Accordion.Header>Chocolate Chip Cookies</Accordion.Header>
         <Accordion.Body>
-          <img src={chocchip} alt="Sample Recipe" class="center scaled-image padded-image" />
+          <div className="container">
+            <div className="upper-column1">
+              <h5 className="subheader">The best chocolate chip cookies recipe ever</h5>
+              <p className="recipe-description">This is the best chocolate chip cookies recipe ever! No funny ingredients, no chilling time, etc. Just a simple, straightforward, amazingly delicious, doughy yet still fully cooked, chocolate chip cookie that turns out perfectly every single time!</p>
+              <p className="recipe-description">Everyone needs a classic chocolate chip cookie recipe in their repertoire, and this is mine. It is seriously the Best Chocolate Chip Cookie Recipe Ever! I have been making these for many, many years and everyone who tries them agrees they’re out-of-this-world delicious!</p>
+            </div>
+            <div className="upper-column2">
+              <img src={chocchip} alt="Sample Recipe" class="center scaled-image padded-image" />
+            </div>
+          </div>
+          {/* <img src={chocchip} alt="Sample Recipe" class="center scaled-image padded-image" /> */}
           <div class="container">
             <div class="column1">
               <h2 class="subheader">Ingredients</h2>
@@ -246,7 +303,17 @@ function RecipeAccordion() {
       <Accordion.Item eventKey='5'>
         <Accordion.Header>Creole Jambalaya</Accordion.Header>
         <Accordion.Body>
-          <img src={jambalaya} alt="Sample Recipe" className="center scaled-image padded-image" />
+          <div className="container">
+            <div className="upper-column1">
+              <h5 className="subheader">What is Creole Jambalaya?</h5>
+              <p className="recipe-description">Creole Jambalaya is a vibrant and flavorful one-pot dish that hails from the Louisiana Creole and Cajun culinary traditions. This hearty and satisfying dish is a celebration of diverse flavors, combining a mix of proteins, aromatic vegetables, and a medley of spices.</p>
+              <p className="recipe-description">Whether enjoyed during festive gatherings, family meals, or Mardi Gras celebrations, Creole Jambalaya embodies the lively spirit of Louisiana cuisine. Its bold flavors and diverse ingredients make it a culinary delight that captures the essence of Creole cooking.</p>
+            </div>
+            <div className="upper-column2">
+              <img src={jambalaya} alt="Sample Recipe" className="center scaled-image padded-image" />
+            </div>
+          </div>
+          {/* <img src={jambalaya} alt="Sample Recipe" className="center scaled-image padded-image" /> */}
           <div className="container">
             <div className="column1">
               <h2 className="subheader">Ingredients</h2>
@@ -297,7 +364,18 @@ function RecipeAccordion() {
       <Accordion.Item eventKey='6'>
         <Accordion.Header>Soup Dumplings</Accordion.Header>
         <Accordion.Body>
-          <img src={dumplings} alt="Sample Recipe" className="center scaled-image padded-image" />
+          <div className="container">
+            <div className="upper-column1">
+              <h5 className="subheader">Xiao Long Bao - Soup Dumplings</h5>
+              <p className="recipe-description">Xiao Long Bao, also known as soup dumplings, is a delectable Chinese dim sum dish renowned for its delicate and savory appeal. These small, steamed dumplings originate from the Jiangnan region of China and are particularly associated with Shanghai.</p>
+              <p className="recipe-description">The magic of Xiao Long Bao lies within its thin, translucent dough that encases a flavorful mixture of minced pork, aromatics, and a rich, savory broth. What sets these dumplings apart is the unique method of incorporating a gelatinized meat broth into the filling, which turns into a luscious, savory soup during the steaming process.</p>
+              <p className="recipe-description">Traditionally served with a side of black vinegar and thin julienned ginger, Xiao Long Bao is not just a dish; it's an experience. The careful balance of flavors, the rich broth surprise, and the artful craftsmanship involved in creating each dumpling make Xiao Long Bao a cherished and globally celebrated culinary delight.</p>
+            </div>
+            <div className="upper-column2">
+              <img src={dumplings} alt="Sample Recipe" className="center scaled-image padded-image" />
+            </div>
+          </div>
+          {/* <img src={dumplings} alt="Sample Recipe" className="center scaled-image padded-image" /> */}
           <div className="container">
             <div className="column1">
               <h2 className="subheader">Ingredients</h2>
