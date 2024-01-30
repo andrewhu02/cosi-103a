@@ -28,6 +28,7 @@
 
 .container {
   display: flex;
+  background-color: #e2c67f;
 }
 .column1, .column2 {
   text-align: left;
