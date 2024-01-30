@@ -7,37 +7,76 @@ import chocchip from './img/choc_chip_cookies.jpg';
 import nmeatpie from './img/nigerian_meatpie.jpg';
 import guac from './img/guac.jpg';
 import pesto from './img/pesto.jpg'
+import jambalaya from './img/jambalaya.jpg';
+import dumplings from './img/soup_dumplings.jpg';
 
 
 function RecipeAccordion() {
   return (
     <Accordion defaultActiveKey='0'>
       <Accordion.Item eventKey='0'>
-        <Accordion.Header>Recipe 1</Accordion.Header>
+        <Accordion.Header>Halal Guys Chicken and Rice</Accordion.Header>
         <Accordion.Body>
-          <img src={chickenandrice} alt="Sample Recipe" className="center scaled-image padded-image"/>
+          <img src={chickenandrice} alt="Sample Recipe" className="center scaled-image padded-image" />
           <div className="container">
             <div className="column1">
-                <h2 className= "subheader">Ingredients</h2>
-                <ul>
-                  <li>2 lbs chicken thighs</li>
-                  <li>1/4 cup olive oil</li>
-                  <li>2 tablespoon lemon juice</li>
-                  <li>1 tablespoon white vinegar</li>
-                  <li>3 cloves garlic, minced</li>
-                  <li>1 teaspoon salt, or to taste</li>
-                  <li>1/2 teaspoon black pepper, or to taste</li>
-                  <li>1 teaspoon oregano powder</li>
-                  <li>1 teaspoon all spice</li>
-                  <li>1/2 teaspoon ginger powder</li>
-                  <li>1/2 teaspoon cumin powder</li>
-                  <li>1/2 teaspoon paprika powder</li>
-                </ul>
+              <h2 className="subheader">Ingredients</h2>
+              <h4>Chicken ingredients</h4>
+              <ul>
+                <li>2 lbs chicken thighs</li>
+                <li>1/4 cup olive oil</li>
+                <li>2 tablespoon lemon juice</li>
+                <li>1 tablespoon white vinegar</li>
+                <li>3 cloves garlic, minced</li>
+                <li>1 teaspoon salt</li>
+                <li>1/2 teaspoon black pepper</li>
+                <li>1 teaspoon oregano powder</li>
+                <li>1 teaspoon all spice</li>
+                <li>1/2 teaspoon ginger powder</li>
+                <li>1/2 teaspoon cumin powder</li>
+                <li>1/2 teaspoon paprika powder</li>
+                <li>1 tablespoon vegetable oil for cooking</li>
+              </ul>
+              <h4>Rice ingredients</h4>
+              <ul>
+                <li>2 tablespoon unsalted butter</li>
+                <li>1/2 teaspoon turmeric powder</li>
+                <li>1/4 teaspoon cumin powder</li>
+                <li>1 1/2 cups basmati rice, optionally soaked for 20 minutes and rinsed until water runs clear</li>
+                <li>2 1/2 cups chicken stock or 1 stock cube dissolved in 2 1/2 cups water</li>
+                <li>Pinch of salt and pepper to taste</li>
+              </ul>
+              <h4>Assembly ingredients</h4>
+              <ul>
+                <li>chopped lettuce</li>
+                <li>chopped tomato</li>
+                <li>handful chopped parsley</li>
+              </ul>
             </div>
             <div className="column2">
-                <h2 className= "subheader">Cooking Instructions</h2>
-                <p>Recipe taken from <a href="everylittlecrumb.com">everylittlecrumb.com</a></p>
-                <p></p>
+              <h2 className="subheader">Cooking Instructions</h2>
+              <p>Recipe modified from <a href="https://everylittlecrumb.com/halal-guys-chicken-and-rice/">everylittlecrumb.com</a></p>
+              <h4>Chicken</h4>
+              <ol>
+                <li> (optional). Cut the chicken beforehand to cook it more evenly and avoid staining the cutting board.</li>
+
+                <li>In a bowl, add the olive oil, lemon juice, vinegar, garlic cloves,
+                  all the spices, and the salt and pepper for a chicken marinade.</li>
+
+                <li>Stir until well mixed, then add chicken and toss to coat evenly. Cover the bowl and marinate for 1-2 hours or more.</li>
+
+                <li>Heat the vegetable oil in a large skillet on medium high until the oil pops, then add the chicken.
+                  Cook until golden brown and cooked through (about 5-6 minutes, or 3-4 if it has been cut already)</li>
+                <li>Cut the chicken now if necessary. Let the meat rest for 5-10 minutes, and begin prepping the rice.</li>
+              </ol>
+              <h4>Rice</h4>
+              <ol>
+                <li>Add the butter to a large saucepan/pot over medium heat. Once melted, add the turmeric and cumin, and stir for 1 minutes or until spices are fragrant.</li>
+                <li>Add the rice and stir for 4 minutes to toast it. Add the chicken stock and a pinch of salt and pepper to season. Stir and bring to a boil, then reduce heat to a simmer, cover and cook for 15 minutes.</li>
+                <li>After the rice is cooked and the water is absorbed, remove pan from the heat and wait 10-15 minutes before disturbing. Fluff gently with a fork.</li>
+                <li>Finally, plate the chicken on top of the rice, then top with parsley and tomato</li>
+              </ol>
+
             </div>
           </div>
         </Accordion.Body>
@@ -100,147 +139,234 @@ function RecipeAccordion() {
         </Accordion.Body>
       </Accordion.Item>
       <Accordion.Item eventKey='3'>
-        <Accordion.Header>Recipe 4</Accordion.Header>
+        <Accordion.Header>Nigerian Meat Pies</Accordion.Header>
         <Accordion.Body>
-          <img src={nmeatpie} alt="Sample Recipe" class="center scaled-image padded-image"/>
+          <img src={nmeatpie} alt="Sample Recipe" class="center scaled-image padded-image" />
           <div class="container">
             <div class="column1">
-                <h2 class = "subheader">Ingredients</h2>
-                <h4>Dough</h4>
-                <ul>
-                  <li>4.5 cups of all purpose flour </li>
-                  <li>2 tsp of baking powder</li>
-                  <li>2 cups of butter</li>
-                  <li>up to 1 tsp of salt</li>
-                  <li>1/2 cup of cold water</li>
-                </ul>
-                <h4>Filling</h4>
-                <ul>
-                  <li>2 medium-sized potatoes</li>
-                  <li>2 medium-sized carrots</li>
-                  <li>1 pound of ground meat(turkey, beef)</li>
-                  <li>1 medium-sized onion</li>
-                  <li>2 tablespoons of vegetable oil</li>
-                  <li>2 cubes/2 tablespoons of bouillon</li>
-                  <li>1 stem/1 tsp of thyme</li>
-                  <li>2 tablespoon of plain flour</li>
-                  <li>1 cup of cold water</li>
-                  <li>salt to taste</li>
-                </ul>
+              <h2 class="subheader">Ingredients</h2>
+              <h4>Dough</h4>
+              <ul>
+                <li>4.5 cups of all purpose flour </li>
+                <li>2 tsp of baking powder</li>
+                <li>2 cups of butter</li>
+                <li>up to 1 tsp of salt</li>
+                <li>1/2 cup of cold water</li>
+              </ul>
+              <h4>Filling</h4>
+              <ul>
+                <li>2 medium-sized potatoes</li>
+                <li>2 medium-sized carrots</li>
+                <li>1 pound of ground meat(turkey, beef)</li>
+                <li>1 medium-sized onion</li>
+                <li>2 tablespoons of vegetable oil</li>
+                <li>2 cubes/2 tablespoons of bouillon</li>
+                <li>1 stem/1 tsp of thyme</li>
+                <li>2 tablespoon of plain flour</li>
+                <li>1 cup of cold water</li>
+                <li>salt to taste</li>
+              </ul>
             </div>
             <div class="column2">
-                <h2 class = "subheader">Cooking Instructions</h2>
-                <p>You can start making the filling or dough, make sure to refridgerate the other while you're making either one</p>
-                <h4>Making Dough</h4>
-                <ol>
-                  <li>In a bowl, add all dry ingredients(flour, baking powder, salt) and mix together</li>
-                  <li>Cut butter in small bits and add into the mixture, using hands to crush until it crumbles</li>
-                  <li>Slowly add water while folding the dough into itself in the bowl</li>
-                  <li>Take the dough out of ball and knead for about 5- 7 minutes. Leave to rest</li>
-                </ol>
-                <h4>Making Filling</h4>
-                <ol>
-                  <li>Prepare and cut potatoes, carrots and onions if you had not already.</li>
-                  <li>Set oil onto the pot and set stove to medium heat.</li>
-                  <li>Once hot enough, add in the onions</li>
-                  <li>Once the onions are translucent, add in the meat and stir until pale brown.</li>
-                  <li>Add in a cup of water, bouillon, and thyme, and stir in until combined.</li>
-                  <li>Cover the pot with increased heat, once its boiling, add in the carrots and potatoes. Lower the heat</li>
-                  <li>Stir in the flour to the filling.</li>
-                  <li>Let it cook for several more minutes, add in salt to taste.</li>
-                  <li>Once cooked, turn off the heat and set the filling aside</li>
-                </ol>
-                <h4>Making the Meat Pie</h4>
-                <ol>
-                  <li>Preheat the oven to 335°C</li>
-                  <li>Cover a 9 x 13 tray in butter or use a baking sheet</li>
-                  <li>Knead the dough and roll out into a up to 2inches</li>
-                  <li>Cut out circles from the dough with a cutter or a knife</li>
-                  <li>Add in filling in the center, try not to overfill</li>
-                  <li>Add egg wash around the interior edge and fold the dough over the filling and seal it with a fork</li>
-                  <li>Place all the meat pie onto the tray and cover with egg wash</li>
-                  <li>Bake for about 30-40 minutes</li>
-                  <li>Let it cool and enjoy!</li>               
-                </ol>
+              <h2 class="subheader">Cooking Instructions</h2>
+              <p>You can start making the filling or dough, make sure to refrigerate the other while you're making either one</p>
+              <h4>Making Dough</h4>
+              <ol>
+                <li>In a bowl, add all dry ingredients (flour, baking powder, salt) and mix together</li>
+                <li>Cut butter in small bits and add into the mixture, using hands to crush until it crumbles</li>
+                <li>Slowly add water while folding the dough into itself in the bowl</li>
+                <li>Take the dough out of ball and knead for about 5- 7 minutes. Leave to rest</li>
+              </ol>
+              <h4>Making Filling</h4>
+              <ol>
+                <li>Prepare and cut potatoes, carrots and onions if you had not already.</li>
+                <li>Set oil onto the pot and set stove to medium heat.</li>
+                <li>Once hot enough, add in the onions</li>
+                <li>Once the onions are translucent, add in the meat and stir until pale brown.</li>
+                <li>Add in a cup of water, bouillon, and thyme, and stir in until combined.</li>
+                <li>Cover the pot with increased heat, once its boiling, add in the carrots and potatoes. Lower the heat</li>
+                <li>Stir in the flour to the filling.</li>
+                <li>Let it cook for several more minutes, add in salt to taste.</li>
+                <li>Once cooked, turn off the heat and set the filling aside</li>
+              </ol>
+              <h4>Making the Meat Pie</h4>
+              <ol>
+                <li>Preheat the oven to 335°C</li>
+                <li>Cover a 9 x 13 tray in butter or use a baking sheet</li>
+                <li>Knead the dough and roll out into a up to 2inches</li>
+                <li>Cut out circles from the dough with a cutter or a knife</li>
+                <li>Add in filling in the center, try not to overfill</li>
+                <li>Add egg wash around the interior edge and fold the dough over the filling and seal it with a fork</li>
+                <li>Place all the meat pie onto the tray and cover with egg wash</li>
+                <li>Bake for about 30-40 minutes</li>
+                <li>Let it cool and enjoy!</li>
+              </ol>
             </div>
           </div>
         </Accordion.Body>
       </Accordion.Item>
       <Accordion.Item eventKey='4'>
-        <Accordion.Header>Recipe 5</Accordion.Header>
+        <Accordion.Header>Chocolate Chip Cookies</Accordion.Header>
         <Accordion.Body>
-          <img src={chocchip} alt="Sample Recipe" class="center scaled-image padded-image"/>
+          <img src={chocchip} alt="Sample Recipe" class="center scaled-image padded-image" />
           <div class="container">
             <div class="column1">
-                <h2 class = "subheader">Ingredients</h2>
-                <ul>
-                  <li>3 cups of all purpose flour</li>
-                  <li>1/2 tsp of baking powder</li>
-                  <li>1/4 tsp of salt</li> 
-                  <li>1/4 tsp of espresso powder</li>
-                  <li>1 cup of plain white sugar</li>
-                  <li>1 cup of brown sugar or molasses</li>
-                  <li>1 cup of melted butter</li>
-                  <li>2 eggs</li>
-                  <li>1 tsp of vanilla extract</li>
-                  <li>2 cups of chocolate chips/chunks</li>
-                </ul>
+              <h2 class="subheader">Ingredients</h2>
+              <ul>
+                <li>3 cups of all purpose flour</li>
+                <li>1/2 tsp of baking powder</li>
+                <li>1/4 tsp of salt</li>
+                <li>1/4 tsp of espresso powder</li>
+                <li>1 cup of plain white sugar</li>
+                <li>1 cup of brown sugar or molasses</li>
+                <li>1 cup of melted butter</li>
+                <li>2 eggs</li>
+                <li>1 tsp of vanilla extract</li>
+                <li>2 cups of chocolate chips/chunks</li>
+              </ul>
             </div>
             <div class="column2">
-                <h2 class = "subheader">Cooking Instructions</h2>
-                <ol>
-                  <li>Preheat the oven to 350°C degrees, or you can start preheating after step 7, depends on your pace</li>
-                  <li>If you haven’t already, prepare the melted butter by either melting it at a low heat in a pan on stove or melting it in the microwave</li>
-                  <li>Cream the butter with the white sugar and brown sugar/molasses until both incorporated or about 2 - 3 minutes</li>
-                  <li>Mix the eggs, with egg yolk and white, and the vanilla extract into the wet mixture</li>
-                  <li>In a separate bowl combine and sift the dry ingredients (flour, salt, baking powder, espresso powder)</li>
-                  <li>Gradually add in the dry ingredients into the wet mixture until incorporated</li>
-                  <li>Stir in the chocolate chips until incorporated</li>
-                  <li>While oven is preheating, shape small balls out of the dough and place on a 9 x 13 pan, 16 is usually expected</li>
-                  <li>Once the oven is preheated, bake the cookies until 12 - 15 minutes</li>
-                  <li>Take the cookies out of the oven and let them cool for at least 10 minutes</li>
-                  <li>Enjoy!</li>
-                </ol>
+              <h2 class="subheader">Cooking Instructions</h2>
+              <ol>
+                <li>Preheat the oven to 350°C degrees, or you can start preheating after step 7, depends on your pace</li>
+                <li>If you haven’t already, prepare the melted butter by either melting it at a low heat in a pan on stove or melting it in the microwave</li>
+                <li>Cream the butter with the white sugar and brown sugar/molasses until both incorporated or about 2 - 3 minutes</li>
+                <li>Mix the eggs, with egg yolk and white, and the vanilla extract into the wet mixture</li>
+                <li>In a separate bowl combine and sift the dry ingredients (flour, salt, baking powder, espresso powder)</li>
+                <li>Gradually add in the dry ingredients into the wet mixture until incorporated</li>
+                <li>Stir in the chocolate chips until incorporated</li>
+                <li>While oven is preheating, shape small balls out of the dough and place on a 9 x 13 pan, 16 is usually expected</li>
+                <li>Once the oven is preheated, bake the cookies until 12 - 15 minutes</li>
+                <li>Take the cookies out of the oven and let them cool for at least 10 minutes</li>
+                <li>Enjoy!</li>
+              </ol>
             </div>
           </div>
         </Accordion.Body>
       </Accordion.Item>
       <Accordion.Item eventKey='5'>
-        <Accordion.Header>Recipe 6</Accordion.Header>
+        <Accordion.Header>Creole Jambalaya</Accordion.Header>
         <Accordion.Body>
-          <img src={food} alt="Sample Recipe" className="center scaled-image padded-image"/>
+          <img src={jambalaya} alt="Sample Recipe" className="center scaled-image padded-image" />
           <div className="container">
             <div className="column1">
-                <h2 className= "subheader">Ingredients</h2>
-                <ul>
-                  <li>ingredient 1</li>
-                  <li>ingredient 2</li>
-                  <li>ingredient 3</li>
-                </ul>
+              <h2 className="subheader">Ingredients</h2>
+              <ul>
+                <li>1 tablespoon extra-virgin olive oil</li>
+                <li>1 yellow onion, chopped</li>
+                <li>2 bell peppers, seeds and ribs removed, chopped</li>
+                <li>2 sticks celery, chopped</li>
+                <li>Kosher salt and ground black pepper</li>
+                <li>1 lb. boneless chicken thigh, cut into "1 pieces</li>
+                <li>1 tsp. dried oregano</li>
+                <li>12 oz. andouille sausage</li>
+                <li>2 tbsp. tomato paste</li>
+                <li>2 cloves garlic, minced</li>
+                <li>1 can crushed tomatoes, or 5-6 chopped fresh tomatoes</li>
+                <li>2 cups long-grain rice</li>
+                <li>2 cups chicken stock</li>
+                <li>2 tsp Cajun seasoning</li>
+                <li>1 lb. medium shrimp, peeled and deveined</li>
+                <li>2 scallions, thinly sliced</li>
+              </ul>
             </div>
             <div className="column2">
-                <h2 className= "subheader">Cooking Instructions</h2>
-                <p>This is how to cook this dish...</p>
+              <h2 className="subheader">Cooking Instructions</h2>
+              <p>Recipe modified from <a href="https://www.delish.com/cooking/recipe-ideas/a53820/easy-homemade-cajun-jambalaya-recipe/">delish.com</a></p>
+              <p>Note: The pot must be large enough to hold all of the ingredients at once.</p>
+              <h4>Optional Steps</h4>
+              <ul>
+                <li>For extra seafood flavor: Shell and devein shrimp, then brown the shrimp in vegetable oil at medium high heat and set aside for later.</li>
+                <li>In a separate pot, simmer the shells in the stock for ~1 hour beforehand. Strain out the shells and use the broth as normal.</li>
+                <li>For softer rice, lightly sautee in 1 1/2 tbsp butter until golden, then add stock and other ingredients separately</li>
+              </ul>
+              <h4>Main Process</h4>
+              <ul>
+                <li>In a large pot over medium heat, heat oil. Add onion, bell peppers, and celery; season with salt and pepper. </li>
+                <li>Cook for about 7 minutes, stirring occasionally until softened.</li>
+                <li>Stir in chicken and oregano, season with salt and pepper. Cook for about 5 minutes or until chicken is golden, stirring occasionally.</li>
+                <li>Add sausage, tomato paste, and garlic and cook, stirring about 1 minute until fragrant.</li>
+                <li>Add stock, tomatoes, rice, and <a href="https://www.gimmesomeoven.com/cajun-seasoning/">Cajun seasoning.</a></li>
+                <li>Reduce heat to medium-low, cover with a tight lid, and cook until rice is tender and liquid is almost absorbed, about 20 minutes.</li>
+                <li>Add shrimp and cook, tossing to combine, until pink and just cooked through, 3 to 5 minutes. If the shrimp were cooked earlier, cook for 1-2 minutes.</li>
+                <li>Top with scallions and serve.</li>
+              </ul>
             </div>
           </div>
         </Accordion.Body>
       </Accordion.Item>
       <Accordion.Item eventKey='6'>
-        <Accordion.Header>Recipe 7</Accordion.Header>
+        <Accordion.Header>Soup Dumplings</Accordion.Header>
         <Accordion.Body>
-          <img src={food} alt="Sample Recipe" className="center scaled-image padded-image"/>
+          <img src={dumplings} alt="Sample Recipe" className="center scaled-image padded-image" />
           <div className="container">
             <div className="column1">
-                <h2 className= "subheader">Ingredients</h2>
-                <ul>
-                  <li>ingredient 1</li>
-                  <li>ingredient 2</li>
-                  <li>ingredient 3</li>
-                </ul>
+              <h2 className="subheader">Ingredients</h2>
+              <h4>Aspic Ingredients</h4>
+              <ul>
+                <li>1/2 lb pork skin, cut into "1 strips</li>
+                <li>1 lb pork neck bones, with meat still on</li>
+                <li>2 slices ginger</li>
+                <li>1 scallion, cut into 3 pieces</li>
+                <li>1 tablespoon shaoxing cooking wine</li>
+              </ul>
+              <h4>Dough Ingredients</h4>
+              <ul>
+                <li>1 cup all-purpose flour</li>
+                <li>6 tbsp warm water</li>
+              </ul>
+              <h4>Filling</h4>
+              <ul>
+                <li>1 lb ground pork (70% lean, 30% fat)</li>
+                <li>2 tablespoon shaoxing cooking wine</li>
+                <li>3/4 tsp salt</li>
+                <li>1/2 tsp sesame oil</li>
+                <li>3/4 tsp sugar</li>
+                <li>3 tsp light soy sauce</li>
+                <li>3 tablespoons water</li>
+                <li>Pinch of ground white pepper</li>
+                <li>1 tablespoon minced ginger</li>
+                <li>1 cup of aspic, divided into "1/2 pieces</li>
+              </ul>
             </div>
             <div className="column2">
-                <h2>Cooking Instructions</h2>
-                <p>This is how to cook this dish...</p>
+              <h2>Cooking Instructions</h2>
+              <p>Recipe taken from <a href="https://thewoksoflife.com/steamed-shanghai-soup-dumplings-xiaolongbao/">delish.com</a></p>
+              <h4>Aspic</h4>
+              <ul>
+                <li>In a small pot, add pork skin/bones and cover with cold water. Bring to a rolling boil, then drain and rinse the bones and skin to remove impurities.</li>
+                <li>Rinse the pot and readd ingredients, then add 4 cups of water along with the ginger, scallion, and wine.</li>
+                <li>Bring to a boil and reduce the heat to low, then cover and simmer for 2 hours.</li>
+                <li>Turn the heat off, allow the soup to cool, and strain the liquid into a bowl. Store or eat the leftover ingredients.</li>
+                <li>Once the liquid is completely cooled, cover and refrigerate overnight to make an aspic.</li>
+              </ul>
+              <h4>Dough</h4>
+              <ul>
+                <li>In a mixing bowl, add the flour and warm water 1 tablespoon at a time.</li>
+                <li>Work and knead the dough for 15-20 minutes. The dough should be very soft and smooth.</li>
+                <li>Cover with a cloth and let it rest for 30 minutes.</li>
+              </ul>
+              <h4>Filling</h4>
+              <ul>
+                <li>Take your ground pork and put it in the food processor. Pulse for 30-60 seconds until the pork resembles paste.</li>
+                <li>In a mixing bowl, add the pork and all the rest of the ingredients except the aspic.</li>
+                <li>Whip ingredients together with chopsticks thoroughly for 2 minutes, until everything is well combined into a light paste.</li>
+                <li>Gently fold in the aspic without overmixing, then cover and refrigerate until ready.</li>
+                <li>If you're ready now, put the bowl in the freezer for 15 minutes to make the filling firmer and easier to work with.</li>
+              </ul>
+              <h4>Assembly</h4>
+              <ul>
+                <li>Lightly dust a clean work surface with flour and roll the dough into a long cylinder/cigar, about an inch in diameter.</li>
+                <li>Cut the dough into small equal pieces weighing about 11 grams each (the dough chunks should be a size resembling that of gnocchi).</li>
+                <li>Roll out each piece into a round disc about 3 – 3 ¼ inches diameter. Keep everything under a damp cloth.</li>
+                <li>Line a bamboo steamer with a cheese cloth and take out the filling.</li>
+                <li>Place about 1 tbsp of filling into the dumpling skin and pleat with as many folds as possible, ideally 12-18.</li>
+                <li>During each fold, use one hand to pleat the dough over itself and the other to continually push the filling into the "bag" in the dough</li>
+                <li>Place the buns in the steamer, about 1 1/2 inch apart</li>
+                <li>Fill the lower part of a metal steamer pot with water and boil.</li>
+                <li>Put the bamboo steamer in the top part, cover with the bamboo steamer lid, and steam over high heat for 8 minutes.</li>
+                <li>To eat, place the dumpling in a soup spoon and handle with chopsticks in the other hand.</li>
+              </ul>
             </div>
           </div>
         </Accordion.Body>
