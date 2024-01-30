@@ -13,7 +13,7 @@ import dumplings from './img/soup_dumplings.jpg';
 
 function RecipeAccordion() {
   return (
-    <Accordion className="accordion-container">
+    <Accordion defaultActiveKey={null} className="accordion-container">
       <Accordion.Item eventKey='0'>
         <Accordion.Header>Halal Guys Chicken and Rice</Accordion.Header>
         <Accordion.Body>
