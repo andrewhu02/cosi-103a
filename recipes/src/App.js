@@ -1,4 +1,3 @@
-import logo from './logo.svg';
 import './App.css';
 import Accordion from 'react-bootstrap/Accordion';
 import chickenandrice from './img/chickenandrice.jpg';
