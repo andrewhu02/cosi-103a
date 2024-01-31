@@ -1,0 +1,24 @@
+/* NavScrollExample.css */
+
+.bg-body-tertiary {
+    background-color: white;
+  }
+  
+  .navbar-brand {
+    color: black;
+  }
+  
+  .nav-link,
+  .navbar-toggler-icon,
+  .navbar-toggler {
+    color: black;
+  }
+  
+  .navbar-toggler:hover {
+    cursor: pointer;
+  }
+
+  .nav-container {
+    margin: 50px;
+  }
+    

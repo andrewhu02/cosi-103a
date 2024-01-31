@@ -1,0 +1,13 @@
+/* Header.css */
+.header-container {
+    background-color: lightcyan; 
+    padding: 20px;
+    text-align: center;
+    margin: 50px;
+  }
+  
+  .header-text {
+    color: black; 
+    margin: 0;
+  }
+  
