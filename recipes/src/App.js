@@ -3,7 +3,7 @@ import { BrowserRouter, Routes, Route, createBrowserRouter, RouterProvider } fro
 import Header from './shared/components/header/Header';
 import MainNavigation from './shared/components/navigation/MainNavigation';
 import AboutUs from './pages/AboutUs';
-import Root from './pages/root';
+import Root from './shared/components/root';
 
 function App() {
   return (
@@ -56,7 +56,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/about-us",
-        element: <h1>About Us</h1>
+        element: <AboutUs />
       }
     ]
   }
