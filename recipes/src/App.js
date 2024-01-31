@@ -1,19 +1,28 @@
 import React from 'react';
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, createBrowserRouter, RouterProvider } from "react-router-dom";
 import Header from './shared/components/header/Header';
 import MainNavigation from './shared/components/navigation/MainNavigation';
 import AboutUs from './pages/AboutUs';
+import Root from './pages/root';
 
 function App() {
   return (
     <React.Fragment>
-      <Header/>
-      <MainNavigation />
+      <RouterProvider router={router} />
     </React.Fragment>
   );
 }
 
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <Root />
+  }
+]);
+
 export default App;
+
+
 
 // import './App.css';
 // import Accordion from 'react-bootstrap/Accordion';
