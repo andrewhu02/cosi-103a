@@ -16,13 +16,53 @@ function App() {
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <Root />
+    element: <Root />,
+    children: [
+      {
+        path: "/homepage",
+        element: <h1>This is the home page.</h1>
+      },
+      {
+        path: "/all-recipes",
+        element: <h1>This page shows all recipes.</h1>
+      },
+      {
+        path: "/recipe1",
+        element: <h1>Halal Guys Chicken and Rice</h1>
+      },
+      {
+        path: "/recipe2",
+        element: <h1>Guacamole</h1>
+      },
+      {
+        path: "/recipe3",
+        element: <h1>Pasta With Pesto</h1>
+      },
+      {
+        path: "/recipe4",
+        element: <h1>Nigerian Meat Pies</h1>
+      },
+      {
+        path: "/recipe5",
+        element: <h1>Chocolate Chip Cookies</h1>
+      },
+      {
+        path: "/recipe6",
+        element: <h1>Creole Jambalaya</h1>
+      },
+      {
+        path: "/recipe7",
+        element: <h1>Soup Dumplings</h1>
+      },
+      {
+        path: "/about-us",
+        element: <h1>About Us</h1>
+      }
+    ]
   }
 ]);
 
 export default App;
-
-
 
 // import './App.css';
 // import Accordion from 'react-bootstrap/Accordion';
