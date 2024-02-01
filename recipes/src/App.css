@@ -40,12 +40,12 @@
 }
 .column1 {
   /*background-color: #f0f0f0;*/
-  background-color: #e9f5ff;
+  background-color: #f6c247;
 }
 
 .column2 {
   /* background-color: #e0e0e0; */
-  background-color: #d9ebff;
+  background-color: #f5b639;
 }
 
 .upper-column1 {
@@ -62,7 +62,8 @@
   text-align: left;
   flex: 1;
   padding: 15px;
-} */
+  background-color: #ffd165;
+}
 
 .center {
   display: block;
@@ -80,10 +81,12 @@
   padding-right: 25px;
   padding-bottom: 15px;
   padding-left: 25px;
+  margin-bottom: 10px;
+  background-color: #72411b;
 }
 
 .accordion-body {
-  background-color: #f4f4f4;
+  background-color: #a16d3c;
 }
 
 .accordion-container {
