@@ -1,39 +1,40 @@
 .App {
   text-align: center;
+  
 }
 .App-header {
   background-color: white;
   min-height: 10vh;
   display: flex;
-  flex-direction: column;
+  /* flex-direction: column; */
   align-items: center;
   text-align: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: black;
 }
-/* body {
+ /* body {
   display: flex;
   align-items: center;
   justify-content: center;
   height: 100vh; 
   margin: 0;
-}
-
-.container {
-  max-width: 800px; 
-  width: 100%;
-  padding: 20px;
 } */
 
-.container {
+/* .container {
+  width: 100%;
+  align-items:center;
+  margin-bottom: 40 px;
   display: flex;
+} */
+.card {
+  background-color: #e9f5ff;
 }
-.column1, .column2 {
+/* .column1, .column2 {
   text-align: left;
   flex: 1;
   padding: 20px;
-}
+} */
 .subheader {
   text-align: center;
 }
@@ -57,11 +58,11 @@
   background-color: white;
 }
 
-.upper-column1, .upper-column2 {
+/* .upper-column1, .upper-column2 {
   text-align: left;
   flex: 1;
   padding: 15px;
-}
+} */
 
 .center {
   display: block;
@@ -92,4 +93,8 @@
 
 .recipe-description {
   margin: 20px;
+}
+.thumbnail {
+  max-height: 300px;  
+  object-fit: cover;
 }
