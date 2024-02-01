@@ -4,6 +4,7 @@ import Header from './shared/components/header/Header';
 import MainNavigation from './shared/components/navigation/MainNavigation';
 import AboutUs from './pages/AboutUs';
 import Root from './shared/components/root';
+import Chicken from './pages/Chicken';
 
 function App() {
   return (
@@ -28,7 +29,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/recipe1",
-        element: <h1>Halal Guys Chicken and Rice</h1>
+        element: <Chicken />
       },
       {
         path: "/recipe2",
