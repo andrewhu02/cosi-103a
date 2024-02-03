@@ -20,7 +20,7 @@ function RecipeCard(title, imageSrc, description, url) {
         <Card.Title>{title}</Card.Title>
         <Card.Text>{description}</Card.Text>
       </Card.Body>
-      <Card.Link href="url">Recipe</Card.Link>
+      <Card.Link href={url}>Recipe</Card.Link>
     </Card>
   );
 }
@@ -28,20 +28,20 @@ function ContainerCards() {
   return (
     <Container fluid>
       <Row className="g-4">
-        <Col>{RecipeCard("Halal Guys Chicken and Rice", chickenandrice, "Test", "url")}</Col>
-        <Col>{RecipeCard("Guacamole", guac, "Test", "url")}</Col>
+        <Col>{RecipeCard("Halal Guys Chicken and Rice", chickenandrice, "Test", "/recipe1")}</Col>
+        <Col>{RecipeCard("Guacamole", guac, "Test", "/recipe2")}</Col>
       </Row>
       <Row className="g-4">
-        <Col>{RecipeCard("Pasta with Pesto", pesto, "Test", "url")}</Col>
-        <Col>{RecipeCard("Nigerian Meat Pies", nmeatpie, "Test", "url")}</Col>
+        <Col>{RecipeCard("Pasta with Pesto", pesto, "Test", "/recipe3")}</Col>
+        <Col>{RecipeCard("Nigerian Meat Pies", nmeatpie, "Test", "/recipe4")}</Col>
       </Row>
       <Row className="g-4">
-        <Col>{RecipeCard("Chocolate Chip Cookies", chocchip, "Test", "url")}</Col>
-        <Col>{RecipeCard("Creole Jambalaya", jambalaya, "Test", "url")}</Col>
+        <Col>{RecipeCard("Chocolate Chip Cookies", chocchip, "Test", "/recipe5")}</Col>
+        <Col>{RecipeCard("Creole Jambalaya", jambalaya, "Test", "/recipe6")}</Col>
       </Row>
       <Row className="g-4">
-        <Col>{RecipeCard("Soup Dumplings", dumplings, "Test", "url")}</Col>
-        <Col>{RecipeCard("Sample", food, "Test", "url")}</Col>
+        <Col>{RecipeCard("Soup Dumplings", dumplings, "Test", "/recipe7")}</Col>
+        <Col>{RecipeCard("Sample", food, "Test", "/url")}</Col>
       </Row>
     </Container>
   );
