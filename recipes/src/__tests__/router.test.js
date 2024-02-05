@@ -4,61 +4,88 @@ import React from 'react'
 import '@testing-library/jest-dom'
 import App from "../App"
 
-test('app rendering/navigating with navbar', async () => {
-    render(<App />)
-    const user = userEvent.setup()
+describe('routing testing',()=>{
+    test('app rendering/navigating with navbar', async () => {
+        render(<App />)
+        const user = userEvent.setup()
 
-    // verify redirect to /homepage
-    // look for the test text because that is only on homepage, but
-    // should update with different text once 'test' is replaced
-    expect(screen.getAllByText((/test/i))[0]).toBeInTheDocument()
+        // verify redirect to /homepage
+        // look for the test text because that is only on homepage, but
+        // should update with different text once 'test' is replaced
+        expect(screen.getAllByText((/test/i))[0]).toBeInTheDocument()
 
-    // verify 'Home' button navigates to home page
-    await user.click(screen.getByText(/home/i))
-    expect(screen.getAllByText((/test/i))[0]).toBeInTheDocument()
+        // verify 'Home' button navigates to home page
+        await user.click(screen.getAllByText(/home/i)[0])
+        expect(screen.getAllByText((/test/i))[0]).toBeInTheDocument()
 
-    // verify 'All recipes' button navigates to all recipes page
-    await user.click(screen.getByRole('button', { name: /recipes/i }))
-    await user.click(screen.getByText(/all recipes/i))
-    expect(screen.getByRole('heading', { name: /this page shows all recipes/i })).toBeInTheDocument()
+        // verify 'All recipes' button navigates to all recipes page
+        await user.click(screen.getByRole('button', { name: /recipes/i }))
+        await user.click(screen.getByText(/all recipes/i))
+        expect(screen.getByRole('heading', { name: /this page shows all recipes/i })).toBeInTheDocument()
 
+        // verify 'About Us' button navigates to About Us page
+        await user.click(screen.getAllByText(/about us/i)[0])
+        expect(screen.getAllByText('About Us')[1].parentNode).toBeInTheDocument()
+
+    });
+describe('testing recipe pages', ()=>{
+    
     // verify 'Halal Guys Chicken and Rice' button navigates to that recipe page
-    await user.click(screen.getByRole('button', { name: /recipes/i }))
-    await user.click(screen.getByText(/Halal Guys Chicken and Rice/i))
-    expect(screen.getByRole('heading', { name: /Chicken and Rice/i })).toBeInTheDocument()
-
+    test('chicken and rice', async()=>{
+        render(<App/>)
+        const user = userEvent.setup()
+        await user.click(screen.getByRole('button', {name: /recipes/i}))
+        await user.click(screen.getAllByText(/Halal Guys Chicken and Rice/i)[0])
+        expect(screen.getByText('Halal Guys Chicken and Rice').parentNode).toBeInTheDocument();
+    });
+ 
     // verify 'Guacamole' button navigates to that recipe page
-    await user.click(screen.getByRole('button', { name: /recipes/i }))
-    await user.click(screen.getByText(/Guacamole/i))
-    expect(screen.getByRole('heading', { name: /Guacamole/i })).toBeInTheDocument()
-
+    test('guacamole', async()=>{
+        render(<App/>)
+        const user = userEvent.setup()
+        await user.click(screen.getByRole('button', { name: /recipes/i }))
+        await user.click(screen.getAllByText(/Guacamole/i)[0])
+        expect(screen.getByText('Guacamole').parentNode).toBeInTheDocument()
+    });
     // verify 'Pasta With Pesto' button navigates to that recipe page
-    await user.click(screen.getByRole('button', { name: /recipes/i }))
-    await user.click(screen.getByText(/Pasta With Pesto/i))
-    expect(screen.getByRole('heading', { name: /Pasta With Pesto/i })).toBeInTheDocument()
-
+    test('pasta with pesto', async()=>{
+        render(<App/>)
+        const user = userEvent.setup()
+        await user.click(screen.getByRole('button', { name: /recipes/i }))
+        await user.click(screen.getAllByText(/Pasta With Pesto/i)[0])
+        expect(screen.getByText('Pasta With Pesto').parentNode).toBeInTheDocument()
+    });
     // verify 'Nigerian Meat Pies' button navigates to that recipe page
-    await user.click(screen.getByRole('button', { name: /recipes/i }))
-    await user.click(screen.getByText(/Nigerian Meat Pies/i))
-    expect(screen.getByRole('heading', { name: /Nigerian Meat Pies/i })).toBeInTheDocument()
-
+    test('nigerian meat pie', async()=>{
+        render(<App/>)
+        const user = userEvent.setup()
+        await user.click(screen.getByRole('button', { name: /recipes/i }))
+        await user.click(screen.getAllByText(/Nigerian Meat Pies/i)[0])
+        expect(screen.getByText('Nigerian Meat Pies').parentNode).toBeInTheDocument()
+    });
     // verify 'Chocolate Chip Cookies' button navigates to that recipe page
-    await user.click(screen.getByRole('button', { name: /recipes/i }))
-    await user.click(screen.getByText(/Chocolate Chip Cookies/i))
-    expect(screen.getByRole('heading', { name: /Chocolate Chip Cookies/i })).toBeInTheDocument()
-
+    test('choco chip cookies', async()=>{
+        render(<App/>)
+        const user = userEvent.setup()
+        await user.click(screen.getByRole('button', { name: /recipes/i }))
+        await user.click(screen.getAllByText(/Chocolate Chip Cookies/i)[0])
+        expect(screen.getByText('Chocolate Chip Cookies').parentNode).toBeInTheDocument()
+    }); 
     // verify 'Creole Jambalaya' button navigates to that recipe page
-    await user.click(screen.getByRole('button', { name: /recipes/i }))
-    await user.click(screen.getByText(/Creole Jambalaya/i))
-    expect(screen.getByRole('heading', { name: /Creole Jambalaya/i })).toBeInTheDocument()
-
+    test('creole jambalaya', async()=>{
+        render(<App/>)
+        const user = userEvent.setup()
+        await user.click(screen.getByRole('button', { name: /recipes/i }))
+        await user.click(screen.getAllByText(/Creole Jambalaya/i)[0])
+        expect(screen.getByText('Creole Jambalaya').parentNode).toBeInTheDocument()
+    });
     // verify 'Soup Dumplings' button navigates to that recipe page
+    test('soup dumplings', async()=>{
+        render(<App/>)
+        const user = userEvent.setup()
     await user.click(screen.getByRole('button', { name: /recipes/i }))
-    await user.click(screen.getByText(/Soup Dumplings/i))
-    expect(screen.getByRole('heading', { name: /Soup Dumplings/i })).toBeInTheDocument()
-
-    // verify 'About Us' button navigates to About Us page
-    await user.click(screen.getByText(/about us/i))
-    expect(screen.getByRole('heading', { name: /about us/i })).toBeInTheDocument()
-
+    await user.click(screen.getAllByText(/Soup Dumplings/i)[0])
+    expect(screen.getByText('Soup Dumplings').parentNode).toBeInTheDocument()
+    });
 })
+});
