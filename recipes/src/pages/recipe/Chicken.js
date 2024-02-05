@@ -1,5 +1,5 @@
-import chickenandrice from '../img/food/chickenandrice.jpg';
-import '../App.css';
+import chickenandrice from '../../img/food/chickenandrice.jpg';
+import '../../App.css';
 import React from 'react';
 export default function Chicken() {
     return (

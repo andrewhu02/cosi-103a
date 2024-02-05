@@ -1,5 +1,5 @@
-import guac from '../img/food/guac.jpg';
-import '../App.css';
+import guac from '../../img/food/guac.jpg';
+import '../../App.css';
 import React from 'react';
 export default function Guacamole() {
     return (

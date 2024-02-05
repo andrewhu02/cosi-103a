@@ -3,7 +3,7 @@ import { createBrowserRouter, RouterProvider, Outlet, useNavigate } from "react-
 import Header from './shared/components/header/Header';
 import MainNavigation from './shared/components/navigation/MainNavigation';
 import AboutUs from './pages/AboutUs';
-import Chicken from './pages/Chicken';
+import Chicken from './pages/recipe/Chicken';
 import { useEffect } from 'react';
 import ContainerCards from './pages/Homepage';
 
