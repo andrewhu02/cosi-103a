@@ -85,7 +85,7 @@ describe('testing recipe pages', ()=>{
         const user = userEvent.setup()
     await user.click(screen.getByRole('button', { name: /recipes/i }))
     await user.click(screen.getAllByText(/Soup Dumplings/i)[0])
-    expect(screen.getByText('Soup Dumplings').parentNode).toBeInTheDocument()
+    expect(screen.getByText(/xiao long bao/i)).toBeInTheDocument()
     });
 })
 });
