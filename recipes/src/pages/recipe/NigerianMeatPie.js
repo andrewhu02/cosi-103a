@@ -1,8 +1,8 @@
 import nmeatpie from '../../img/food/nigerian_meatpie.jpg';
-import nmeatpie from '../../img/food/nigerian_meatpie_2.jpg';
+import nmeatpie2 from '../../img/food/nigerian_meatpie_2.jpg';
 import '../../App.css';
 import React from 'react';
-export default function NMeatPie() {
+export default function NigerianMeatPie() {
     return (
     <div>
       <div className="container">
