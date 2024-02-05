@@ -61,7 +61,7 @@ describe('testing recipe pages', ()=>{
         const user = userEvent.setup()
         await user.click(screen.getByRole('button', { name: /recipes/i }))
         await user.click(screen.getAllByText(/Nigerian Meat Pies/i)[0])
-        expect(screen.getByText('Nigerian Meat Pies').parentNode).toBeInTheDocument()
+        expect(screen.getByText(/savory and comforting pastry/i)).toBeInTheDocument()
     });
     // verify 'Chocolate Chip Cookies' button navigates to that recipe page
     test('choco chip cookies', async()=>{
