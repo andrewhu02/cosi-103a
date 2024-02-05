@@ -53,7 +53,7 @@ describe('testing recipe pages', ()=>{
         const user = userEvent.setup()
         await user.click(screen.getByRole('button', { name: /recipes/i }))
         await user.click(screen.getAllByText(/Pasta With Pesto/i)[0])
-        expect(screen.getByText('Pasta With Pesto').parentNode).toBeInTheDocument()
+        expect(screen.getByText(/delightful and classic italian dish/i)).toBeInTheDocument()
     });
     // verify 'Nigerian Meat Pies' button navigates to that recipe page
     test('nigerian meat pie', async()=>{
