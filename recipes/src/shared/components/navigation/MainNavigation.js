@@ -4,6 +4,7 @@ import Form from 'react-bootstrap/Form';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
+import { Link } from "react-router-dom";
 import './MainNavigation.css'; // Import the stylesheet
 
 function MainNavigation() {
@@ -18,34 +19,34 @@ function MainNavigation() {
             style={{ maxHeight: '100px' }}
             navbarScroll
           >
-            <Nav.Link href="#homepage">Home</Nav.Link>
+            <Nav.Link as={Link} to="/homepage">Home</Nav.Link>
             {/* <Nav.Link href="#action2">Link</Nav.Link> */}
             <NavDropdown title="Recipes" id="navbarScrollingDropdown">
-              <NavDropdown.Item href="#all-recipes">All recipes</NavDropdown.Item>
+              <NavDropdown.Item as={Link} to="/all-recipes">All recipes</NavDropdown.Item>
               <NavDropdown.Divider />
-              <NavDropdown.Item href="#recipe1">
+              <NavDropdown.Item as={Link} to="/recipe1">
                 Halal Guys Chicken and Rice
               </NavDropdown.Item>
-              <NavDropdown.Item href="#recipe2">
+              <NavDropdown.Item as={Link} to="/recipe2">
                 Guacamole
               </NavDropdown.Item>
-              <NavDropdown.Item href="#recipe3">
+              <NavDropdown.Item as={Link} to="/recipe3">
                 Pasta With Pesto
               </NavDropdown.Item>
-              <NavDropdown.Item href="#recipe4">
+              <NavDropdown.Item as={Link} to="/recipe4">
                 Nigerian Meat Pies
               </NavDropdown.Item>
-              <NavDropdown.Item href="#recipe5">
+              <NavDropdown.Item as={Link} to="/recipe5">
                 Chocolate Chip Cookies
               </NavDropdown.Item>
-              <NavDropdown.Item href="#recipe6">
+              <NavDropdown.Item as={Link} to="/recipe6">
                 Creole Jambalaya
               </NavDropdown.Item>
-              <NavDropdown.Item href="#recipe7">
+              <NavDropdown.Item as={Link} to="/recipe7">
                 Soup Dumplings
               </NavDropdown.Item>
             </NavDropdown>
-            <Nav.Link href="#about-us">About Us</Nav.Link>
+            <Nav.Link as={Link} to="/about-us">About Us</Nav.Link>
           </Nav>
           <Form className="d-flex">
             <Form.Control
