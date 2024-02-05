@@ -77,7 +77,7 @@ describe('testing recipe pages', ()=>{
         const user = userEvent.setup()
         await user.click(screen.getByRole('button', { name: /recipes/i }))
         await user.click(screen.getAllByText(/Creole Jambalaya/i)[0])
-        expect(screen.getByText('Creole Jambalaya').parentNode).toBeInTheDocument()
+        expect(screen.getByText(/vibrant and flavorful/i)).toBeInTheDocument()
     });
     // verify 'Soup Dumplings' button navigates to that recipe page
     test('soup dumplings', async()=>{
