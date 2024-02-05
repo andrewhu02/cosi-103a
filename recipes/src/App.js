@@ -3,7 +3,7 @@ import { createBrowserRouter, RouterProvider, Outlet, useNavigate } from "react-
 import Header from './shared/components/header/Header';
 import MainNavigation from './shared/components/navigation/MainNavigation';
 import AboutUs from './pages/AboutUs';
-import Chicken from './pages/Chicken';
+import {Chicken,  Guacamole, PastaPesto, NigerianMeatPie, ChocoChip, Jambalaya, Dumplings } from './pages/recipe';
 import { useEffect } from 'react';
 import ContainerCards from './pages/Homepage';
 
@@ -34,27 +34,27 @@ const router = createBrowserRouter([
       },
       {
         path: "/recipe2",
-        element: <h1>Guacamole</h1>
+        element: <Guacamole />
       },
       {
         path: "/recipe3",
-        element: <h1>Pasta With Pesto</h1>
+        element: <PastaPesto/>
       },
       {
         path: "/recipe4",
-        element: <h1>Nigerian Meat Pies</h1>
+        element: <NigerianMeatPie/>
       },
       {
         path: "/recipe5",
-        element: <h1>Chocolate Chip Cookies</h1>
+        element: <ChocoChip/>
       },
       {
         path: "/recipe6",
-        element: <h1>Creole Jambalaya</h1>
+        element: <Jambalaya/>
       },
       {
         path: "/recipe7",
-        element: <h1>Soup Dumplings</h1>
+        element: <Dumplings/>
       },
       {
         path: "/about-us",

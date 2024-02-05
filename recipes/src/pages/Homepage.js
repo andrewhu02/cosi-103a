@@ -1,15 +1,15 @@
 import '../App.css';
 import Accordion from 'react-bootstrap/Accordion';
-import chickenandrice from '../img/chickenandrice.jpg';
-import food from '../img/food.jpg';
-import chocchip from '../img/choc_chip_cookies.jpg';
-import nmeatpie from '../img/nigerian_meatpie.jpg';
-import nmeatpie2 from '../img/nigerian_meatpie_2.jpg';
-import guac from '../img/guac.jpg';
-import pesto from '../img/pesto.jpg'
-import jambalaya from '../img/jambalaya.jpg';
-import dumplings from '../img/soup_dumplings.jpg';
-import pesto2 from '../img/pesto2.jpg';
+import chickenandrice from '../img/food/chickenandrice.jpg';
+import food from '../img/food/food.jpg';
+import chocchip from '../img/food/choc_chip_cookies.jpg';
+import nmeatpie from '../img/food/nigerian_meatpie.jpg';
+import nmeatpie2 from '../img/food/nigerian_meatpie_2.jpg';
+import guac from '../img/food/guac.jpg';
+import pesto from '../img/food/pesto.jpg'
+import jambalaya from '../img/food/jambalaya.jpg';
+import dumplings from '../img/food/soup_dumplings.jpg';
+import pesto2 from '../img/food/pesto2.jpg';
 import { Container, Row, Col, Card } from 'react-bootstrap';
 
 function RecipeCard(title, imageSrc, description, url) {
