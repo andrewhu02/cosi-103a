@@ -1,7 +1,6 @@
 import React from 'react';
 import './Homepage.css';
 import chickenandrice from '../img/chickenandrice.jpg';
-import food from '../img/food.jpg';
 import chocchip from '../img/choc_chip_cookies.jpg';
 import nmeatpie from '../img/nigerian_meatpie.jpg';
 import guac from '../img/guac.jpg';
