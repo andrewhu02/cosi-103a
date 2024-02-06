@@ -11,7 +11,7 @@ function AboutUs() {
     {
       id: 1,
       name: 'Charles Sullivan',
-      description: 'Description',
+      description: "I'm Charles, a Computer Science student at Brandeis.",
       avatar: ava1,
     },
     {
@@ -23,7 +23,7 @@ function AboutUs() {
     {
       id: 3,
       name: 'Aimuan Erhabor',
-      description: 'Description',
+      description: "I'm Aimuan, a Computer Science student at Brandeis.",
       avatar: ava3,
     },
     {
