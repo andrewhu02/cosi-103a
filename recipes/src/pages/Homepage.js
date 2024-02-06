@@ -1,3 +1,4 @@
+
 import React from 'react';
 import './Homepage.css';
 import chickenandrice from '../img/chickenandrice.jpg';
@@ -8,6 +9,7 @@ import pesto from '../img/pesto.jpg';
 import jambalaya from '../img/jambalaya.jpg';
 import dumplings from '../img/soup_dumplings.jpg';
 import pho from '../img/pho.jpg';
+
 import { Container, Row, Col, Card } from 'react-bootstrap';
 
 function RecipeCard(title, imageSrc, description, url) {
