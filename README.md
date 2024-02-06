@@ -1,23 +1,29 @@
-# cosi-103a
 ## COSI103 Group J
-Andrew Hu (andrewhu@brandeis.edu)
-Charles Sullivan (charlessullivan@brandeis.edu)
-Nhi Le (nhihllle@brandeis.edu)
+Andrew Hu (andrewhu@brandeis.edu)\
+Charles Sullivan (charlessullivan@brandeis.edu)\
+Nhi Le (nhihllle@brandeis.edu)\
 Aimuan Erhabor (aimuanerhabor@brandeis.edu)
 
-# Current Development 
-## Recipe Website with multiple page organization
-Our current project is to design and implement a website that displays
-different pages constituting a recipe website;
-- landing page
-- recipe page
-- team page
-    - page dedicated to providing images and info about team members
-The website pages will be 
-# Development so far
-The react router, that will be used to manage the clientside routing 
-has been implemented and function
+# Recipes Website 
+This is a website for browsing and reading recipes.
+Current features:
+* Landing page displaying a picture and description of each recipe with a link to that recipe's page
+* Recipe pages describing each recipe and how to make it
+* Team page with names, pictures, and short descriptions for each member
 
-Tests have been also designed for it as well
+## Setup
 
-The layouts of the most pages has been designed with a header, 
+Run this project from the recipes directory.\
+Install dependencies with npm then run `npm start`.
+```shell
+cd recipes
+npm install
+npm start
+```
+
+Use `npm test` in the recipes directory to launch the test runner.
+
+## Development
+* App.js contains the main structure of the app, which uses a React Router to move between pages
+* pages directory contains each page of the website
+* shared directory contains components displayed on multiple pages
