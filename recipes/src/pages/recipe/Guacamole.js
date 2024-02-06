@@ -4,6 +4,7 @@ import React from 'react';
 export default function Guacamole() {
     return (
         <div>
+          <h1>Guacamole</h1>
         <div className="container">
             <div className="upper-column1">
               <h5 className="subheader">What is guacamole?</h5>

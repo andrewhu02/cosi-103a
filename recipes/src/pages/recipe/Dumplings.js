@@ -4,6 +4,7 @@ import React from 'react';
 export default function Dumplings() {
     return (
     <div>
+      <h1>Soup Dumplings</h1>
       <div className="container">
             <div className="upper-column1">
               <h5 className="subheader">Xiao Long Bao - Soup Dumplings</h5>

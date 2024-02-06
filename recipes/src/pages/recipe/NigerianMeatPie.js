@@ -5,6 +5,7 @@ import React from 'react';
 export default function NigerianMeatPie() {
     return (
     <div>
+      <h1>Nigerian Meat Pies</h1>
       <div className="container">
             <div className="upper-column1">
               <h5 className="subheader">What is nigerian meat pie?</h5>
