@@ -57,6 +57,10 @@ const router = createBrowserRouter([
         element: <Dumplings/>
       },
       {
+        path: "/recipe8",
+        element: <h1>Pho</h1>
+      },
+      {
         path: "/about-us",
         element: <AboutUs />
       }

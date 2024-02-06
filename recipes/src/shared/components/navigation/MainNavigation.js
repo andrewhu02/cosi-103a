@@ -45,6 +45,9 @@ function MainNavigation() {
               <NavDropdown.Item as={Link} to="/recipe7">
                 Soup Dumplings
               </NavDropdown.Item>
+              <NavDropdown.Item as={Link} to="/recipe8">
+                Pho
+              </NavDropdown.Item>
             </NavDropdown>
             <Nav.Link as={Link} to="/about-us">About Us</Nav.Link>
           </Nav>
