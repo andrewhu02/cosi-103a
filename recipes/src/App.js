@@ -79,7 +79,7 @@ function Root() {
   return (
       <>
           <Header/>
-          <MainNavigation />
+          <MainNavigation/>
           <Outlet />
       </>
   )

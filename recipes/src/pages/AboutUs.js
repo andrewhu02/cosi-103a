@@ -23,7 +23,7 @@ function AboutUs() {
     {
       id: 3,
       name: 'Aimuan Erhabor',
-      description: "I'm Aimuan, a Computer Science student at Brandeis.",
+      description: "I'm Aimuan, a sophmore majoring in Computer Science. I added in my own recipes of treats I enjoyed eating and making, from the sweetness of cookies to the savory of meat pies.",
       avatar: ava3,
     },
     {
