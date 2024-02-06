@@ -11,7 +11,7 @@ function AboutUs() {
     {
       id: 1,
       name: 'Charles Sullivan',
-      description: "I'm Charles, a Computer Science student at Brandeis.",
+      description: 'I\'m Charlie, a sophomore majoring in Computer Science. A couple of my favorite foods to make are pesto and guacamole.',
       avatar: ava1,
     },
     {
