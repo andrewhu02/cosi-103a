@@ -1,14 +1,14 @@
 
 import React from 'react';
 import './Homepage.css';
-import chickenandrice from '../img/chickenandrice.jpg';
-import chocchip from '../img/choc_chip_cookies.jpg';
-import nmeatpie from '../img/nigerian_meatpie.jpg';
-import guac from '../img/guac.jpg';
-import pesto from '../img/pesto.jpg';
-import jambalaya from '../img/jambalaya.jpg';
-import dumplings from '../img/soup_dumplings.jpg';
-import pho from '../img/pho.jpg';
+import chickenandrice from '../img/food/chickenandrice.jpg';
+import chocchip from '../img/food/choc_chip_cookies.jpg';
+import nmeatpie from '../img/food/nigerian_meatpie.jpg';
+import guac from '../img/food/guac.jpg';
+import pesto from '../img/food/pesto.jpg';
+import jambalaya from '../img/food/jambalaya.jpg';
+import dumplings from '../img/food/soup_dumplings.jpg';
+import pho from '../img/food/pho.jpg';
 
 import { Container, Row, Col, Card } from 'react-bootstrap';
 

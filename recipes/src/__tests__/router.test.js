@@ -11,11 +11,11 @@ describe('routing testing',()=>{
         // verify redirect to /homepage
         // look for the test text because that is only on homepage, but
         // should update with different text once 'test' is replaced
-        expect(screen.getAllByText((/test/i))[0]).toBeInTheDocument()
+        expect(screen.getAllByText((/home/i))[0]).toBeInTheDocument()
 
         // verify 'Home' button navigates to home page
         await user.click(screen.getAllByText(/home/i)[0])
-        expect(screen.getAllByText((/test/i))[0]).toBeInTheDocument()
+        expect(screen.getAllByText((/home/i))[0]).toBeInTheDocument()
 
 
         // verify 'All recipes' button navigates to all recipes page
