@@ -9,7 +9,7 @@ import './MainNavigation.css'; // Import the stylesheet
 
 function MainNavigation() {
   return (
-    <Navbar expand="lg" className="bg-body-tertiary nav-container">
+    <Navbar expand="sm" className="bg-body-tertiary nav-container sticky-top">
       <Container fluid>
         {/* <Navbar.Brand href="#">Navbar scroll</Navbar.Brand> */}
         <Navbar.Toggle aria-controls="navbarScroll" />
@@ -50,8 +50,8 @@ function MainNavigation() {
               </NavDropdown.Item>
             </NavDropdown>
             <Nav.Link as={Link} to="/about-us">About Us</Nav.Link>
-          </Nav>
-          <Form className="d-flex">
+          </Nav>{/*
+         <Form className="d-flex">
             <Form.Control
               type="search"
               placeholder="Search"
@@ -59,7 +59,7 @@ function MainNavigation() {
               aria-label="Search"
             />
             <Button variant="outline-success">Search</Button>
-          </Form>
+  </Form>*/}
         </Navbar.Collapse>
       </Container>
     </Navbar>

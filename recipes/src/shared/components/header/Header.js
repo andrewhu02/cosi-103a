@@ -1,7 +1,7 @@
 // Header.js
 import React from 'react';
 import './Header.css'; // Import the stylesheet
-
+import MainNavigation from '../navigation/MainNavigation';
 const Header = () => {
   return (
     <div className="header-container">
