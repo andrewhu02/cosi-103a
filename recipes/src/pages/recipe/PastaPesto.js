@@ -5,6 +5,7 @@ import React from 'react';
 export default function PastaPesto() {
     return (
     <div>
+      <h1>Pasta Pesto</h1>
       <div className="container">
       <div className="upper-column1">
         <h5 className="subheader">Why you should make pasta with pesto</h5>

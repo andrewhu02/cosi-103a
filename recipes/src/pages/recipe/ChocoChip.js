@@ -4,6 +4,7 @@ import React from 'react';
 export default function ChocoChip() {
     return (
     <div>
+      <h1>Chocolate Chip Cookies</h1>
       <div className="container">
             <div className="upper-column1">
               <h5 className="subheader">The best chocolate chip cookies recipe ever</h5>

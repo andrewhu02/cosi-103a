@@ -11,25 +11,25 @@ function AboutUs() {
     {
       id: 1,
       name: 'Charles Sullivan',
-      description: 'Description',
+      description: 'I\'m Charlie, a sophomore majoring in Computer Science. A couple of my favorite foods to make are pesto and guacamole.',
       avatar: ava1,
     },
     {
       id: 2,
       name: 'Andrew Hu',
-      description: 'Description',
+      description: "I'm Andrew, a senior majoring in Biology and minoring in Computer Science. I enjoy cooking with my friends in groups, so I've provided some of the more savory recipes here.",
       avatar: ava2,
     },
     {
       id: 3,
       name: 'Aimuan Erhabor',
-      description: 'Description',
+      description: "I'm Aimuan, a Computer Science student at Brandeis.",
       avatar: ava3,
     },
     {
       id: 4,
       name: 'Nhi Le',
-      description: 'Description',
+      description: "I'm currently in my first year of the MSCS program. I'm from Vietnam and I think our cuisine is probably one of the healthiest out there! We incorporate lots of fresh herbs and vegetables in our dishes.",
       avatar: ava4,
     },
   ];

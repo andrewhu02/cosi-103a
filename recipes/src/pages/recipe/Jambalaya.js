@@ -4,6 +4,7 @@ import React from 'react';
 export default function Jambalaya() {
     return (
     <div>
+      <h1>Creole Jambalaya</h1>
       <div className="container">
             <div className="upper-column1">
               <h5 className="subheader">What is Creole Jambalaya?</h5>

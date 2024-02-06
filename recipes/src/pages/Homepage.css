@@ -4,9 +4,6 @@
   display: flex;
   flex-direction: column;
   overflow: hidden;
-  margin: 10px;
-  margin-left: 150px;
-  margin-right: 150px;
 }
 
 .card-image {
@@ -19,8 +16,11 @@
   flex: 1;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  line-height: 1;
+  line-height: 1.5;
   padding: 20px;
+  padding-top: 35px;
 }
 
+.card-column {
+  margin: 25px;
+}
