@@ -23,10 +23,7 @@ npm start
 
 Use `npm test` in the recipes directory to launch the test runner.
 
-# Development so far
-The react router, that will be used to manage the clientside routing 
-has been implemented and function
-
-Tests have been also designed for it as well
-
-The layouts of the most pages has been designed with a header, 
+## Development
+* App.js contains the main structure of the app, which uses a React Router to move between pages
+* pages directory contains each page of the website
+* shared directory contains components displayed on multiple pages
