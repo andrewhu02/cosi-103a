@@ -29,7 +29,7 @@ function AboutUs() {
     {
       id: 4,
       name: 'Nhi Le',
-      description: 'Description',
+      description: "I'm currently in my first year of the MSCS program. I'm from Vietnam and I think our cuisine is probably one of the healthiest out there! We incorporate lots of fresh herbs and vegetables in our dishes.",
       avatar: ava4,
     },
   ];
