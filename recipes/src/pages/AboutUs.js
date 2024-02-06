@@ -17,7 +17,7 @@ function AboutUs() {
     {
       id: 2,
       name: 'Andrew Hu',
-      description: 'Description',
+      description: "I'm Andrew, a senior majoring in Biology and minoring in Computer Science. I enjoy cooking with my friends in groups, so I've provided some of the more savory recipes here.",
       avatar: ava2,
     },
     {
