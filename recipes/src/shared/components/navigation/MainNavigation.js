@@ -62,7 +62,7 @@ function MainNavigation({handleShowList}) {
             <Button variant="outline-success">Search</Button>
   </Form>*/}
         </Navbar.Collapse>
-        <Button onClick={handleShowList}>Grocery List</Button>
+        <Button className='button' onClick={handleShowList}>Grocery List</Button>
       </Container>
     </Navbar>
   );

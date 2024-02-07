@@ -21,4 +21,21 @@
   .nav-container {
     margin: 50px;
   }
-    
+
+  .button {
+    background-color: white;
+    color: black;
+    cursor: pointer;
+    border: 0;
+    outline: 0;
+  }
+
+  .button:hover {
+    background-color: white;
+    color:black;
+  }
+
+  .button:active {
+    background-color: white;
+    color:black;
+  }
