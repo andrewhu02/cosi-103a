@@ -1,15 +1,23 @@
+import { useState } from 'react';
 import Offcanvas from 'react-bootstrap/Offcanvas';
+import Button from 'react-bootstrap/esm/Button';
 
 export default function GroceryList({show, handleClose}) {
+  const [num, setNum] = useState(0);
+
+  function handleClick () {
+    setNum(num+1);
+  }
+
   return (
     <>
       <Offcanvas show={show} onHide={handleClose} placement='end'>
         <Offcanvas.Header closeButton>
-          <Offcanvas.Title>Offcanvas</Offcanvas.Title>
+          <Offcanvas.Title>Grocery List</Offcanvas.Title>
         </Offcanvas.Header>
         <Offcanvas.Body>
-          Some text as placeholder. In real life you can have the elements you
-          have chosen. Like, text, images, lists, etc.
+          <Button onClick={handleClick}>Increment</Button>
+          <p>{num}</p>
         </Offcanvas.Body>
       </Offcanvas>
     </>

@@ -9,6 +9,8 @@ import pesto from '../img/food/pesto.jpg';
 import jambalaya from '../img/food/jambalaya.jpg';
 import dumplings from '../img/food/soup_dumplings.jpg';
 import pho from '../img/food/pho.jpg';
+import { Link } from "react-router-dom";
+
 
 import { Container, Row, Col, Card } from 'react-bootstrap';
 
@@ -17,9 +19,9 @@ function RecipeCard(title, imageSrc, description, url) {
     <Card className="recipe-card" border="primary">
       <Card.Img className="card-image" variant="top" src={imageSrc} alt={title} />
       <Card.Body className="card-body">
-        <a href={url}>
+        <Link to={url}>
           <Card.Title>{title}</Card.Title>
-        </a>
+        </Link>
         <Card.Text>{description}</Card.Text>
       </Card.Body>
     </Card>
