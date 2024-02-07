@@ -6,6 +6,7 @@ import AboutUs from './pages/AboutUs';
 import {Chicken,  Guacamole, PastaPesto, NigerianMeatPie, ChocoChip, Jambalaya, Dumplings, Pho } from './pages/recipe';
 import { useEffect } from 'react';
 import ContainerCards from './pages/Homepage';
+import GroceryList from './shared/components/grocery_list/GroceryList';
 
 export default function App() {
   return (
@@ -63,6 +64,10 @@ const router = createBrowserRouter([
       {
         path: "/about-us",
         element: <AboutUs />
+      },
+      {
+        path: "/grocery-list",
+        element: <GroceryList/>
       }
     ]
   }
