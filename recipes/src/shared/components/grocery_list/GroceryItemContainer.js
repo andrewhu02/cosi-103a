@@ -1,11 +1,25 @@
-import 'react';
-import 'react-dom';
+import {useState} from 'react';
 export default function GroceryItemContainer(){
     let items = [];
     return(
-        <></>
+        <>
+            <div className="">
+                {items}
+            </div>
+        </>
     );
 }
-function GroceryItem(text, selected){
-    
+function addItem(){
+    return (GroceryItem("Placeholder",false));
+}
+function GroceryItem({text}){
+    const data = text;
+    let status = false;
+    return(
+        <div>
+            <radio>
+            </radio>
+            <p>{data}</p>
+        </div>
+    );
 }

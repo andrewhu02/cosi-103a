@@ -1,15 +1,14 @@
 import { useState } from 'react';
-import Offcanvas from 'react-bootstrap/Offcanvas';
-import Button from 'react-bootstrap/esm/Button';
-
+import { ButtonGroup, Button, Offcanvas, Stack, Form } from 'react-bootstrap';
+//import GroceryItemContainer from './GroceryItemContainer';
 export default function GroceryList({show, handleClose}) {
   const [num, setNum] = useState(0);
-
+  const [items, setItems] = useState([]);
   function handleClick () {
     setNum(num+1);
   }
   function addItem(){
-    //
+    setItems([...items, {name: "test"}]);
   }
   return (
     <>
@@ -18,11 +17,42 @@ export default function GroceryList({show, handleClose}) {
           <Offcanvas.Title>Grocery List</Offcanvas.Title>
         </Offcanvas.Header>
         <Offcanvas.Body>
-          <Button onClick={addItem}>Add</Button>
-          <Button onClick={handleClick}>Increment</Button>
+          <ButtonGroup>
+            <Button onClick={addItem}>+</Button>
+         {/*   <Button onClick={handleClick}>Increment</Button> */}
+          </ButtonGroup>
           <p>{num}</p>
+          <GroceryItemContainer itemArr={items}/>
         </Offcanvas.Body>
       </Offcanvas>
     </>
   );
+}
+function GroceryItemContainer({itemArr}){
+  const listItems = itemArr.map(
+    item => <GroceryItem info={item.name}/>);
+  return(
+      <>
+          <div className="">
+            <Stack gap={3}>
+              {listItems}
+            </Stack> 
+          </div>
+      </>
+  );
+  
+}
+
+function GroceryItem({info}){
+  return(
+    <>
+      <div>
+      <Stack direction="horizontal">
+        <Form.Check className="me-auto" type ="checkbox" />
+        <div className="me-auto">
+          {info}
+        </div></Stack>
+      </div>
+    </>
+  )
 }
