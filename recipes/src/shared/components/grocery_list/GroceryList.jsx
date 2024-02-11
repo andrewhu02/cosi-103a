@@ -4,11 +4,17 @@ import { ButtonGroup, Button, Offcanvas, Stack, Form } from 'react-bootstrap';
 export default function GroceryList({show, handleClose}) {
   const [num, setNum] = useState(0);
   const [items, setItems] = useState([]);
+  let [newItem, setNewItem] = useState('');
+  const [deletedItems, setDelete] = useState([]);
   function handleClick () {
     setNum(num+1);
   }
-  function addItem(){
-    setItems([...items, {name: "test"}]);
+  function insertItem(){
+    setItems([...items, 
+      {
+        name: newItem
+      }])
+    setNewItem(newItem ="");
   }
   return (
     <>
@@ -17,11 +23,16 @@ export default function GroceryList({show, handleClose}) {
           <Offcanvas.Title>Grocery List</Offcanvas.Title>
         </Offcanvas.Header>
         <Offcanvas.Body>
+          <Stack direction="horizontal" >
+          <Form.Control placeholder="type in ingredient..."type='input' 
+            value={newItem} onChange={e => setNewItem(e.target.value)}
+          />
           <ButtonGroup>
-            <Button onClick={addItem}>+</Button>
+            <Button onClick={insertItem}>+</Button>
          {/*   <Button onClick={handleClick}>Increment</Button> */}
           </ButtonGroup>
-          <p>{num}</p>
+          </Stack>
+         {/* <p>{num}</p> */}
           <GroceryItemContainer itemArr={items}/>
         </Offcanvas.Body>
       </Offcanvas>
