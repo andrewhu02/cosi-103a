@@ -5,13 +5,8 @@ import Table from 'react-bootstrap/Table';
 import Form from 'react-bootstrap/Form';
 
 export default function GroceryList({ show, handleClose }) {
-  const [num, setNum] = useState(0);
   const [ingredients, setIngredients] = useState([]);
   const [newIngredient, setNewIngredient] = useState({ name: '', quantity: '' });
-
-  const handleClick = () => {
-    setNum(num + 1);
-  };
 
   const handleClearList = () => {
     setIngredients([]);
@@ -42,7 +37,6 @@ export default function GroceryList({ show, handleClose }) {
           <Offcanvas.Title>Grocery List</Offcanvas.Title>
         </Offcanvas.Header>
         <Offcanvas.Body>
-          <Button onClick={handleClick}>Increment</Button>
           <Table striped bordered hover>
             <thead>
               <tr>
