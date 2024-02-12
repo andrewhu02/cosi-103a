@@ -1,8 +1,5 @@
 import React, { useState } from 'react';
-import Offcanvas from 'react-bootstrap/Offcanvas';
-import Button from 'react-bootstrap/Button'; 
-import Table from 'react-bootstrap/Table';
-import Form from 'react-bootstrap/Form';
+import {Offcanvas,Button, Table, Form, Stack, Row, Col } from 'react-bootstrap';
 
 export default function GroceryList({ show, handleClose }) {
   const [ingredients, setIngredients] = useState([]);
@@ -37,7 +34,45 @@ export default function GroceryList({ show, handleClose }) {
           <Offcanvas.Title>Grocery List</Offcanvas.Title>
         </Offcanvas.Header>
         <Offcanvas.Body>
-          <Table striped bordered hover>
+          <Form className='mb-3'>
+            <Row>
+            <Col>
+            <Form.Group className="mb-3">
+              <Form.Label>Ingredient Name</Form.Label>
+              <Form.Control
+                type="text"
+                placeholder="Enter ingredient name"
+                name="name"
+                value={newIngredient.name}
+                onChange={handleChange}
+              />
+            </Form.Group>
+            </Col>
+            <Col xs={5}>
+            <Form.Group>
+              <Form.Label>Quantity</Form.Label>
+              <Form.Control
+                type="text"
+                placeholder="Enter quantity"
+                name="quantity"
+                value={newIngredient.quantity}
+                onChange={handleChange}
+              />
+            </Form.Group>
+            </Col>
+            </Row>
+            <Stack gap = {2}>
+              <Button variant="primary" onClick={handleAddIngredient}>
+              Add Ingredient
+            </Button>
+          
+          <Button variant="danger" onClick={handleClearList}>
+            Clear List
+          </Button>
+          </Stack>
+          </Form>
+        
+          <Table className="mb-3" striped bordered hover variant="dark">
             <thead>
               <tr>
                 <th>Ingredient</th>
@@ -59,34 +94,7 @@ export default function GroceryList({ show, handleClose }) {
               ))}
             </tbody>
           </Table>
-          <Form>
-            <Form.Group className="mb-3">
-              <Form.Label>Ingredient Name</Form.Label>
-              <Form.Control
-                type="text"
-                placeholder="Enter ingredient name"
-                name="name"
-                value={newIngredient.name}
-                onChange={handleChange}
-              />
-            </Form.Group>
-            <Form.Group className="mb-3">
-              <Form.Label>Quantity</Form.Label>
-              <Form.Control
-                type="text"
-                placeholder="Enter quantity"
-                name="quantity"
-                value={newIngredient.quantity}
-                onChange={handleChange}
-              />
-            </Form.Group>
-            <Button variant="primary" onClick={handleAddIngredient}>
-              Add Ingredient
-            </Button>
-          </Form>
-          <Button variant="danger" onClick={handleClearList}>
-            Clear List
-          </Button>
+  
         </Offcanvas.Body>
       </Offcanvas>
     </>
