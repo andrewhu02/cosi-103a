@@ -1,10 +1,29 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
 import Homepage from '../pages/Homepage';
+import App from '../App';
+
+beforeEach(() => {
+  // workaround for error when testing
+  // https://jestjs.io/docs/manual-mocks#mocking-methods-which-are-not-implemented-in-jsdom
+  Object.defineProperty(window, 'matchMedia', {
+      writable: true,
+      value: jest.fn().mockImplementation(query => ({
+          matches: false,
+          media: query,
+          onchange: null,
+          addListener: jest.fn(), // deprecated
+          removeListener: jest.fn(), // deprecated
+          addEventListener: jest.fn(),
+          removeEventListener: jest.fn(),
+          dispatchEvent: jest.fn(),
+      })),
+  });
+});
 
 describe('Homepage', () => {
   test('renders recipe cards with correct information', () => {
-    render(<Homepage />);
+    render(<App />)
 
     // Replace these queries with actual queries based on your UI structure
     const recipe1Title = screen.getByText(/Halal Guys Chicken and Rice/i);

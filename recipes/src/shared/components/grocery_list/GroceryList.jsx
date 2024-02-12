@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import Offcanvas from 'react-bootstrap/Offcanvas';
-import Button from 'react-bootstrap/esm/Button';
+import { Button } from 'react-bootstrap';
 
 export default function GroceryList({show, handleClose}) {
   const [num, setNum] = useState(0);
