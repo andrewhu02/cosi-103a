@@ -6,6 +6,8 @@ import AboutUs from './pages/AboutUs';
 import {Chicken,  Guacamole, PastaPesto, NigerianMeatPie, ChocoChip, Jambalaya, Dumplings, Pho } from './pages/recipe';
 import { useEffect } from 'react';
 import ContainerCards from './pages/Homepage';
+import GroceryList from './shared/components/grocery_list/GroceryList';
+import { useState } from 'react';
 
 export default function App() {
   return (
@@ -69,6 +71,7 @@ const router = createBrowserRouter([
 ]);
 
 function Root() {
+  // redirect to homepage by default
   const navigate = useNavigate();
   useEffect(() => {
       const shouldRedirect = (window.location.pathname == "/")
@@ -76,10 +79,17 @@ function Root() {
           navigate("/homepage");
       }
   }, [navigate]);
+
+  // state for grocery list
+  const [showList, setShowList] = useState(false);
+
+  const handleCloseList = () => setShowList(false);
+  const handleShowList = () => setShowList(true);
   return (
       <>
           <Header/>
-          <MainNavigation/>
+          <MainNavigation handleShowList={handleShowList}/>
+          <GroceryList show={showList} handleClose={handleCloseList}/>
           <Outlet />
       </>
   )

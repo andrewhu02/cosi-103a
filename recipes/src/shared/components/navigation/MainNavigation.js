@@ -5,9 +5,10 @@ import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import { Link } from "react-router-dom";
+import { useState } from 'react';
 import './MainNavigation.css'; // Import the stylesheet
 
-function MainNavigation() {
+function MainNavigation({handleShowList}) {
   return (
     <Navbar expand="sm" className="bg-body-tertiary nav-container sticky-top">
       <Container fluid>
@@ -61,6 +62,7 @@ function MainNavigation() {
             <Button variant="outline-success">Search</Button>
   </Form>*/}
         </Navbar.Collapse>
+        <Button className='button' onClick={handleShowList}>Grocery List</Button>
       </Container>
     </Navbar>
   );
