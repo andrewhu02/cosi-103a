@@ -1,17 +1,17 @@
 import React, { useState } from 'react';
 import Offcanvas from 'react-bootstrap/Offcanvas';
-import Button from 'react-bootstrap/Button'; 
+import { Button } from 'react-bootstrap';
 import Table from 'react-bootstrap/Table';
 import Form from 'react-bootstrap/Form';
 
 export default function GroceryList({ show, handleClose }) {
-  const [num, setNum] = useState(0);
+  // const [num, setNum] = useState(0);
   const [ingredients, setIngredients] = useState([]);
   const [newIngredient, setNewIngredient] = useState({ name: '', quantity: '' });
 
-  const handleClick = () => {
-    setNum(num + 1);
-  };
+  // const handleClick = () => {
+  //   setNum(num + 1);
+  // };
 
   const handleClearList = () => {
     setIngredients([]);
@@ -36,13 +36,14 @@ export default function GroceryList({ show, handleClose }) {
   };
 
   return (
+    
     <>
       <Offcanvas show={show} onHide={handleClose} placement='end'>
         <Offcanvas.Header closeButton>
           <Offcanvas.Title>Grocery List</Offcanvas.Title>
         </Offcanvas.Header>
         <Offcanvas.Body>
-          <Button onClick={handleClick}>Increment</Button>
+          {/* <Button onClick={handleClick}>Increment</Button> */}
           <Table striped bordered hover>
             <thead>
               <tr>
