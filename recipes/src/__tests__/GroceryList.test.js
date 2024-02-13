@@ -27,7 +27,7 @@ test('Grocery List button opens Offcanvas list', async () => {
   const user = userEvent.setup()
   render(<App />)
   await user.click(screen.getByRole('button', { name: /grocery list/i }))
-  expect(screen.getByRole('dialog', { show: true}))
+  expect(screen.getByRole('dialog', { show: true }))
 })
 
 test('clicking the \'X\' closes the list', async () => {
@@ -35,7 +35,7 @@ test('clicking the \'X\' closes the list', async () => {
   render(<App />)
   await user.click(screen.getByRole('button', { name: /grocery list/i }))
   await user.click(screen.getByRole('button', { name: /close/i }))
-  expect(screen.getByRole('dialog', { show: false}))
+  expect(screen.getByRole('dialog', { show: false }))
 })
 
 test('handles adding ingredient to the list', () => {
@@ -58,24 +58,35 @@ test('handles adding ingredient to the list', () => {
   expect(screen.getByText('1lb')).toBeInTheDocument();
 });
 
-// ******************* TODO: COULDN'T GET THIS TO WORK SO COMMENTED OUT ******************
-// test('handles clearing the list', () => {
-//     const handleClose = jest.fn();
-//     render(<GroceryList show={true} handleClose={handleClose} />);
-  
-//     // click the Clear List button
-//     fireEvent.click(screen.getByText('Clear List'));
-  
-//     // check if the table is empty
-//     expect(screen.queryByText('Ingredient')).toBeNull();
-//     expect(screen.queryByText('Quantity')).toBeNull();
-  
-//     // Check if the table header elements are not present in the tbody
-//     const tableBody = screen.getByRole('table').querySelector('tbody');
-//     expect(tableBody).toBeInTheDocument();
-//     expect(tableBody.querySelector('th')).toBeNull();
-//   });
-  
+test('handles clearing the list', () => {
+  const handleClose = jest.fn();
+  render(<GroceryList show={true} handleClose={handleClose} />);
+
+  // add a sample ingredient
+  fireEvent.change(screen.getByPlaceholderText('Enter ingredient name'), {
+    target: { value: 'Tomato' },
+  });
+  fireEvent.change(screen.getByPlaceholderText('Enter quantity'), {
+    target: { value: '1lb' },
+  });
+  fireEvent.click(screen.getByText('Add Ingredient'));
+
+  // add a second sample ingredient
+  fireEvent.change(screen.getByPlaceholderText('Enter ingredient name'), {
+    target: { value: 'Onion' },
+  });
+  fireEvent.change(screen.getByPlaceholderText('Enter quantity'), {
+    target: { value: '2lb' },
+  });
+  fireEvent.click(screen.getByText('Add Ingredient'));
+
+  // click the Clear List button
+  fireEvent.click(screen.getByText('Clear List'));
+
+  // assert that the table has no entries
+  expect(screen.queryByRole('cell')).toBeNull();
+});
+
 
 test('handles deleting ingredient from the list', () => {
   const handleClose = jest.fn();
