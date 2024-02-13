@@ -40,7 +40,7 @@ export default function GroceryList({ show, handleClose }) {
     <>
       <Offcanvas show={show} onHide={handleClose} placement='end'>
         <Offcanvas.Header closeButton>
-          <Offcanvas.Title>Grocery List</Offcanvas.Title>
+          <Offcanvas.Title role='heading'>Grocery List</Offcanvas.Title>
         </Offcanvas.Header>
         <Offcanvas.Body>
           {/* <Button onClick={handleClick}>Increment</Button> */}

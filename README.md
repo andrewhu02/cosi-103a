@@ -10,6 +10,8 @@ Current features:
 * Landing page displaying a picture and description of each recipe with a link to that recipe's page
 * Recipe pages describing each recipe and how to make it
 * Team page with names, pictures, and short descriptions for each member
+* Grocery list which persists across page changes
+* User can add items, remove items, and clear the list
 
 ## Setup
 
