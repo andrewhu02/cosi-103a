@@ -4,10 +4,10 @@ import Header from './shared/components/header/Header';
 import MainNavigation from './shared/components/navigation/MainNavigation';
 import AboutUs from './pages/AboutUs';
 import {Chicken,  Guacamole, PastaPesto, NigerianMeatPie, ChocoChip, Jambalaya, Dumplings, Pho } from './pages/recipe';
-import { useEffect } from 'react';
+import { useEffect } from 'react';import { useState } from 'react';
 import ContainerCards from './pages/Homepage';
 import GroceryList from './shared/components/grocery_list/GroceryList';
-import { useState } from 'react';
+import CookingModeDisplay from './shared/components/cooking_mode/CookingMode';
 
 export default function App() {
   return (
@@ -32,7 +32,8 @@ const router = createBrowserRouter([
       },
       {
         path: "/recipe1",
-        element: <Chicken />
+        element: 
+          <Chicken />
       },
       {
         path: "/recipe2",
@@ -80,15 +81,20 @@ function Root() {
       }
   }, [navigate]);
 
-  // state for grocery list
+  // state for grocery list,cooking mode
   const [showList, setShowList] = useState(false);
-
+  const [showCook, setShowCook] = useState(false);
+  
   const handleCloseList = () => setShowList(false);
   const handleShowList = () => setShowList(true);
+
+  //
+  
   return (
       <>
           <Header/>
           <MainNavigation handleShowList={handleShowList}/>
+          <CookingModeDisplay/>
           <GroceryList show={showList} handleClose={handleCloseList}/>
           <Outlet />
       </>
