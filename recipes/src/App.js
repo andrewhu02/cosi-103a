@@ -3,7 +3,7 @@ import { createBrowserRouter, RouterProvider, Outlet, useNavigate , useLocation}
 import Header from './shared/components/header/Header';
 import MainNavigation from './shared/components/navigation/MainNavigation';
 import AboutUs from './pages/AboutUs';
-import {Chicken,  Guacamole, PastaPesto, NigerianMeatPie, ChocoChip, Jambalaya, Dumplings, Pho } from './pages/recipe';
+import {Chicken,  Guacamole, PastaPesto, NigerianMeatPie, ChocoChip, Jambalaya, Dumplings, Pho, recipeInstructions } from './pages/recipe';
 import { useEffect ,useState,  } from 'react';
 import ContainerCards from './pages/Homepage';
 import GroceryList from './shared/components/grocery_list/GroceryList';
@@ -72,8 +72,11 @@ const router = createBrowserRouter([
 ]);
 
 function Root() {
+  const recipes = recipeInstructions;
   const [showList, setShowList] = useState(false);
   const [showCook, setShowCook] = useState('inline-block');
+  const [cookRecipe, setCookRecipe] = useState([{title:'p',desc:'',num:0}]);
+  
   const location = useLocation();
   const navigate = useNavigate();
   useEffect(() => {
@@ -88,8 +91,35 @@ function Root() {
       }
       else{
         setShowCook('inline-block');
+        console.log(cookRecipe)
+        switch(location.pathname){
+          case '/recipe1':
+            setCookRecipe(recipeInstructions[0])
+          break;
+          case '/recipe2':
+            setCookRecipe(recipeInstructions[1])
+          break;
+          case '/recipe3':
+            setCookRecipe([{}])
+          break;
+          case '/recipe4':
+            setCookRecipe([])
+          break;
+          case '/recipe5':
+            setCookRecipe([])
+          break;
+          case '/recipe6':
+            setCookRecipe([])
+          break;
+          case '/recipe7':
+            setCookRecipe([])
+          break;
+          case '/recipe8':
+            setCookRecipe([])
+          break;
+        }
       }
-  }, [navigate, showCook, location]);
+  }, [navigate, showCook, location, cookRecipe]);
 
   // state for grocery list,cooking mode
   
@@ -103,7 +133,7 @@ function Root() {
           <Header/>
           <MainNavigation handleShowList={handleShowList}/>
           <div style={{display:showCook}}>
-            <CookingModeDisplay/>
+            <CookingModeDisplay instructionArr={cookRecipe}/>
           </div>
           <GroceryList show={showList} handleClose={handleCloseList}/>
           <Outlet />

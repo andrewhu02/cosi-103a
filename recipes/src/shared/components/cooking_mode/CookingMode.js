@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import './CookingMode.css'
 import {Button, Modal, Carousel}from 'react-bootstrap';
 
-export default function CookingModeDisplay(stepArr){
+export default function CookingModeDisplay({instructionArr}){
     //controls the visibility
     const [showModal, setShowModal] = useState(false);
     const exampleSteps =[
@@ -33,6 +33,7 @@ export default function CookingModeDisplay(stepArr){
    }
    function handleShow(){
         setShowModal(true);
+        console.log({instructionArr})
    }
     return(
     <div >
@@ -46,7 +47,7 @@ export default function CookingModeDisplay(stepArr){
             <Modal.Body>
                 {/* interval = null makes it not automatically scroll */}
                 <Carousel interval={null}  data-bs-theme="dark">
-                    {exampleSteps.map(page => (
+                    {instructionArr.map(page => (
                     <Carousel.Item>
                         <div className='stepItem'>
                         <h1>{page.title}</h1>
