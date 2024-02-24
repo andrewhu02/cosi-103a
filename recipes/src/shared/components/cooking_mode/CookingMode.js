@@ -2,51 +2,65 @@ import React, { useState } from 'react';
 import './CookingMode.css'
 import {Button, Modal, Carousel}from 'react-bootstrap';
 
-export default function CookingModeDisplay(){
-    const [show, setShow] = useState(false);
-    //const pages = stepsArr.map(page => {
-     //   <step title={page.part} content={page.instruction} num={page.num}/>
-   // })
+export default function CookingModeDisplay(stepArr){
+    //controls the visibility
+    const [showModal, setShowModal] = useState(false);
+    const exampleSteps =[
+        {
+            title: 'Part 1',
+            desc: 'this is step 1',
+            num: 1
+        },
+        {
+            title: 'Part 1',
+            desc: 'this is step 2',
+            num: 2
+        },
+        {
+            title: 'Part 1',
+            desc: 'this is step 3',
+            num: 3
+        },
+        {
+            title: 'Part 2',
+            desc: 'this is step 1',
+            num: 1
+        }
+    ];
+    
    function handleClose(){
-        setShow(false);
+        setShowModal(false);
    }
    function handleShow(){
-        setShow(true);
+        setShowModal(true);
    }
     return(
-    <>
-        <Button onClick={handleShow}>
+    <div >
+        <Button  onClick={handleShow}>
             Cooking Mode
         </Button>
-        <Modal show={show} fullscreen={true}onHide={handleClose}>
+        <Modal show={showModal} fullscreen={true} onHide={handleClose}>
             <Modal.Header closeButton>
                 <Modal.Title>Cooking Mode</Modal.Title>
             </Modal.Header>          
             <Modal.Body>
-                <Carousel variant='dark'>
+                {/* interval = null makes it not automatically scroll */}
+                <Carousel interval={null}  data-bs-theme="dark">
+                    {exampleSteps.map(page => (
                     <Carousel.Item>
                         <div className='stepItem'>
-                        <h1>part of recipe</h1>
-                        <p>hello</p>
-                        </div>
-                    <Carousel.Caption>
-                    <p>step number</p>
-                    </Carousel.Caption>
+                        <h1>{page.title}</h1>
+                        <h3>{page.desc}</h3>
+                        </div> 
+                        <Carousel.Caption>
+                            <p>Step {page.num}</p>
+                        </Carousel.Caption>
                     </Carousel.Item>
+                    ))}
                </Carousel>
             </Modal.Body>
         </Modal>
-        </>
+        </div>
     )
 
 }
-{/*}
-function step(title,content,num){
-    return (
-        <Carousel.Item>
-            <h1>{title}</h1>
-            <h2>Step {num}</h2>
-            <p>{content}</p>
-        </Carousel.Item>
-    )
-}*/}

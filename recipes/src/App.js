@@ -1,10 +1,10 @@
 import React from 'react';
-import { createBrowserRouter, RouterProvider, Outlet, useNavigate } from "react-router-dom";
+import { createBrowserRouter, RouterProvider, Outlet, useNavigate , useLocation} from "react-router-dom";
 import Header from './shared/components/header/Header';
 import MainNavigation from './shared/components/navigation/MainNavigation';
 import AboutUs from './pages/AboutUs';
 import {Chicken,  Guacamole, PastaPesto, NigerianMeatPie, ChocoChip, Jambalaya, Dumplings, Pho } from './pages/recipe';
-import { useEffect } from 'react';import { useState } from 'react';
+import { useEffect ,useState,  } from 'react';
 import ContainerCards from './pages/Homepage';
 import GroceryList from './shared/components/grocery_list/GroceryList';
 import CookingModeDisplay from './shared/components/cooking_mode/CookingMode';
@@ -72,29 +72,39 @@ const router = createBrowserRouter([
 ]);
 
 function Root() {
-  // redirect to homepage by default
+  const [showList, setShowList] = useState(false);
+  const [showCook, setShowCook] = useState('inline-block');
+  const location = useLocation();
   const navigate = useNavigate();
   useEffect(() => {
-      const shouldRedirect = (window.location.pathname == "/")
+    // redirect to homepage by default
+      const shouldRedirect = (window.location.pathname === "/")
       if(shouldRedirect) {
           navigate("/homepage");
       }
-  }, [navigate]);
+    //conditionally shows cooking mode, only on recipe pages
+      if(location.pathname === '/homepage' || location.pathname ==='/about-us' || location.pathname==='/w'){
+        setShowCook('none');
+      }
+      else{
+        setShowCook('inline-block');
+      }
+  }, [navigate, showCook, location]);
 
   // state for grocery list,cooking mode
-  const [showList, setShowList] = useState(false);
-  const [showCook, setShowCook] = useState(false);
   
   const handleCloseList = () => setShowList(false);
   const handleShowList = () => setShowList(true);
-
+  
   //
   
   return (
       <>
           <Header/>
           <MainNavigation handleShowList={handleShowList}/>
-          <CookingModeDisplay/>
+          <div style={{display:showCook}}>
+            <CookingModeDisplay/>
+          </div>
           <GroceryList show={showList} handleClose={handleCloseList}/>
           <Outlet />
       </>
