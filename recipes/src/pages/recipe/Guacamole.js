@@ -1,6 +1,31 @@
 import guac from '../../img/food/guac.jpg';
 import '../../App.css';
 import React from 'react';
+export const guacInstruction = [{
+  title: 'Guacamole',
+  desc: 'In a medium bowl, combine the onion and lime juice, and season with salt and pepper.',
+  num: 1
+},
+{
+  title: 'Guacamole',
+  desc: 'Cut the hard stem end off of the jalapeño and discard, then slice the chile in half lengthwise',
+  num: 2
+},
+{
+  title: 'Guacamole',
+  desc: 'Chop the jalapeño as finely as you can and add to the bowl with the onion and lime juice.',
+  num: 3
+},
+{
+  title: 'Guacamole',
+  desc: 'Cut the avocados in half lengthwise and pull the halves apart. Use your hands to squeeze the avocado flesh out into the bowl with the other ingredients, or scoop it out with a spoon.',
+  num: 4
+},
+{
+  title: 'Guacamole',
+  desc: 'Using a fork, gently mash the avocados against the side of the bowl until they are mashed to your desired consistency, then stir them into the other ingredients until well combined. Taste and add more salt if desired.',
+  num: 5
+}];
 export default function Guacamole() {
     return (
         <div>

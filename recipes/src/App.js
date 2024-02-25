@@ -91,7 +91,6 @@ function Root() {
       }
       else{
         setShowCook('inline-block');
-        console.log(cookRecipe)
         switch(location.pathname){
           case '/recipe1':
             setCookRecipe(recipeInstructions[0])
@@ -100,22 +99,22 @@ function Root() {
             setCookRecipe(recipeInstructions[1])
           break;
           case '/recipe3':
-            setCookRecipe([{}])
+            setCookRecipe(recipeInstructions[2])
           break;
           case '/recipe4':
-            setCookRecipe([])
+            setCookRecipe(recipeInstructions[3])
           break;
           case '/recipe5':
-            setCookRecipe([])
+            setCookRecipe(recipeInstructions[4])
           break;
           case '/recipe6':
-            setCookRecipe([])
+            setCookRecipe(recipeInstructions[5])
           break;
           case '/recipe7':
-            setCookRecipe([])
+            setCookRecipe(recipeInstructions[6])
           break;
           case '/recipe8':
-            setCookRecipe([])
+            setCookRecipe(recipeInstructions[7])
           break;
         }
       }
