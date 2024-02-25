@@ -1,5 +1,13 @@
 import {chickenInstructions} from './Chicken';
-import { guacInstruction } from './Guacamole';
+import { guacInstructions } from './Guacamole';
+import { cookieInstructions } from './ChocoChip';
+import { dumplingsInstructions } from './Dumplings';
+import { jambalayaInstructions } from './Jambalaya';
+import { meatpieInstructions } from './NigerianMeatPie';
+import { phoInstructions } from './Pho';
+import { pastaInstructions } from './PastaPesto';
+
+
 export {default as NigerianMeatPie} from './NigerianMeatPie';
 export {default as Chicken} from './Chicken';
 export {default as Dumplings} from './Dumplings';
@@ -9,12 +17,4 @@ export {default as PastaPesto} from './PastaPesto';
 export {default as ChocoChip} from './ChocoChip';
 export {default as Pho} from './Pho';
 
-
-const pastaInstructions =[];
-const meatpieInstructions=[];
-const cookieInstructions=[];
-const jambalayaInstructions=[]
-const dumplingsInstruction=[];
-const phoInstructions = [];
-
-export const recipeInstructions = [chickenInstructions, guacInstruction,pastaInstructions,meatpieInstructions,cookieInstructions,jambalayaInstructions,dumplingsInstruction,phoInstructions]
+export const recipeInstructions = [chickenInstructions, guacInstructions,pastaInstructions,meatpieInstructions,cookieInstructions,jambalayaInstructions,dumplingsInstructions,phoInstructions]
