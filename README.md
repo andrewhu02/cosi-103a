@@ -12,6 +12,7 @@ Current features:
 * Team page with names, pictures, and short descriptions for each member
 * Grocery list which persists across page changes
 * User can add items, remove items, and clear the list
+* Cooking mode which can be activated on any recipe page, showing instructions on a large slideshow
 
 ## Setup
 
@@ -29,3 +30,4 @@ Use `npm test` in the recipes directory to launch the test runner.
 * App.js contains the main structure of the app, which uses a React Router to move between pages
 * pages directory contains each page of the website
 * shared directory contains components displayed on multiple pages
+* Testing for React components will run when a pull request is made to main
