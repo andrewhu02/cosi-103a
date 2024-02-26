@@ -1,5 +1,5 @@
 import React from 'react'
-import { render, fireEvent, screen, } from '@testing-library/react'
+import { render, fireEvent, screen, getByRole, } from '@testing-library/react'
 import '@testing-library/jest-dom'
 import App from '../App'
 import userEvent from '@testing-library/user-event'
@@ -38,6 +38,7 @@ test('clicking the \'X\' closes the list', async () => {
   expect(screen.getByRole('dialog', { show: false }))
 })
 
+// testing with fireEvent works, but userEvent is closer to the actual behavior of a user
 test('handles adding ingredient to the list', () => {
   const handleClose = jest.fn();
   render(<GroceryList show={true} handleClose={handleClose} />);
@@ -108,3 +109,27 @@ test('handles deleting ingredient from the list', () => {
   expect(screen.queryByText('Tomato')).toBeNull();
   expect(screen.queryByText('1lb')).toBeNull();
 });
+
+test('list state persists across page changes', async () => {
+  const user = userEvent.setup()
+  render(<App />)
+
+  // open list
+  await user.click(screen.getByRole('button', { name: /grocery list/i }))
+
+  // add item to list
+  await user.click(screen.getByPlaceholderText(/enter ingredient name/i));
+  await user.keyboard('Onion')
+  await user.click(screen.getByPlaceholderText(/enter quantity/i));
+  await user.keyboard('2lbs')
+  await user.click(screen.getByRole('button', { name: /add ingredient/i }));
+
+  // close list, change pages, reopen list
+  await user.click(screen.getByRole('button', { name: /close/i }))
+  await user.click(screen.getByRole('link', { name: /about us/i}))
+  await user.click(screen.getByRole('button', { name: /grocery list/i }))
+
+  // assert that item is in the list
+  expect(screen.getByText('Onion')).toBeInTheDocument();
+  expect(screen.getByText('2lbs')).toBeInTheDocument();
+})
