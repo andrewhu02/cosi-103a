@@ -29,7 +29,7 @@ jobs:
       - name: Build and deploy Container App
         uses: azure/container-apps-deploy-action@v1
         with:
-          appSourcePath: ${{ github.workspace }}\recipes\src
+          appSourcePath: ${{ github.workspace }}/recipes/src
           acrName: cosi103test
           containerAppName: recipes
           resourceGroup: cosi-103a-test
