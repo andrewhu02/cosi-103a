@@ -2,8 +2,34 @@ import pesto from '../../img/food/pesto.jpg';
 import pesto2 from '../../img/food/pesto2.jpg';
 import '../../App.css';
 import React from 'react';
-export default function PastaPesto() {
-    return (
+import RecipeStep from './RecipeStep';
+
+export const pastaInstructions = [
+  {
+    title: '',
+    desc: [
+      'Toast nuts in a dry skillet over medium heat, shaking frequently, until fragrant, browned and not burned. Pulse them in a food processor until chopped but not at all powdery.',
+    ],
+    num: 1,
+  },
+  {
+    title: '',
+    desc: [
+      'Wash the basil; dry it in a salad spinner. Put it in the food processor with the garlic and as much oil as you need to allow the machine to do its work. Process, adding salt, pepper and oil as needed. When the pesto is smooth and delicious, stir in or pulse in the cheese.',
+    ],
+    num: 2,
+  },
+  {
+    title: '',
+    desc: [
+      'Cook the pasta in boiling salted water until it\'s tender but not mushy. Dress with the pesto, thinning with a little of the cooking water if necessary. Serve immediately.',
+    ],
+    num: 3,
+  },
+];
+
+const PastaPesto = () => {
+  return (
     <div>
       <h1>Pasta Pesto</h1>
       <div className="container">
@@ -32,14 +58,15 @@ export default function PastaPesto() {
             <li>1 pound pasta, any shape</li>
           </ul>
       </div>
-      <div className="column2">
-          <h2 className= "subheader">Cooking Instructions</h2>
-          <ol>
-            <li>Toast nuts in a dry skillet over medium heat, shaking frequently, until fragrant, browned and not burned. Pulse them in a food processor until chopped but not at all powdery.</li>
-            <li>Wash the basil; dry it in a salad spinner. Put it in the food processor with the garlic and as much oil as you need to allow the machine to do its work. Process, adding salt, pepper and oil as needed. When the pesto is smooth and delicious, stir in or pulse in the cheese.</li>
-            <li>Cook the pasta in boiling salted water until it's tender but not mushy. Dress with the pesto, thinning with a little of the cooking water if necessary. Serve immediately.</li>
-          </ol>
+        <div class="column2">
+          <h2 class="subheader">Cooking Instructions</h2>
+          {pastaInstructions.map((step) => (
+            <RecipeStep key={step.num} step={step} />
+          ))}
+        </div>
       </div>
     </div>
-  </div>
-)};
+  );
+};
+
+export default PastaPesto;

@@ -1,0 +1,12 @@
+.stepItem{
+    padding: 250px;
+    margin: auto;
+    height: 100%;
+    width: auto;
+    background-color: bisque;
+}
+
+.stepItem, h3 {
+    padding: 100px;
+    height:100%;
+}

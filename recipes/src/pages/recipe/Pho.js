@@ -1,8 +1,97 @@
 import pho from '../../img/food/pho.jpg';
 import '../../App.css';
 import React from 'react';
+import RecipeStep from './RecipeStep';
 
-export default function Pho() {
+export const phoInstructions = [
+  {
+    title: 'Preparation and Broth',
+    desc: [
+      'Gather all ingredients.',
+    ],
+    num: 1,
+  },
+  {
+    title: '',
+    desc: [
+      'Preheat the oven to 425 degrees F (220 degrees C).',
+    ],
+    num: 2,
+  },
+  {
+    title: '',
+    desc: [
+      'Place beef bones on a baking sheet and roast in the preheated oven until browned, about 1 hour.',
+    ],
+    num: 3,
+  },
+  {
+    title: '',
+    desc: [
+      'Place onion halves on a second baking sheet and roast on another rack until blackened and soft, about 45 minutes.',
+    ],
+    num: 4,
+  },
+  {
+    title: '',
+    desc: [
+      'Transfer beef bones and onion halves to a large stockpot. Add ginger, salt, star anise, fish sauce, and 4 quarts water; bring to a boil. Reduce heat to low and simmer for 6 to 10 hours.',
+    ],
+    num: 5,
+  },
+  {
+    title: '',
+    desc: [
+      'Strain the broth into a saucepan and set aside.',
+    ],
+    num: 6,
+  },
+  {
+    title: 'Preparing Rice Noodles',
+    desc: [
+      'Place rice noodles in a large bowl filled with room temperature water. Let soak for 1 hour. Drain.',
+    ],
+    num: 7,
+  },
+  {
+    title: '',
+    desc: [
+      'When noodles have soaked for 1 hour, heat up the reserved broth by bringing it to a simmer.',
+    ],
+    num: 8,
+  },
+  {
+    title: '',
+    desc: [
+      'Bring a large pot of water to a boil. Cook the noodles in the boiling water for 1 minute. Drain.',
+    ],
+    num: 9,
+  },
+  {
+    title: 'Assembling and Serving',
+    desc: [
+      'Divide noodles among 4 serving bowls; top with sirloin, cilantro, and green onion.',
+    ],
+    num: 10,
+  },
+  {
+    title: '',
+    desc: [
+      'Ladle hot broth over the top. Stir and let sit until beef is partially cooked and no longer pink, 1 to 2 minutes.',
+    ],
+    num: 11,
+  },
+  {
+    title: '',
+    desc: [
+      'Serve with bean sprouts, Thai basil, lime wedges, hoisin sauce, and chile-garlic sauce on the side.',
+    ],
+    num: 12,
+  },
+];
+
+
+const Pho = () => {
   return (
     <div>
       <h1>Pho</h1>
@@ -42,24 +131,13 @@ export default function Pho() {
         </div>
         <div className="column2">
           <h2 className="subheader">Cooking Instructions</h2>
-          <p>Recipe from <a href="https://www.allrecipes.com/recipe/228443/authentic-pho/">allrecipes.com</a></p>
-          <ol>
-            <li>Gather all ingredients</li>
-
-            <li>Preheat the oven to 425 degrees F (220 degrees C).</li>
-
-            <li>Place beef bones on a baking sheet and roast in the preheated oven until browned, about 1 hour.</li>
-
-            <li>Place onion halves on a second baking sheet and roast on another rack until blackened and soft, about 45 minutes.</li>
-            <li>Transfer beef bones and onion halves to a large stockpot. Add ginger, salt, star anise, fish sauce, and 4 quarts water; bring to a boil. Reduce heat to low and simmer for 6 to 10 hours. Strain the broth into a saucepan and set aside.</li>
-            <li>Place rice noodles in a large bowl filled with room temperature water. Let soak for 1 hour. Drain.</li>
-            <li>When noodles have soaked for 1 hour, heat up the reserved broth by bringing it to a simmer.</li>
-            <li>Bring a large pot of water to a boil. Cook the noodles in the boiling water for 1 minute. Drain.</li>
-            <li>Divide noodles among 4 serving bowls; top with sirloin, cilantro, and green onion. Ladle hot broth over the top. Stir and let sit until beef is partially cooked and no longer pink, 1 to 2 minutes.</li>
-            <li>Serve with bean sprouts, Thai basil, lime wedges, hoisin sauce, and chile-garlic sauce on the side.</li>
-          </ol>
+          {phoInstructions.map((step) => (
+            <RecipeStep key={step.num} step={step} />
+          ))}
         </div>
       </div>
     </div>
-  )
+  );
 };
+
+export default Pho;
