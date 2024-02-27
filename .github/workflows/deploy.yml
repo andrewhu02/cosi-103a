@@ -14,6 +14,7 @@ jobs:
   build:
     runs-on: windows-latest
 
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
@@ -21,6 +22,7 @@ jobs:
       - name: Log into Azure
         uses: azure/login@v1
         with:
+
             creds: ${{ secrets.AZURE_CREDENTIALS }}
 
       - name: Build and deploy Container App
