@@ -6,14 +6,14 @@ on:
 
 
 permissions:
-    id-token: write # This is required for requesting the JWT
-    contents: read  # This is required for actions/checkout
+  id-token: write 
+  contents: read  
 
 
 jobs:
   build:
+    environment: prd
     runs-on: windows-latest
-
 
     steps:
       - name: Checkout code
@@ -22,8 +22,7 @@ jobs:
       - name: Log into Azure
         uses: azure/login@v1
         with:
-
-            creds: ${{ secrets.AZURE_CREDENTIALS }}
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
 
       - name: Build and deploy Container App
         uses: azure/container-apps-deploy-action@v1
