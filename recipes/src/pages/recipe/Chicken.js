@@ -10,22 +10,22 @@ export const chickenInstructions = [
     num: 1,
   },
   {
-    title: 'Chicken',
+    title: '',
     desc: 'In a bowl, add the olive oil, lemon juice, vinegar, garlic cloves, all the spices, and the salt and pepper for a chicken marinade.',
     num: 2,
   },
   {
-    title: 'Chicken',
+    title: '',
     desc: 'Stir until well mixed, then add chicken and toss to coat evenly. Cover the bowl and marinate for 1-2 hours or more.',
     num: 3,
   },
   {
-    title: 'Chicken',
+    title: '',
     desc: 'Heat the vegetable oil in a large skillet on medium high until the oil pops, then add the chicken. Cook until golden brown and cooked through (about 5-6 minutes, or 3-4 if it has been cut already)',
     num: 4,
   },
   {
-    title: 'Chicken',
+    title: '',
     desc: 'Cut the chicken now if necessary. Let the meat rest for 5-10 minutes, and begin prepping the rice.',
     num: 5,
   },
@@ -35,17 +35,17 @@ export const chickenInstructions = [
     num: 6,
   },
   {
-    title: 'Rice',
+    title: '',
     desc: 'Add the rice and stir for 4 minutes to toast it. Add the chicken stock and a pinch of salt and pepper to season. Stir and bring to a boil, then reduce heat to a simmer, cover and cook for 15 minutes.',
     num: 7,
   },
   {
-    title: 'Rice',
+    title: '',
     desc: 'After the rice is cooked and the water is absorbed, remove pan from the heat and wait 10-15 minutes before disturbing. Fluff gently with a fork.',
     num: 8,
   },
   {
-    title: 'Rice',
+    title: '',
     desc: 'Finally, plate the chicken on top of the rice, then top with parsley and tomato',
     num: 9,
   },
