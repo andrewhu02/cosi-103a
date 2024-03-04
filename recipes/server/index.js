@@ -34,6 +34,24 @@ app.post('/api/recipes', (req, res) => {
   res.status(201).json(newRecipe);
 });
 
+// endpoint to delete a recipe by ID
+app.delete('/api/recipes/:id', (req, res) => {
+  const recipeId = parseInt(req.params.id);
+
+  // find the index of the recipe with the specified ID
+  const recipeIndex = recipes.findIndex((recipe) => recipe.id === recipeId);
+
+  // check if the recipe exists
+  if (recipeIndex === -1) {
+    return res.status(404).json({ error: 'Recipe not found' });
+  }
+
+  // remove the recipe from the array
+  recipes.splice(recipeIndex, 1);
+
+  res.json({ message: 'Recipe deleted successfully' });
+});
+
 // serve static files (React app) from the build directory
 app.use(express.static('build'));
 
