@@ -3,6 +3,7 @@ const bodyParser = require('body-parser');
 
 const app = express();
 const PORT = process.env.PORT || 3002; // i accidentally screwed up port 3001 and decided to use 3002 (didn't restart 3001), but you can switch it back to 3001 when you want to test it
+const path = require('path')
 
 app.use(bodyParser.json());
 
@@ -58,7 +59,7 @@ app.delete('/api/recipes/:id', (req, res) => {
 });
 
 // serve static files (React app) from the build directory
-app.use(express.static('build'));
+app.use(express.static(path.join(__dirname,'..','build')));
 
 // start the server
 app.listen(PORT, () => {
