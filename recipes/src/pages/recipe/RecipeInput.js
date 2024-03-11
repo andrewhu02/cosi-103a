@@ -17,7 +17,8 @@ const RecipeInput = () => {
     const newRecipe = {
       title,
       description,
-      imageUrl: '/img/food/food.jpg',
+      imageSrc: '/img/food/food.jpg',
+      url: '/homepage', //user created recipes will just redirect to homepage for now.
     };
 
     // Make a POST request to add the new recipe

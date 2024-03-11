@@ -1,5 +1,5 @@
 
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import './Homepage.css';
 import chickenandrice from '../img/food/chickenandrice.jpg';
 import chocchip from '../img/food/choc_chip_cookies.jpg';
@@ -29,7 +29,7 @@ function RecipeCard(title, imageSrc, description, url) {
   );
 }
 
-function ContainerCards() {
+/*function ContainerCards() {
   return (
     <Container fluid className="d-flex flex-column align-items-center">
       <Row>
@@ -49,6 +49,36 @@ function ContainerCards() {
         <Col className="card-column">{RecipeCard("Pho", pho, "A beloved Vietnamese dish, its fragrant broth and slender rice noodles creates a soul-warming experience that embodies the essence of Vietnamese culinary tradition.", "/recipe8")}</Col>
       </Row>
     </Container>
+  );
+}*/
+async function fetchData() {
+  try {
+    const response = await fetch('/api/recipes', { method: 'GET' });
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.error('Error fetching recipes:', error);
+  }
+}
+
+function ContainerCards() {
+  const [recipeData, setRecipeData] = useState([]);
+
+  useEffect(() => {
+    fetchData().then((data) => {
+//      console.log(data);
+      setRecipeData(data);
+    });
+  }, []);
+  console.log(recipeData);
+  return (
+    <div>
+      <Container fluid className="d-flex flex-column align-items-center">
+        {recipeData.map((recipe) => (
+          <Col className="card-column">{RecipeCard(recipe.title, recipe.imageSrc, recipe.description, recipe.url)}</Col>
+        ))}
+      </Container>
+    </div>
   );
 }
 

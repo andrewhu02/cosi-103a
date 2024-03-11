@@ -9,14 +9,14 @@ app.use(bodyParser.json());
 
 // mock data for initial recipes
 let recipes = [
-  { id: 1, title: 'Halal Guys Chicken and Rice', description: 'A delicious street food dish from NYC.' },
-  { id: 2, title: 'Guacamole', description: 'A traditional Mexican dip.' },
-  { id: 3, title: 'Pasta with Pesto', description: 'A classic Italian dish.' },
-  { id: 4, title: 'Nigerian Meat Pies', description: 'Savory pastry snacks filled with seasoned minced meat.' },
-  { id: 5, title: 'Chocolate Chip Cookies', description: 'A classic chocolatey sweet indulgence.' },
-  { id: 6, title: 'Creole Jambalaya', description: 'A soulful and savory dish deeply rooted in Louisiana\'s culinary culture.' },
-  { id: 7, title: 'Soup Dumplings', description: 'A revered Chinese delicacy.' },
-  { id: 8, title: 'Pho', description: 'A beloved Vietnamese dish.' },
+  { id: 1, title: 'Halal Guys Chicken and Rice', description: 'A delicious street food dish from NYC.', imageSrc: '../img/food/chickenandrice.jpg', url: '/recipe1'},
+  { id: 2, title: 'Guacamole', description: 'A traditional Mexican dip.', imageSrc: '../img/food/guac.jpg', url: '/recipe2' },
+  { id: 3, title: 'Pasta with Pesto', description: 'A classic Italian dish.', imageSrc: '../img/food/pesto.jpg', url: '/recipe3'},
+  { id: 4, title: 'Nigerian Meat Pies', description: 'Savory pastry snacks filled with seasoned minced meat.', imageSrc: '../img/food/nmeatpie.jpg', url: '/recipe4' },
+  { id: 5, title: 'Chocolate Chip Cookies', description: 'A classic chocolatey sweet indulgence.', imageSrc: '../img/food/chocchip.jpg', url: '/recipe5' },
+  { id: 6, title: 'Creole Jambalaya', description: 'A soulful and savory dish deeply rooted in Louisiana\'s culinary culture.', imageSrc: '../img/food/jambalaya.jpg', url: '/recipe6' },
+  { id: 7, title: 'Soup Dumplings', description: 'A revered Chinese delicacy.', imageSrc: '../img/food/dumplings.jpg', url: '/recipe7'},
+  { id: 8, title: 'Pho', description: 'A beloved Vietnamese dish.', imageSrc: '../img/food/pho.jpg', url: '/recipe8'},
 ];
 
 // endpoint to get all recipes
