@@ -15,9 +15,10 @@ import { Link } from "react-router-dom";
 import { Container, Row, Col, Card } from 'react-bootstrap';
 
 function RecipeCard(title, imageSrc, description, url) {
+  const defaultImage = '/img/food/food.jpg';
   return (
     <Card className="recipe-card" border="primary">
-      <Card.Img className="card-image" variant="top" src={imageSrc} alt={title} />
+      <Card.Img className="card-image" variant="top" src={imageSrc || defaultImage} alt={title} />
       <Card.Body className="card-body">
         <Link to={url}>
           <Card.Title>{title}</Card.Title>

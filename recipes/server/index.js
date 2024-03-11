@@ -10,7 +10,12 @@ app.use(bodyParser.json());
 let recipes = [
   { id: 1, title: 'Halal Guys Chicken and Rice', description: 'A delicious street food dish from NYC.' },
   { id: 2, title: 'Guacamole', description: 'A traditional Mexican dip.' },
-  // add more recipes e.g. pho, jambalaya meat pies, etc.
+  { id: 3, title: 'Pasta with Pesto', description: 'A classic Italian dish.' },
+  { id: 4, title: 'Nigerian Meat Pies', description: 'Savory pastry snacks filled with seasoned minced meat.' },
+  { id: 5, title: 'Chocolate Chip Cookies', description: 'A classic chocolatey sweet indulgence.' },
+  { id: 6, title: 'Creole Jambalaya', description: 'A soulful and savory dish deeply rooted in Louisiana\'s culinary culture.' },
+  { id: 7, title: 'Soup Dumplings', description: 'A revered Chinese delicacy.' },
+  { id: 8, title: 'Pho', description: 'A beloved Vietnamese dish.' },
 ];
 
 // endpoint to get all recipes

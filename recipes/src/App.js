@@ -19,6 +19,7 @@ import { useEffect, useState } from 'react';
 import ContainerCards from './pages/Homepage';
 import GroceryList from './shared/components/grocery_list/GroceryList';
 import CookingModeDisplay from './shared/components/cooking_mode/CookingMode';
+import RecipeInput from './pages/recipe/RecipeInput';
 
 export default function App() {
   const router = createBrowserRouter([
@@ -31,8 +32,8 @@ export default function App() {
           element: <ContainerCards />,
         },
         {
-          path: '/all-recipes',
-          element: <h1>This page shows all recipes.</h1>,
+          path: '/recipe-input',
+          element: <RecipeInput />,
         },
         {
           path: '/recipe1',
@@ -82,7 +83,7 @@ export default function App() {
 }
 
 function Root() {
-  const recipes = recipeInstructions;
+  const [recipes, setRecipes] = useState([...recipeInstructions]);
   const [showList, setShowList] = useState(false);
   const [showCook, setShowCook] = useState(false);
   const [cookRecipe, setCookRecipe] = useState({ title: '', desc: '', num: 0 });
@@ -97,7 +98,7 @@ function Root() {
   const handleCloseCook = () => {
     setShowCook(false);
   };
-
+// Redirect to the homepage if the user is on the root URL
   useEffect(() => {
     const shouldRedirect = window.location.pathname === '/';
     if (shouldRedirect) {
@@ -115,7 +116,6 @@ function Root() {
       }
     }
   }, [navigate, location]);
-
   const handleCloseList = () => setShowList(false);
   const handleShowList = () => setShowList(true);
 
