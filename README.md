@@ -3,6 +3,7 @@ Andrew Hu (andrewhu@brandeis.edu)\
 Charles Sullivan (charlessullivan@brandeis.edu)\
 Nhi Le (nhihllle@brandeis.edu)\
 Aimuan Erhabor (aimuanerhabor@brandeis.edu)
+Moses Gordon (mosesgordon@brandeis.edu)
 
 # Recipes Website 
 This is a website for browsing and reading recipes.
@@ -13,6 +14,7 @@ Current features:
 * Grocery list which persists across page changes
 * User can add items, remove items, and clear the list
 * Cooking mode which can be activated on any recipe page, showing instructions on a large slideshow
+* User can add new recipes (recipe title, description, image (option) and some text
 
 ## Setup
 
