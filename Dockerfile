@@ -4,9 +4,11 @@ FROM node:20
 WORKDIR /usr/src/app
 
 # copy package*.json from the current directory (local directory where i'm building my docker) into ./ directory inside my image
-COPY package*.json ./
-COPY src/ ./src
-COPY public/ ./public
+COPY ./recipes/package*.json ./
+COPY ./recipes/src/ ./src
+COPY ./recipes/public/ ./public
+COPY ./recipes/server/ ./server
+
 
 # RUN is something you want to run as part of building your docker image
 RUN npm install
