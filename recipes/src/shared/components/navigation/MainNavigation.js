@@ -48,6 +48,7 @@ function MainNavigation({ handleShowList, handleShowCook }) {
               </NavDropdown.Item>
               <NavDropdown.Divider />
               <NavDropdown.Item as={Link} to="/recipe-input">Recipe Input</NavDropdown.Item>
+              <NavDropdown.Item as={Link} to="/recipe-details">Recipe Details</NavDropdown.Item>
             </NavDropdown>
             <Nav.Link as={Link} to="/about-us">
               About Us

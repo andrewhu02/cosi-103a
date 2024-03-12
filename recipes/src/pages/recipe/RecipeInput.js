@@ -1,24 +1,32 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
-const RecipeInput = () => {
+const RecipeInput = ({ recipes, setRecipes }) => {
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
+  const [imageUrl, setImageUrl] = useState('');
+  const [recipeText, setRecipeText] = useState('');
+  const [showPopup, setShowPopup] = useState(false);
+  const [error, setError] = useState('');
+  const navigate = useNavigate();
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    // Validate form inputs
-    if (!title || !description) {
-      alert('Please fill out all required fields.');
+    if (!title || !description || !recipeText) {
+      setError('Please fill out all required fields.');
+      return;
+    }
+    if (imageUrl && !isValidImageUrl(imageUrl)) {
+      setError('Invalid image URL.');
       return;
     }
 
-    // Create a new recipe object
     const newRecipe = {
       title,
       description,
-      imageSrc: '/img/food/food.jpg',
-      url: '/homepage', //user created recipes will just redirect to homepage for now.
+      imageUrl: imageUrl || '/img/food/food.jpg',
+      recipeText,
     };
 
     // Make a POST request to add the new recipe
@@ -31,36 +39,62 @@ const RecipeInput = () => {
     })
       .then((response) => response.json())
       .then((data) => {
-        // Optionally, you can handle the new recipe data here if needed
         console.log('New recipe added:', data);
-
+      
         // Clear form inputs
         setTitle('');
         setDescription('');
+        setImageUrl('');
+        setRecipeText('');
+        setShowPopup(true);
+        setError('');
+
+        setRecipes([...recipes, data]);
+        navigate('/recipe-details'); 
       })
       .catch((error) => console.error('Error adding recipe:', error));
   };
 
+  const isValidImageUrl = (url) => {
+    //TODO: Check if URL is for a valid image
+    return /^https?:\/\//.test(url);
+  };
+
+  const handleClosePopup = () => {
+    setShowPopup(false);
+  };
+
   return (
-    <div>
+    <div className="recipe-input-container">
       <h2>Add New Recipe</h2>
-      <div>
+      <div className="form-container">
         <label>
           Title:
           <input type="text" value={title} onChange={(e) => setTitle(e.target.value)} />
         </label>
-      </div>
-      <div>
         <label>
           Description:
           <textarea value={description} onChange={(e) => setDescription(e.target.value)} />
         </label>
-      </div>
-      <div>
+        <label>
+          Image URL (Optional):
+          <input type="text" value={imageUrl} onChange={(e) => setImageUrl(e.target.value)} />
+        </label>
+        <label>
+          Recipe Text:
+          <textarea value={recipeText} onChange={(e) => setRecipeText(e.target.value)} className="recipe-textarea" />
+        </label>
         <button type="submit" onClick={handleSubmit}>
           Add Recipe
         </button>
       </div>
+      {error && <p className="error-message">{error}</p>}
+      {showPopup && (
+        <div className="popup">
+          <p>Recipe added successfully!</p>
+          <button onClick={handleClosePopup}>OK</button>
+        </div>
+      )}
     </div>
   );
 };
