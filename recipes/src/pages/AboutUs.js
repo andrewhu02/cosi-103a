@@ -23,7 +23,7 @@ function AboutUs() {
     {
       id: 3,
       name: 'Aimuan Erhabor',
-      description: "I'm Aimuan, a sophmore majoring in Computer Science. I added in my own recipes of treats I enjoyed eating and making, from the sweetness of cookies to the savory of meat pies.",
+      description: "I'm Aimuan, a sophomore majoring in Computer Science. I added in my own recipes of treats I enjoyed eating and making, from the sweetness of cookies to the savory of meat pies.",
       avatar: ava3,
     },
     {
@@ -37,15 +37,15 @@ function AboutUs() {
   return (
     <Container>
       <h1 className="text-center my-4">About Us</h1>
-      <Row className="d-flex flex-wrap justify-content-center">
+      <Row>
         {teamMembers.map((member) => (
-          <Col key={member.id} className="text-center mb-4">
+          <Col key={member.id} className="text-center">
             {/* Avatar */}
             <img
               src={member.avatar}
               alt={`${member.name}'s Avatar`}
               className="img-fluid rounded-circle mb-2"
-              style={{ width: '50%' }}
+              style={{ width: '50%', marginBottom: '0' }}
             />
             {/* Name and Description */}
             <h3>{member.name}</h3>
