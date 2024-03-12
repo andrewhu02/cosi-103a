@@ -1,9 +1,14 @@
-// App.js
 import React from 'react';
+import { useEffect, useState } from 'react';
 import { createBrowserRouter, RouterProvider, Outlet, useNavigate, useLocation } from 'react-router-dom';
 import Header from './shared/components/header/Header';
 import MainNavigation from './shared/components/navigation/MainNavigation';
 import AboutUs from './pages/AboutUs';
+import ContainerCards from './pages/Homepage';
+import GroceryList from './shared/components/grocery_list/GroceryList';
+import CookingModeDisplay from './shared/components/cooking_mode/CookingMode';
+import RecipeInput from './pages/recipe/RecipeInput';
+import RecipeDetails from './pages/recipe/RecipeDetails';
 import {
   Chicken,
   Guacamole,
@@ -15,24 +20,26 @@ import {
   Pho,
   recipeInstructions,
 } from './pages/recipe';
-import { useEffect, useState } from 'react';
-import ContainerCards from './pages/Homepage';
-import GroceryList from './shared/components/grocery_list/GroceryList';
-import CookingModeDisplay from './shared/components/cooking_mode/CookingMode';
+
 
 export default function App() {
+  const [recipes, setRecipes] = useState([...recipeInstructions]);
+
+  const addRecipe = (newRecipe) => {
+    setRecipes([...recipes, newRecipe]);
+  };
   const router = createBrowserRouter([
     {
       path: '/',
-      element: <Root />,
+      element: <Root recipes={recipes} setRecipes={setRecipes} />,
       children: [
         {
           path: '/homepage',
           element: <ContainerCards />,
         },
         {
-          path: '/all-recipes',
-          element: <h1>This page shows all recipes.</h1>,
+          path: '/recipe-input',
+          element: <RecipeInput recipes={recipes} setRecipes={setRecipes} />,
         },
         {
           path: '/recipe1',
@@ -70,19 +77,22 @@ export default function App() {
           path: '/about-us',
           element: <AboutUs />,
         },
+        {
+          path: '/recipe-details',
+          element: <RecipeDetails recipes={recipes} />,
+        }
       ],
     },
   ]);
 
   return (
-    <React.Fragment>
-      <RouterProvider router={router} />
-    </React.Fragment>
+    <RouterProvider router={router}>
+    </RouterProvider>
   );
 }
 
 function Root() {
-  const recipes = recipeInstructions;
+  const [recipes, setRecipes] = useState([...recipeInstructions]);
   const [showList, setShowList] = useState(false);
   const [showCook, setShowCook] = useState(false);
   const [cookRecipe, setCookRecipe] = useState({ title: '', desc: '', num: 0 });
@@ -97,7 +107,7 @@ function Root() {
   const handleCloseCook = () => {
     setShowCook(false);
   };
-
+  // Redirect to the homepage if the user is on the root URL
   useEffect(() => {
     const shouldRedirect = window.location.pathname === '/';
     if (shouldRedirect) {
@@ -115,7 +125,6 @@ function Root() {
       }
     }
   }, [navigate, location]);
-
   const handleCloseList = () => setShowList(false);
   const handleShowList = () => setShowList(true);
 

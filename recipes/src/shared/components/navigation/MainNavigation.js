@@ -22,8 +22,6 @@ function MainNavigation({ handleShowList, handleShowCook }) {
               Home
             </Nav.Link>
             <NavDropdown title="Recipes" id="navbarScrollingDropdown">
-              <NavDropdown.Item as={Link} to="/all-recipes">All recipes</NavDropdown.Item>
-              <NavDropdown.Divider />
               <NavDropdown.Item as={Link} to="/recipe1">
                 Halal Guys Chicken and Rice
               </NavDropdown.Item>
@@ -48,6 +46,9 @@ function MainNavigation({ handleShowList, handleShowCook }) {
               <NavDropdown.Item as={Link} to="/recipe8">
                 Pho
               </NavDropdown.Item>
+              <NavDropdown.Divider />
+              <NavDropdown.Item as={Link} to="/recipe-input">Recipe Input</NavDropdown.Item>
+              <NavDropdown.Item as={Link} to="/recipe-details">Recipe Details</NavDropdown.Item>
             </NavDropdown>
             <Nav.Link as={Link} to="/about-us">
               About Us
