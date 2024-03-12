@@ -11,7 +11,7 @@ COPY public/ ./public
 # RUN is something you want to run as part of building your docker image
 RUN npm install
 # RUN npm run build 
-EXPOSE 3000
+EXPOSE 3002
 
 # CMD is different than RUN 
 # CMD executes when docker container starts  
