@@ -14,4 +14,18 @@ const RecipeDetails = ({ recipes }) => {
   );
 };
 
-export default RecipeDetails;
+// first, get this page to display all recipes from the API
+async function AllDetails() {
+  // GET list of recipes from API
+  const recipes = fetch('/api/recipes', {method: 'GET'})
+  return (
+    <p>{recipes}</p>
+    // next: figure out how to display recipes from API
+    // we correctly get the JSON data with all the recipes from this request
+  )
+}
+// then, work on using the FoodData API/parsing recipe details to get ingredient links
+
+// would help to have auto-reload somehow when developing
+
+export default AllDetails;

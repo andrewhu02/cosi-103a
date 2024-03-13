@@ -20,6 +20,7 @@ import {
   Pho,
   recipeInstructions,
 } from './pages/recipe';
+import AllDetails from './pages/recipe/RecipeDetails';
 
 
 export default function App() {
@@ -79,7 +80,7 @@ export default function App() {
         },
         {
           path: '/recipe-details',
-          element: <RecipeDetails recipes={recipes} />,
+          element: <AllDetails />,
         }
       ],
     },
