@@ -33,3 +33,5 @@ Use `npm test` in the recipes directory to launch the test runner.
 * pages directory contains each page of the website
 * shared directory contains components displayed on multiple pages
 * Testing for React components will run when a pull request is made to main
+* Recipe data pulls from a recipe API on an express.js server
+
