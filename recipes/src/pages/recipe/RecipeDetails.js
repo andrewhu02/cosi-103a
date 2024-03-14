@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import RecipePageTemplate from './RecipePageTemplate.js'
 
 // display all recipes from the API
 const RecipeDetails = () => {
@@ -19,9 +20,9 @@ const RecipeDetails = () => {
   // return element which displays recipes
   return (
     <div>
-      {recipes.map((recipe) => (
-        // modify this to display nicely formatted data for each recipe
-        <p>{JSON.stringify(recipe)}</p>
+      {recipes.map((recipeObject) => (
+        // create a page for each recipe using the template
+        <RecipePageTemplate recipe={recipeObject} />
       ))}
     </div>
   )

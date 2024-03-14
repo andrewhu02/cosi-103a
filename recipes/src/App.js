@@ -20,8 +20,6 @@ import {
   Pho,
   recipeInstructions,
 } from './pages/recipe';
-import AllDetails from './pages/recipe/RecipeDetails';
-
 
 export default function App() {
   const [recipes, setRecipes] = useState([...recipeInstructions]);
