@@ -1,0 +1,53 @@
+[
+    {
+        "id": 2,
+        "title": "Guacamole",
+        "description": "A classic Mexican avocado dip, perfect as a snack or appetizer.",
+        "imageSrc": "img/food/guac.jpg",
+        "ingredients": [
+          "3 avocados, peeled, pitted, and mashed",
+          "1 lime, juiced",
+          "1 teaspoon salt",
+          "1/2 cup diced onion",
+          "3 tablespoons chopped fresh cilantro",
+          "2 roma (plum) tomatoes, diced",
+          "1 teaspoon minced garlic",
+          "1 pinch ground cayenne pepper (optional)"
+        ],
+        "cookingInstructions": [
+          "Halve the avocados and remove the pits, then scoop the flesh into a medium mixing bowl.",
+          "Use a fork to mash the avocado to your desired consistency.",
+          "Squeeze the lime juice directly over the mashed avocado to prevent browning.",
+          "Add salt and stir to combine.",
+          "Fold in the diced onions, minced cilantro, diced tomatoes, and minced garlic. Mix well to evenly distribute the ingredients.",
+          "Season with a pinch of ground cayenne pepper for a spicy kick, if desired.",
+          "Cover the bowl with plastic wrap directly on the surface of the guacamole to prevent air reaching it and refrigerate for at least 1 hour before serving."
+        ],
+        "url": "/recipe2"
+      },
+      {
+        "id": 3,
+        "title": "Pasta with Pesto",
+        "description": "A simple yet flavorful Italian dish, featuring pasta coated in a rich basil pesto sauce.",
+        "imageSrc": "img/food/pesto.jpg",
+        "ingredients": [
+          "400g pasta (such as spaghetti or penne)",
+          "2 cups fresh basil leaves",
+          "1/2 cup grated Parmesan cheese",
+          "1/2 cup extra virgin olive oil",
+          "1/3 cup pine nuts",
+          "3 garlic cloves, minced",
+          "Salt and pepper to taste"
+        ],
+        "cookingInstructions": [
+          "Bring a large pot of salted water to a boil and add the pasta, cooking according to the package's instructions until al dente.",
+          "In the meantime, combine the fresh basil leaves, grated Parmesan cheese, pine nuts, and minced garlic in a food processor.",
+          "Pulse the ingredients while gradually adding the extra virgin olive oil until the mixture becomes smooth and creamy.",
+          "Season the pesto sauce with salt and pepper to taste.",
+          "Drain the pasta, reserving a little of the cooking water.",
+          "Mix the pesto sauce with the pasta in a large bowl, adding a few tablespoons of the reserved pasta water to achieve a creamy consistency.",
+          "Serve the pasta immediately, garnished with additional grated Parmesan cheese if desired."
+        ],
+        "url": "/recipe3"
+      }
+]
