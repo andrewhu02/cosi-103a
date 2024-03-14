@@ -16,7 +16,7 @@ import React, { useEffect, useState } from 'react';
 
 // first, get this page to display all recipes from the API
 const AllDetails = () => {
-  // store fetched recipes 
+  // used to store fetched recipes 
   const [recipes, setRecipes] = useState([])
   // GET list of recipes from API
   useEffect(() => {
@@ -26,13 +26,18 @@ const AllDetails = () => {
     })
     .then((data) => {
       console.log(data);
-      // set state of recipes here
+      // the API returns an array of Objects, each is a recipe
+      setRecipes(data);
     });
   }, []);
   // return recipe data
   // TODO: add formatting
   return (
-    <div>Check console for data.</div>
+    <div>
+      {recipes.map((recipe) => (
+        <p>{JSON.stringify(recipe)}</p>
+      ))}
+    </div>
   )
 }
 // then, work on using the FoodData API/parsing recipe details to get ingredient links
