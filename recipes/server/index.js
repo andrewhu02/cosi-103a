@@ -5,7 +5,7 @@ const app = express();
 const PORT = process.env.PORT || 3002; // i accidentally screwed up port 3001 and decided to use 3002 (didn't restart 3001), but you can switch it back to 3001 when you want to test it
 const path = require('path');
 
-const recipes = require("./recipes.json");
+const recipes = require("./recipes.json"); // data for initial recipes
 
 app.use(bodyParser.json());
 
