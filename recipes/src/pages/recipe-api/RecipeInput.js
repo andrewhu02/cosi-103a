@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import {Form, Stack, Button} from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
 
 const RecipeInput = ({ recipes, setRecipes }) => {
@@ -6,6 +7,8 @@ const RecipeInput = ({ recipes, setRecipes }) => {
   const [description, setDescription] = useState('');
   const [imageUrl, setImageUrl] = useState('');
   const [recipeText, setRecipeText] = useState('');
+  const [ingredients, setIngredients] = useState([]);
+  const [instructions, setInstructions] = useState([]);
   const [showPopup, setShowPopup] = useState(false);
   const [error, setError] = useState('');
   const navigate = useNavigate();
@@ -13,7 +16,7 @@ const RecipeInput = ({ recipes, setRecipes }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    if (!title || !description || !recipeText) {
+    if (!title || !description || !recipeText || !ingredients) {
       setError('Please fill out all required fields.');
       return;
     }
@@ -68,25 +71,35 @@ const RecipeInput = ({ recipes, setRecipes }) => {
     <div className="recipe-input-container">
       <h2>Add New Recipe</h2>
       <div className="form-container">
-        <label>
-          Title:
-          <input type="text" value={title} onChange={(e) => setTitle(e.target.value)} />
-        </label>
-        <label>
-          Description:
+        <Form >
+          <Form.Group className='mb-3'>
+          <Form.Label> Title:</Form.Label>
+            <input type="text" value={title} onChange={(e) => setTitle(e.target.value)} />
+          </Form.Group>
+          <Form.Group className='mb-3'>
+          <label> Description: </label>
           <textarea value={description} onChange={(e) => setDescription(e.target.value)} />
-        </label>
-        <label>
-          Image URL (Optional):
+        </Form.Group>
+        <Form.Group className='mb-3'>
+          <Form.Label> Image URL (Optional):</Form.Label>
           <input type="text" value={imageUrl} onChange={(e) => setImageUrl(e.target.value)} />
-        </label>
-        <label>
-          Recipe Text:
+         </Form.Group>
+         <Form.Group className='mb-3'>
+          <Form.Label> Ingredients:  </Form.Label>
+            <input type='text' value={ingredients} onChange={(e) => setIngredients(e.target.value)}/>
+        </Form.Group>
+        <Form.Group className='mb-3'>
+        <Form.Label> Instructions: (Optional) </Form.Label>
+          <input type='text' value={instructions} onChange={(e) => setInstructions(e.target.value)}/>
+        </Form.Group>
+        <Form.Group className='mb-3'>
+        <Form.Label>  Recipe Text:  </Form.Label>
           <textarea value={recipeText} onChange={(e) => setRecipeText(e.target.value)} className="recipe-textarea" />
-        </label>
-        <button type="submit" onClick={handleSubmit}>
+        </Form.Group>
+        <Button type="submit" onClick={handleSubmit}>
           Add Recipe
-        </button>
+        </Button>
+      </Form>
       </div>
       {error && <p className="error-message">{error}</p>}
       {showPopup && (
