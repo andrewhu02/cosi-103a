@@ -38,7 +38,7 @@ export default function App() {
           element: <ContainerCards />,
         },
         {
-          path: '/recipe-input',
+          path: '/add-new-recipe',
           element: <RecipeInput recipes={recipes} setRecipes={setRecipes} />,
         },
         {
@@ -78,7 +78,7 @@ export default function App() {
           element: <AboutUs />,
         },
         {
-          path: '/recipe-details',
+          path: '/all-recipes',
           element: <RecipeDetails recipes={recipes} />,
         }
       ],
