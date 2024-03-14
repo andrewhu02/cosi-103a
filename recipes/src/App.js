@@ -80,7 +80,7 @@ export default function App() {
         },
         {
           path: '/recipe-details',
-          element: <AllDetails />,
+          element: <RecipeDetails />,
         }
       ],
     },
