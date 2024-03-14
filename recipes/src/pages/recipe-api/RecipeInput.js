@@ -7,8 +7,10 @@ const RecipeInput = ({ recipes, setRecipes }) => {
   const [description, setDescription] = useState('');
   const [imageUrl, setImageUrl] = useState('');
   const [recipeText, setRecipeText] = useState('');
+  const [newIngredient, setNewIngredient] = useState('')
   const [ingredients, setIngredients] = useState([]);
-  const [instructions, setInstructions] = useState([]);
+  const [newInstruction, setNewInstruction] = useState([])
+  const [cookingInstructions, setInstructions] = useState([]);
   const [showPopup, setShowPopup] = useState(false);
   const [error, setError] = useState('');
   const navigate = useNavigate();
@@ -29,6 +31,8 @@ const RecipeInput = ({ recipes, setRecipes }) => {
       title,
       description,
       imageUrl: imageUrl || '/img/food/food.jpg',
+      ingredients,
+      cookingInstructions,
       recipeText,
     };
 
@@ -48,12 +52,14 @@ const RecipeInput = ({ recipes, setRecipes }) => {
         setTitle('');
         setDescription('');
         setImageUrl('');
+        setIngredients('');
+        setInstructions('');
         setRecipeText('');
         setShowPopup(true);
         setError('');
 
         setRecipes([...recipes, data]);
-        navigate('/recipe-details'); 
+        navigate('/all-recipes'); 
       })
       .catch((error) => console.error('Error adding recipe:', error));
   };
@@ -67,11 +73,28 @@ const RecipeInput = ({ recipes, setRecipes }) => {
     setShowPopup(false);
   };
 
+  const AddNewIngredient= ()=>{
+    setIngredients(([...ingredients,newIngredient]));
+    setNewIngredient('');
+  }
+  const AddNewInstruction=()=>{
+    setInstructions(([...cookingInstructions,newInstruction]))
+    setNewInstruction('');
+  }
+  const displayList=(data)=>{
+    let str=""
+    data.map(ing =>{
+      str+=ing+",\n"
+    })
+  
+    return str;
+  }
+
   return (
     <div className="recipe-input-container">
       <h2>Add New Recipe</h2>
-      <div className="form-container">
-        <Form >
+      <div className="form-container " >
+        <Form className='mx-auto'>
           <Form.Group className='mb-3'>
           <Form.Label> Title:</Form.Label>
             <input type="text" value={title} onChange={(e) => setTitle(e.target.value)} />
@@ -85,12 +108,21 @@ const RecipeInput = ({ recipes, setRecipes }) => {
           <input type="text" value={imageUrl} onChange={(e) => setImageUrl(e.target.value)} />
          </Form.Group>
          <Form.Group className='mb-3'>
+          
           <Form.Label> Ingredients:  </Form.Label>
-            <input type='text' value={ingredients} onChange={(e) => setIngredients(e.target.value)}/>
+            <Stack className='mx-auto' direction='horizontal'> 
+              <input type='text' value={newIngredient} onChange={(e)=>{setNewIngredient(e.target.value)}}/>
+              <Button onClick={AddNewIngredient}>Add</Button></Stack>
+              <Form.Control type='textarea' value={displayList(ingredients)} disabled rows={3}/>
+            
         </Form.Group>
         <Form.Group className='mb-3'>
         <Form.Label> Instructions: (Optional) </Form.Label>
-          <input type='text' value={instructions} onChange={(e) => setInstructions(e.target.value)}/>
+        <Stack className='mx-auto' direction='horizontal'> 
+              <input type='text' value={newInstruction} onChange={(e)=>{setNewInstruction(e.target.value)}}/>
+              <Button onClick={AddNewInstruction}>Add</Button></Stack>
+              <Form.Control type='textarea' value={displayList(cookingInstructions)} disabled rows={3}/>
+            
         </Form.Group>
         <Form.Group className='mb-3'>
         <Form.Label>  Recipe Text:  </Form.Label>
