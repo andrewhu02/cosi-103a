@@ -2,7 +2,7 @@ import nmeatpie from '../../img/food/nigerian_meatpie.jpg';
 import nmeatpie2 from '../../img/food/nigerian_meatpie_2.jpg';
 import '../../App.css';
 import React from 'react';
-import RecipeStep from './RecipeStep';
+import RecipeStep from '../recipe-api/RecipeStep';
 
 export const meatpieInstructions = [
   {
