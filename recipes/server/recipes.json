@@ -1,0 +1,225 @@
+[
+    {
+        "id": 1,
+        "title": "Halal Guys Chicken and Rice",
+        "description": "A delicious street food dish from NYC.",
+        "imageSrc": "img/food/chickenandrice.jpg",
+        "ingredients": [
+            "2 lbs chicken thighs",
+            "1/4 cup olive oil",
+            "2 tablespoons lemon juice",
+            "2 tablespoons white vinegar",
+            "4 garlic cloves, minced",
+            "1 teaspoon ground cumin",
+            "1 teaspoon ground turmeric",
+            "1 teaspoon ground paprika",
+            "Salt and pepper to taste",
+            "2 cups basmati rice",
+            "2 tablespoons butter",
+            "1/2 teaspoon ground cumin",
+            "1/2 teaspoon ground turmeric",
+            "4 cups chicken broth",
+            "1/4 cup chopped fresh parsley",
+            "White sauce (mayonnaise, yogurt, lemon juice, vinegar, garlic, sugar, salt)",
+            "Hot sauce"
+        ],
+        "cookingInstructions": [
+            "Cut the chicken beforehand to cook it more evenly and avoid staining the cutting board.",
+            "In a bowl, add the olive oil, lemon juice, vinegar, minced garlic, cumin, turmeric, paprika, and salt and pepper to create a chicken marinade. Let the chicken marinate for at least 2 hours, preferably overnight.",
+            "Heat a grill or skillet over medium-high heat. Add the chicken and cook for about 5-7 minutes on each side, until fully cooked and slightly charred.",
+            "For the rice, melt butter in a saucepan over medium heat. Add rice, cumin, and turmeric, stirring for a minute. Add chicken broth and bring to a boil. Reduce heat to low, cover, and simmer for 18-20 minutes. Fluff with a fork and mix in the parsley.",
+            "Serve the chicken sliced over the rice. Drizzle with white sauce and hot sauce to taste."
+        ],
+        "url": "/recipe1"
+    },
+    {
+        "id": 2,
+        "title": "Guacamole",
+        "description": "A classic Mexican avocado dip, perfect as a snack or appetizer.",
+        "imageSrc": "img/food/guac.jpg",
+        "ingredients": [
+            "3 avocados, peeled, pitted, and mashed",
+            "1 lime, juiced",
+            "1 teaspoon salt",
+            "1/2 cup diced onion",
+            "3 tablespoons chopped fresh cilantro",
+            "2 roma (plum) tomatoes, diced",
+            "1 teaspoon minced garlic",
+            "1 pinch ground cayenne pepper (optional)"
+        ],
+        "cookingInstructions": [
+            "Halve the avocados and remove the pits, then scoop the flesh into a medium mixing bowl.",
+            "Use a fork to mash the avocado to your desired consistency.",
+            "Squeeze the lime juice directly over the mashed avocado to prevent browning.",
+            "Add salt and stir to combine.",
+            "Fold in the diced onions, minced cilantro, diced tomatoes, and minced garlic. Mix well to evenly distribute the ingredients.",
+            "Season with a pinch of ground cayenne pepper for a spicy kick, if desired.",
+            "Cover the bowl with plastic wrap directly on the surface of the guacamole to prevent air reaching it and refrigerate for at least 1 hour before serving."
+        ],
+        "url": "/recipe2"
+    },
+    {
+        "id": 3,
+        "title": "Pasta with Pesto",
+        "description": "A simple yet flavorful Italian dish, featuring pasta coated in a rich basil pesto sauce.",
+        "imageSrc": "img/food/pesto.jpg",
+        "ingredients": [
+            "400g pasta (such as spaghetti or penne)",
+            "2 cups fresh basil leaves",
+            "1/2 cup grated Parmesan cheese",
+            "1/2 cup extra virgin olive oil",
+            "1/3 cup pine nuts",
+            "3 garlic cloves, minced",
+            "Salt and pepper to taste"
+        ],
+        "cookingInstructions": [
+            "Bring a large pot of salted water to a boil and add the pasta, cooking according to the package's instructions until al dente.",
+            "In the meantime, combine the fresh basil leaves, grated Parmesan cheese, pine nuts, and minced garlic in a food processor.",
+            "Pulse the ingredients while gradually adding the extra virgin olive oil until the mixture becomes smooth and creamy.",
+            "Season the pesto sauce with salt and pepper to taste.",
+            "Drain the pasta, reserving a little of the cooking water.",
+            "Mix the pesto sauce with the pasta in a large bowl, adding a few tablespoons of the reserved pasta water to achieve a creamy consistency.",
+            "Serve the pasta immediately, garnished with additional grated Parmesan cheese if desired."
+        ],
+        "url": "/recipe3"
+    },
+    {
+        "id": 4,
+        "title": "Nigerian Meat Pies",
+        "description": "Savory pastry snacks filled with seasoned minced meat.",
+        "imageSrc": "img/food/nigerian_meatpie.jpg",
+        "url": "/recipe4",
+        "ingredients": [
+            "2 cups all-purpose flour",
+            "1/2 cup cold butter, cubed",
+            "1 egg, for glazing",
+            "1/2 cup cold water",
+            "1 lb minced meat (beef or chicken)",
+            "1 large onion, chopped",
+            "2 carrots, diced",
+            "1 potato, diced",
+            "1/2 cup peas",
+            "2 tablespoons vegetable oil",
+            "1 beef or chicken bouillon cube",
+            "1 teaspoon thyme",
+            "Salt and pepper to taste"
+        ],
+        "cookingInstructions": [
+            "To make the pastry, mix flour and a pinch of salt, then cut in butter until mixture resembles coarse crumbs. Gradually add water, stirring until dough forms. Wrap and chill.",
+            "Heat oil in a pan, cook onions until soft. Add minced meat, cook until browned. Add carrots, potatoes, peas, crumbled bouillon cube, thyme, salt, and pepper. Cook until vegetables are tender.",
+            "Preheat oven to 350°F (175°C). Roll out dough, cut circles, place filling on one half, then fold over and seal edges. Brush with beaten egg.",
+            "Bake for 30-35 minutes or until golden brown."
+        ]
+    },
+    {
+        "id": 5,
+        "title": "Chocolate Chip Cookies",
+        "description": "A classic chocolatey sweet indulgence.",
+        "imageSrc": "img/food/choc_chip_cookies.jpg",
+        "url": "/recipe5",
+        "ingredients": [
+            "2 1/4 cups all-purpose flour",
+            "1/2 teaspoon baking soda",
+            "1 cup unsalted butter, room temperature",
+            "1/2 cup granulated sugar",
+            "1 cup packed light-brown sugar",
+            "1 teaspoon salt",
+            "2 teaspoons pure vanilla extract",
+            "2 large eggs",
+            "2 cups semisweet and/or milk chocolate chips"
+        ],
+        "cookingInstructions": [
+            "Preheat oven to 350°F (175°C).",
+            "In a small bowl, whisk together flour and baking soda; set aside.",
+            "In a large bowl, combine butter with both sugars; beat on medium speed until light and fluffy. Reduce speed to low; add salt, vanilla, and eggs. Beat until well mixed, about 1 minute. Add flour mixture; mix until just combined. Stir in chocolate chips.",
+            "Drop heaping tablespoon-size balls of dough about 2 inches apart on baking sheets lined with parchment paper.",
+            "Bake until cookies are golden around the edges, but still soft in the center, 8 to 10 minutes. Remove from oven, and let cool on baking sheet 1 to 2 minutes. Transfer to a wire rack, and let cool completely."
+        ]
+    },
+    {
+        "id": 6,
+        "title": "Creole Jambalaya",
+        "description": "A soulful and savory dish deeply rooted in Louisiana's culinary culture.",
+        "imageSrc": "img/food/jambalaya.jpg",
+        "url": "/recipe6",
+        "ingredients": [
+            "2 tablespoons vegetable oil",
+            "1 lb chicken breast, cubed",
+            "1 lb andouille sausage, sliced",
+            "1 large onion, chopped",
+            "1 green bell pepper, chopped",
+            "3 celery stalks, chopped",
+            "2 cloves garlic, minced",
+            "1 (14.5 ounce) can diced tomatoes",
+            "3 cups chicken broth",
+            "1 1/2 cups long-grain rice",
+            "1 teaspoon paprika",
+            "1/2 teaspoon cayenne pepper",
+            "1/2 teaspoon dried thyme",
+            "1/2 teaspoon dried oregano",
+            "Salt and pepper to taste",
+            "1 lb shrimp, peeled and deveined",
+            "2 green onions, sliced"
+        ],
+        "cookingInstructions": [
+            "Heat oil in a large pot over medium heat. Add chicken and sausage; cook until browned. Remove with a slotted spoon and set aside.",
+            "In the same pot, add onion, bell pepper, celery, and garlic. Cook until vegetables are softened, about 5 minutes.",
+            "Stir in diced tomatoes, chicken broth, rice, paprika, cayenne, thyme, oregano, salt, and pepper. Bring to a simmer.",
+            "Return chicken and sausage to the pot. Cover and simmer until rice is cooked, about 20 minutes.",
+            "Stir in shrimp and cook until pink, about 5 minutes. Garnish with green onions before serving."
+        ]
+    },
+    {
+        "id": 7,
+        "title": "Soup Dumplings",
+        "description": "Soup dumplings are a celebrated Chinese delicacy that encapsulate a rich, savory broth and a tender meat filling, typically pork, inside a thin, delicate dough wrapper.",
+        "imageSrc": "img/food/soup_dumplings.jpg",
+        "url": "/recipe7",
+        "ingredients": [
+            "2 cups all-purpose flour",
+            "3/4 cup warm water",
+            "1/2 lb ground pork",
+            "1/4 cup chicken stock, jellied",
+            "1 tablespoon soy sauce",
+            "1 teaspoon sesame oil",
+            "1 teaspoon minced ginger",
+            "2 green onions, finely chopped",
+            "Salt to taste"
+        ],
+        "cookingInstructions": [
+            "Mix flour with warm water to form a dough. Knead until smooth, then cover and let rest.",
+            "Mix ground pork, jellied chicken stock, soy sauce, sesame oil, ginger, green onions, and salt.",
+            "Roll out dough and cut into small circles. Place a small amount of filling in the center of each circle. Gather the edges and seal the dumpling.",
+            "Steam dumplings in a bamboo steamer over boiling water for about 10 minutes or until cooked through."
+        ]
+    },
+    {
+        "id": 8,
+        "title": "Pho",
+        "description": "A beloved Vietnamese dish.",
+        "imageSrc": "img/food/pho.jpg",
+        "url": "/recipe8",
+        "ingredients": [
+            "2 onions, quartered",
+            "4-inch piece of ginger, halved lengthwise",
+            "5 star anise",
+            "4 cloves",
+            "3 cinnamon sticks",
+            "1 cardamom pod",
+            "1 tablespoon coriander seeds",
+            "1 beef bone with marrow",
+            "1 lb beef brisket",
+            "4 quarts water",
+            "Fish sauce, to taste",
+            "1 lb rice noodles",
+            "Thinly sliced beef sirloin",
+            "Toppings: basil, lime wedges, bean sprouts, sliced green onions, and sliced jalapenos"
+        ],
+        "cookingInstructions": [
+            "Char onions and ginger under the broiler or over an open flame. Add to a large pot along with star anise, cloves, cinnamon, cardamom, coriander seeds, beef bone, and brisket. Cover with water and bring to a boil. Reduce heat and simmer for at least 2 hours.",
+            "Remove brisket and set aside. Strain broth and return to pot; season with fish sauce.",
+            "Cook rice noodles according to package instructions. Slice brisket.",
+            "Assemble bowls with noodles, broth, slices of brisket and sirloin. The heat of the broth will cook the thin sirloin slices. Serve with toppings."
+        ]
+    }
+]
