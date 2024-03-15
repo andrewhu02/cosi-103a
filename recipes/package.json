@@ -20,7 +20,7 @@
     "test": "react-scripts test",
     "test-server": "jest ./server",
     "eject": "react-scripts eject",
-    "start": "npm run build && (cd server && node index.js)"
+    "start": "npm run build && (cd server && nodemon index.js)"
   },
   "eslintConfig": {
     "extends": [
