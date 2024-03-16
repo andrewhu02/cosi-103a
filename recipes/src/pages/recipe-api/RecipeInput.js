@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
-import {Form, Stack, Button, Container, Row, Col} from 'react-bootstrap';
+import {Form, Stack, Button, Container, Row, Col, Modal} from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
 
 const RecipeInput = ({ recipes, setRecipes }) => {
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
-  const [imageUrl, setImageUrl] = useState('');
+  const [imageURL, setImageUrl] = useState('');
   const [JSONText, setJSONText] = useState('');
   //array based values in JSON
   const [newIngredient, setNewIngredient] = useState('')
@@ -19,12 +19,12 @@ const RecipeInput = ({ recipes, setRecipes }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
+    setShowPopup(true);
     if (!title || !description || !ingredients) {
       setError('Please fill out all required fields.');
       return;
     }
-    if (imageUrl && !isValidImageUrl(imageUrl)) {
+    if (imageURL && !isValidImageUrl(imageURL)) {
       setError('Invalid image URL.');
       return;
     }
@@ -32,7 +32,7 @@ const RecipeInput = ({ recipes, setRecipes }) => {
     const newRecipe = {
       title,
       description,
-      imageUrl: imageUrl || '/img/food/food.jpg',
+      imageSrc: imageURL || '/img/food/food.jpg',
       ingredients,
       cookingInstructions,
     };
@@ -59,33 +59,38 @@ const RecipeInput = ({ recipes, setRecipes }) => {
         setError('');
 
         setRecipes([...recipes, data]);
-        navigate('/all-recipes'); 
+      
       })
       .catch((error) => console.error('Error adding recipe:', error));
   };
 
   const handleJSONSubmit= (e) =>{
     e.preventDefault()
+    setShowPopup(true);
     //check if JSON contains expected key 
-    const expectedKeys = ['title','description','imageURL','ingredients','cookingInstructions']
-    expectedKeys.forEach(key=>{
-      if(JSONText.includes(key)){
-        console.log(JSONText+" "+key)
-        setError('JSON is missing '+key+' value, please add it in')
+    const expectedKeys = ['title','description','imageSrc','ingredients','cookingInstructions'];
+    for(let i=0;i<4;i++){
+      let key = expectedKeys[i];
+      if(!JSONText.includes(key)){
+        setError('JSON is missing '+key+' value, please add it in');
         return;
       }
-    })
+    }
     //check if the JSON file can actually convert to be a JSON
     try{JSON.parse(JSONText,(key,val)=>{
-      if(key==='imageURL'){
-        if(val.length==0 || !isValidImageUrl(val)){
-          setError('Invalid Image URL')
+      if(key==='imageSrc'){
+        if(!isValidImageUrl(val)){
+          setError('Invalid Image URL');
           return;
         }
+        else if(val==''){
+            val='/img/food/food.jpg';
+          }
         }
     })
     }
     catch(err){
+      console.log(err)
       setError('This JSON is not in a correct JSON format, please recheck and submit again')
       return; 
     }
@@ -101,7 +106,6 @@ const RecipeInput = ({ recipes, setRecipes }) => {
         console.log('New recipe added: ', data)
         setJSONText('');
         setRecipes([...recipes,data]);
-        navigate('/all-recipes');
       })
         .catch((err)=>console.log('Error adding recipe:',err))
   }
@@ -114,6 +118,7 @@ const RecipeInput = ({ recipes, setRecipes }) => {
   const handleClosePopup = () => {
     setShowPopup(false);
   };
+  
 
   const AddNewIngredient= ()=>{
     setIngredients(([...ingredients,newIngredient]));
@@ -126,7 +131,7 @@ const RecipeInput = ({ recipes, setRecipes }) => {
   const displayList=(data)=>{
     let str=""
     data.map(ing =>{
-      str+=ing+",\n"
+      str+=ing+", "
     })
   
     return str;
@@ -140,20 +145,20 @@ const RecipeInput = ({ recipes, setRecipes }) => {
           <Col>
             <Form className='mx-auto'>
               <Form.Group className='mb-3'>
-              <Form.Label> Title:</Form.Label>
+              <Form.Label> *Title:</Form.Label>
                 <Form.Control type="text" value={title} onChange={(e) => setTitle(e.target.value)} />
               </Form.Group>
               <Form.Group className='mb-3'>
-              <label> Description: </label>
+              <label> *Description: </label>
               <Form.Control value={description} onChange={(e) => setDescription(e.target.value)} />
             </Form.Group>
             <Form.Group className='mb-3'>
               <Form.Label> Image URL (Optional):</Form.Label>
-              <Form.Control type="text" value={imageUrl} onChange={(e) => setImageUrl(e.target.value)} />
+              <Form.Control type="text" value={imageURL} onChange={(e) => setImageUrl(e.target.value)} />
             </Form.Group>
             <Form.Group className='mb-3'>
               
-              <Form.Label> Ingredients:  </Form.Label>
+              <Form.Label> *Ingredients:  </Form.Label>
                 <Stack className='mx-auto' direction='horizontal'> 
                 <Form.Control type='text' value={newIngredient} onChange={(e)=>{setNewIngredient(e.target.value)}}/>
                   <Button onClick={AddNewIngredient}>Add</Button></Stack>
@@ -177,20 +182,29 @@ const RecipeInput = ({ recipes, setRecipes }) => {
             <Form>
               <Form.Group className='mb-3'>
               <Form.Label>  JSON  </Form.Label>
-              <Form.Control as='textarea' rows={20} value={JSONText} onChange={(e) => setJSONText(e.target.value)} className="recipe-textarea" />
+              <Form.Control as='textarea' rows={18} value={JSONText} 
+              placeholder={'reccomended JSON format:\n {\ntitle:\ndescription:\nimageSrc:\ningredients:\ncookingInstructions:\n}'}
+              onChange={(e) => setJSONText(e.target.value)} className="recipe-textarea" />
               </Form.Group>
               <Button type='submit' onClick={handleJSONSubmit}>Submit JSON</Button>
           </Form>
         </Col>
        </Row>
       </Container>
-      {error && <p className="error-message">{error}</p>}
-      {showPopup && (
-        <Container className="popup">
-          <p>Recipe added successfully!</p>
-          <button onClick={handleClosePopup}>OK</button>
-        </Container>
-      )}
+      
+      <Modal show={showPopup} onHide={handleClosePopup}>
+        <Modal.Body>
+          <p>
+          {error}
+          {!error && 'Recipe added succesfully'}</p>
+        </Modal.Body>
+        <Modal.Footer>
+          {!error ? (<a href='/all-recipes'>
+          <Button>Check Recipes</Button>
+          </a>) : ''}
+          <Button onClick={handleClosePopup}>OK</Button>
+        </Modal.Footer>
+      </Modal>
     </div>
   );
 };

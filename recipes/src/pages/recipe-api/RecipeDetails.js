@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import {Row, Col, Container} from 'react-bootstrap';
 import RecipePageTemplate from './RecipePageTemplate.js'
 
 // display all recipes from the API
@@ -17,13 +18,40 @@ const RecipeDetails = () => {
         setRecipes(data);
       });
   }, []);
+  let prev;
   // return element which displays recipes
   return (
     <div>
-      {recipes.map((recipeObject) => (
-        // create a page for each recipe using the template
-        <RecipePageTemplate recipe={recipeObject} />
-      ))}
+      <Container>
+      {
+      
+      recipes.map((recipeObject) => {
+      if(recipeObject.id % 2 != 0){
+        prev = recipeObject;
+      }
+      else if(recipeObject.id === recipes.length){
+        return (
+          <Row>
+            <Col>
+              <RecipePageTemplate recipe={recipeObject} />
+            </Col>
+          </Row>
+        )
+      }
+      else {
+        return (
+        <Row>
+          <Col>
+           <RecipePageTemplate recipe={prev} />
+           <RecipePageTemplate recipe={recipeObject} />
+          </Col>
+        </Row>)
+      }
+      
+        // create a page for each recipe using the templa
+      })
+    }
+      </Container>
     </div>
   )
 }
