@@ -15,8 +15,9 @@ export default function RecipePage({recipe}) {
          <ul>
             {recipe.ingredients.map((ingredient) => (
                 
-                <li><Stack direction="horizontal"><p>{ingredient}</p>
-                    <p>Nutritional facts</p>
+                <li><Stack direction="horizontal">
+                    <p className='p-2'>{ingredient}</p>
+                    <p className="p-2">Nutritional facts</p>
                 </Stack></li>
             ))}
             </ul>
