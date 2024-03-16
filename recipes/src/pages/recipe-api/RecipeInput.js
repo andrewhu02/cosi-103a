@@ -128,14 +128,14 @@ const RecipeInput = ({ recipes, setRecipes }) => {
     setInstructions(([...cookingInstructions,newInstruction]))
     setNewInstruction('');
   }
-  const displayList=(data)=>{
+  /*const displayList=(data)=>{
     let str=""
-    data.map(ing =>{
+    data.forEach(ing =>{
       str+=ing+", "
     })
   
     return str;
-  }
+  }*/
 
   return (
     <div className="recipe-input-container">
@@ -162,7 +162,7 @@ const RecipeInput = ({ recipes, setRecipes }) => {
                 <Stack className='mx-auto' direction='horizontal'> 
                 <Form.Control type='text' value={newIngredient} onChange={(e)=>{setNewIngredient(e.target.value)}}/>
                   <Button onClick={AddNewIngredient}>Add</Button></Stack>
-                  <Form.Control as='textarea' value={displayList(ingredients)} disabled rows={3}/>
+                  <Form.Control as='textarea' value={ingredients} disabled rows={3}/>
                 
             </Form.Group>
             <Form.Group className='mb-3'>
@@ -170,7 +170,7 @@ const RecipeInput = ({ recipes, setRecipes }) => {
               <Stack className='mx-auto' direction='horizontal'> 
               <Form.Control type='text' value={newInstruction} onChange={(e)=>{setNewInstruction(e.target.value)}}/>
                   <Button onClick={AddNewInstruction}>Add</Button></Stack>
-                  <Form.Control as='textarea' value={displayList(cookingInstructions)} disabled rows={3}/>
+                  <Form.Control as='textarea' value={cookingInstructions} disabled rows={3}/>
                 
             </Form.Group>
             <Button type="submit" onClick={handleSubmit}>

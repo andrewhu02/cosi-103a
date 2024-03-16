@@ -25,11 +25,12 @@ const RecipeDetails = () => {
       <Container>
       {
       
-      recipes.map((recipeObject) => {
-      if(recipeObject.id % 2 != 0){
-        prev = recipeObject;
-      }
-      else if(recipeObject.id === recipes.length){
+      recipes.map(
+        (recipeObject) => {
+          if(recipeObject.id % 2 != 0 && recipeObject.id != recipes.length){
+            prev = recipeObject;
+          }
+          else if(recipeObject.id === recipes.length){
         return (
           <Row>
             <Col>
