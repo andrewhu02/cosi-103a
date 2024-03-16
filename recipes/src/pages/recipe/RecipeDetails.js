@@ -1,31 +1,29 @@
 import React, { useEffect, useState } from 'react';
 import RecipePageTemplate from './RecipePageTemplate.js'
 
-// display all recipes from the API
 const RecipeDetails = () => {
-  // used to store fetched recipes 
-  const [recipes, setRecipes] = useState([])
-  // GET list of recipes from API
+  const [recipes, setRecipes] = useState(null); // Set initial state to null
+
   useEffect(() => {
     fetch('/api/recipes', { method: 'GET' })
-      .then((res) => {
-        return res.json();
-      })
-      .then((data) => {
-        console.log(data);
-        // the API returns an array of Objects, each is a recipe
-        setRecipes(data);
-      });
+      .then((res) => res.json())
+      .then((data) => setRecipes(data))
+      .catch((error) => console.error('Error fetching recipes:', error));
   }, []);
-  // return element which displays recipes
+
+  // Render loading state while fetching data
+  if (recipes === null) {
+    return <div>Loading...</div>;
+  }
+
+  // Render the recipes when data is available
   return (
     <div>
       {recipes.map((recipeObject) => (
-        // create a page for each recipe using the template
-        <RecipePageTemplate recipe={recipeObject} />
+        <RecipePageTemplate key={recipeObject.id} recipe={recipeObject} />
       ))}
     </div>
-  )
-}
+  );
+};
 
 export default RecipeDetails;
