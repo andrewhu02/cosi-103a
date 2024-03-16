@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import {Form, Stack, Button} from 'react-bootstrap';
+import {Form, Stack, Button, Container, Row, Col} from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
 
 const RecipeInput = ({ recipes, setRecipes }) => {
@@ -68,8 +68,9 @@ const RecipeInput = ({ recipes, setRecipes }) => {
     e.preventDefault()
     //check if JSON contains expected key 
     const expectedKeys = ['title','description','imageURL','ingredients','cookingInstructions']
-    expectedKeys.map(key=>{
-      if(!JSONText.includes(key)){
+    expectedKeys.forEach(key=>{
+      if(JSONText.includes(key)){
+        console.log(JSONText+" "+key)
         setError('JSON is missing '+key+' value, please add it in')
         return;
       }
@@ -134,55 +135,61 @@ const RecipeInput = ({ recipes, setRecipes }) => {
   return (
     <div className="recipe-input-container">
       <h2>Add New Recipe</h2>
-      <div className="form-container " >
-        <Form className='mx-auto'>
-          <Form.Group className='mb-3'>
-          <Form.Label> Title:</Form.Label>
-            <Form.Control type="text" value={title} onChange={(e) => setTitle(e.target.value)} />
-          </Form.Group>
-          <Form.Group className='mb-3'>
-          <label> Description: </label>
-          <Form.Control value={description} onChange={(e) => setDescription(e.target.value)} />
-        </Form.Group>
-        <Form.Group className='mb-3'>
-          <Form.Label> Image URL (Optional):</Form.Label>
-          <input type="text" value={imageUrl} onChange={(e) => setImageUrl(e.target.value)} />
-         </Form.Group>
-         <Form.Group className='mb-3'>
-          
-          <Form.Label> Ingredients:  </Form.Label>
-            <Stack className='mx-auto' direction='horizontal'> 
-              <input type='text' value={newIngredient} onChange={(e)=>{setNewIngredient(e.target.value)}}/>
-              <Button onClick={AddNewIngredient}>Add</Button></Stack>
-              <Form.Control type='textarea' value={displayList(ingredients)} disabled rows={3}/>
-            
-        </Form.Group>
-        <Form.Group className='mb-3'>
-        <Form.Label> Instructions: (Optional) </Form.Label>
-        <Stack className='mx-auto' direction='horizontal'> 
-              <input type='text' value={newInstruction} onChange={(e)=>{setNewInstruction(e.target.value)}}/>
-              <Button onClick={AddNewInstruction}>Add</Button></Stack>
-              <Form.Control type='textarea' value={displayList(cookingInstructions)} disabled rows={3}/>
-            
-        </Form.Group>
-        <Button type="submit" onClick={handleSubmit}>
-            Add Recipe
-            </Button>
-        </Form>
-        <Form>
-          <Form.Group className='mb-3'>
-          <Form.Label>  JSON  </Form.Label>
-          <Form.Control value={JSONText} onChange={(e) => setJSONText(e.target.value)} className="recipe-textarea" />
-          </Form.Group>
-          <Button type='submit' onClick={handleJSONSubmit}>Submit JSON</Button>
-      </Form>
-      </div>
+      <Container>
+        <Row>
+          <Col>
+            <Form className='mx-auto'>
+              <Form.Group className='mb-3'>
+              <Form.Label> Title:</Form.Label>
+                <Form.Control type="text" value={title} onChange={(e) => setTitle(e.target.value)} />
+              </Form.Group>
+              <Form.Group className='mb-3'>
+              <label> Description: </label>
+              <Form.Control value={description} onChange={(e) => setDescription(e.target.value)} />
+            </Form.Group>
+            <Form.Group className='mb-3'>
+              <Form.Label> Image URL (Optional):</Form.Label>
+              <Form.Control type="text" value={imageUrl} onChange={(e) => setImageUrl(e.target.value)} />
+            </Form.Group>
+            <Form.Group className='mb-3'>
+              
+              <Form.Label> Ingredients:  </Form.Label>
+                <Stack className='mx-auto' direction='horizontal'> 
+                <Form.Control type='text' value={newIngredient} onChange={(e)=>{setNewIngredient(e.target.value)}}/>
+                  <Button onClick={AddNewIngredient}>Add</Button></Stack>
+                  <Form.Control as='textarea' value={displayList(ingredients)} disabled rows={3}/>
+                
+            </Form.Group>
+            <Form.Group className='mb-3'>
+            <Form.Label> Instructions: (Optional) </Form.Label>
+              <Stack className='mx-auto' direction='horizontal'> 
+              <Form.Control type='text' value={newInstruction} onChange={(e)=>{setNewInstruction(e.target.value)}}/>
+                  <Button onClick={AddNewInstruction}>Add</Button></Stack>
+                  <Form.Control as='textarea' value={displayList(cookingInstructions)} disabled rows={3}/>
+                
+            </Form.Group>
+            <Button type="submit" onClick={handleSubmit}>
+                Submit Recipe
+                </Button>
+            </Form>
+          </Col>
+          <Col>
+            <Form>
+              <Form.Group className='mb-3'>
+              <Form.Label>  JSON  </Form.Label>
+              <Form.Control as='textarea' rows={20} value={JSONText} onChange={(e) => setJSONText(e.target.value)} className="recipe-textarea" />
+              </Form.Group>
+              <Button type='submit' onClick={handleJSONSubmit}>Submit JSON</Button>
+          </Form>
+        </Col>
+       </Row>
+      </Container>
       {error && <p className="error-message">{error}</p>}
       {showPopup && (
-        <div className="popup">
+        <Container className="popup">
           <p>Recipe added successfully!</p>
           <button onClick={handleClosePopup}>OK</button>
-        </div>
+        </Container>
       )}
     </div>
   );
