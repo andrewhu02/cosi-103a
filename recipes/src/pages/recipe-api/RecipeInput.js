@@ -6,11 +6,13 @@ const RecipeInput = ({ recipes, setRecipes }) => {
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
   const [imageUrl, setImageUrl] = useState('');
-  const [recipeText, setRecipeText] = useState('');
+  const [JSONText, setJSONText] = useState('');
+  //array based values in JSON
   const [newIngredient, setNewIngredient] = useState('')
   const [ingredients, setIngredients] = useState([]);
   const [newInstruction, setNewInstruction] = useState([])
   const [cookingInstructions, setInstructions] = useState([]);
+  //related w website interaction
   const [showPopup, setShowPopup] = useState(false);
   const [error, setError] = useState('');
   const navigate = useNavigate();
@@ -18,7 +20,7 @@ const RecipeInput = ({ recipes, setRecipes }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    if (!title || !description || !recipeText || !ingredients) {
+    if (!title || !description || !ingredients) {
       setError('Please fill out all required fields.');
       return;
     }
@@ -33,7 +35,6 @@ const RecipeInput = ({ recipes, setRecipes }) => {
       imageUrl: imageUrl || '/img/food/food.jpg',
       ingredients,
       cookingInstructions,
-      recipeText,
     };
 
     // Make a POST request to add the new recipe
@@ -54,7 +55,6 @@ const RecipeInput = ({ recipes, setRecipes }) => {
         setImageUrl('');
         setIngredients('');
         setInstructions('');
-        setRecipeText('');
         setShowPopup(true);
         setError('');
 
@@ -63,6 +63,47 @@ const RecipeInput = ({ recipes, setRecipes }) => {
       })
       .catch((error) => console.error('Error adding recipe:', error));
   };
+
+  const handleJSONSubmit= (e) =>{
+    e.preventDefault()
+    //check if JSON contains expected key 
+    const expectedKeys = ['title','description','imageURL','ingredients','cookingInstructions']
+    expectedKeys.map(key=>{
+      if(!JSONText.includes(key)){
+        setError('JSON is missing '+key+' value, please add it in')
+        return;
+      }
+    })
+    //check if the JSON file can actually convert to be a JSON
+    try{JSON.parse(JSONText,(key,val)=>{
+      if(key==='imageURL'){
+        if(val.length==0 || !isValidImageUrl(val)){
+          setError('Invalid Image URL')
+          return;
+        }
+        }
+    })
+    }
+    catch(err){
+      setError('This JSON is not in a correct JSON format, please recheck and submit again')
+      return; 
+    }
+
+    fetch('api/recipes',{
+      method:'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSONText
+    }).then((response)=> response.json())
+      .then((data)=>{
+        console.log('New recipe added: ', data)
+        setJSONText('');
+        setRecipes([...recipes,data]);
+        navigate('/all-recipes');
+      })
+        .catch((err)=>console.log('Error adding recipe:',err))
+  }
 
   const isValidImageUrl = (url) => {
     //TODO: Check if URL is for a valid image
@@ -97,11 +138,11 @@ const RecipeInput = ({ recipes, setRecipes }) => {
         <Form className='mx-auto'>
           <Form.Group className='mb-3'>
           <Form.Label> Title:</Form.Label>
-            <input type="text" value={title} onChange={(e) => setTitle(e.target.value)} />
+            <Form.Control type="text" value={title} onChange={(e) => setTitle(e.target.value)} />
           </Form.Group>
           <Form.Group className='mb-3'>
           <label> Description: </label>
-          <textarea value={description} onChange={(e) => setDescription(e.target.value)} />
+          <Form.Control value={description} onChange={(e) => setDescription(e.target.value)} />
         </Form.Group>
         <Form.Group className='mb-3'>
           <Form.Label> Image URL (Optional):</Form.Label>
@@ -124,13 +165,16 @@ const RecipeInput = ({ recipes, setRecipes }) => {
               <Form.Control type='textarea' value={displayList(cookingInstructions)} disabled rows={3}/>
             
         </Form.Group>
-        <Form.Group className='mb-3'>
-        <Form.Label>  Recipe Text:  </Form.Label>
-          <textarea value={recipeText} onChange={(e) => setRecipeText(e.target.value)} className="recipe-textarea" />
-        </Form.Group>
         <Button type="submit" onClick={handleSubmit}>
-          Add Recipe
-        </Button>
+            Add Recipe
+            </Button>
+        </Form>
+        <Form>
+          <Form.Group className='mb-3'>
+          <Form.Label>  JSON  </Form.Label>
+          <Form.Control value={JSONText} onChange={(e) => setJSONText(e.target.value)} className="recipe-textarea" />
+          </Form.Group>
+          <Button type='submit' onClick={handleJSONSubmit}>Submit JSON</Button>
       </Form>
       </div>
       {error && <p className="error-message">{error}</p>}
