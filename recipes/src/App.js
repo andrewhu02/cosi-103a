@@ -7,8 +7,8 @@ import AboutUs from './pages/AboutUs';
 import ContainerCards from './pages/Homepage';
 import GroceryList from './shared/components/grocery_list/GroceryList';
 import CookingModeDisplay from './shared/components/cooking_mode/CookingMode';
-import RecipeInput from './pages/recipe/RecipeInput';
-import RecipeDetails from './pages/recipe/RecipeDetails';
+import RecipeInput from './pages/recipe-api/RecipeInput';
+import RecipeDetails from './pages/recipe-api/RecipeDetails';
 import {
   Chicken,
   Guacamole,
@@ -37,7 +37,7 @@ export default function App() {
           element: <ContainerCards />,
         },
         {
-          path: '/recipe-input',
+          path: '/add-new-recipe',
           element: <RecipeInput recipes={recipes} setRecipes={setRecipes} />,
         },
         {
@@ -77,8 +77,8 @@ export default function App() {
           element: <AboutUs />,
         },
         {
-          path: '/recipe-details',
-          element: <RecipeDetails />,
+          path: '/all-recipes',
+          element: <RecipeDetails recipes={recipes} />,
         }
       ],
     },
