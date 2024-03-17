@@ -1,38 +1,40 @@
-// takes a correctly formatted recipe object
-// and returns a recipe page
-import { Accordion, Stack, Card } from "react-bootstrap"
-// TODO: image formatting
-export default function RecipePage({recipe}) {
-    
-    return (
-        <Card>
-            <h1>{recipe.title}</h1>
-            <img src={recipe.imageSrc} className="center scaled-image padded-image" />
-            <p>{recipe.description}</p>
-        <Accordion>
-        <Accordion.Header>Ingredients</Accordion.Header>
-         <Accordion.Body>
-         <ul>
-            {recipe.ingredients.map((ingredient) => (
-                
-                <li><Stack direction="horizontal">
-                    <p className='p-2'>{ingredient}</p>
-                    <p className="p-2">Nutritional facts</p>
-                </Stack></li>
-            ))}
+import React from 'react';
+import { Accordion, Card } from 'react-bootstrap';
+
+export default function RecipePageTemplate({ recipe }) {
+  return (
+    <Card>
+      <h1>{recipe.title}</h1>
+      <img src={recipe.imageSrc} className="center scaled-image padded-image" alt={recipe.title} />
+      <p>{recipe.description}</p>
+      <Accordion>
+        <Accordion.Item eventKey="0">
+          <Accordion.Header>Ingredients</Accordion.Header>
+          <Accordion.Body>
+            <ul>
+              {recipe.ingredients.map((ingredient, index) => (
+                <li key={index} style={{ textAlign: 'left' }}>
+                  <a href={`https://fdc.nal.usda.gov/fdc-app.html#/food-details/${ingredient}`} target="_blank" rel="noopener noreferrer">
+                    {ingredient}
+                  </a>
+                </li>
+              ))}
             </ul>
-        </Accordion.Body>
-        </Accordion>
-        <Accordion>
-        <Accordion.Header>Instructions</Accordion.Header>
-         <Accordion.Body>
+          </Accordion.Body>
+        </Accordion.Item>
+      </Accordion>
+      <Accordion>
+        <Accordion.Item eventKey="1">
+          <Accordion.Header>Instructions</Accordion.Header>
+          <Accordion.Body>
             <ol>
-                {recipe.cookingInstructions.map((step) => (
-                    <li>{step}</li>
-                ))}
+              {recipe.cookingInstructions.map((step, index) => (
+                <li key={index}>{step}</li>
+              ))}
             </ol>
-            </Accordion.Body>
-        </Accordion>
-        </Card>
-    )
+          </Accordion.Body>
+        </Accordion.Item>
+      </Accordion>
+    </Card>
+  );
 }

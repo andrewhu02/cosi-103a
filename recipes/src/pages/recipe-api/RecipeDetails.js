@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import {Row, Col, Container} from 'react-bootstrap';
-import RecipePageTemplate from './RecipePageTemplate.js'
+import RecipePageTemplate from './RecipePageTemplate';
 
-// display all recipes from the API
+// Display all recipes from the API
 const RecipeDetails = () => {
-  // used to store fetched recipes 
-  const [recipes, setRecipes] = useState([])
+  // Used to store fetched recipes 
+  const [recipes, setRecipes] = useState([]);
+
   // GET list of recipes from API
   useEffect(() => {
     fetch('/api/recipes', { method: 'GET' })
@@ -14,47 +15,23 @@ const RecipeDetails = () => {
       })
       .then((data) => {
         console.log(data);
-        // the API returns an array of Objects, each is a recipe
+        // The API returns an array of objects, each representing a recipe
         setRecipes(data);
       });
   }, []);
-  let prev;
-  // return element which displays recipes
+
   return (
-    <div>
-      <Container>
-      {
-      
-      recipes.map(
-        (recipeObject) => {
-          if(recipeObject.id % 2 != 0 && recipeObject.id != recipes.length){
-            prev = recipeObject;
-          }
-          else if(recipeObject.id === recipes.length){
-        return (
-          <Row>
-            <Col>
-              <RecipePageTemplate recipe={recipeObject} />
-            </Col>
-          </Row>
-        )
-      }
-      else {
-        return (
-        <Row>
-          <Col>
-           <RecipePageTemplate recipe={prev} />
-           <RecipePageTemplate recipe={recipeObject} />
+    <Container>
+      <Row>
+        {recipes.map((recipe, index) => (
+          <Col md={6} key={index}>
+            {/* Use the RecipePageTemplate component for each recipe */}
+            <RecipePageTemplate recipe={recipe} />
           </Col>
-        </Row>)
-      }
-      
-        // create a page for each recipe using the templa
-      })
-    }
-      </Container>
-    </div>
-  )
+        ))}
+      </Row>
+    </Container>
+  );
 }
 
 export default RecipeDetails;

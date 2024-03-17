@@ -90,8 +90,7 @@ export default function App() {
   );
 }
 
-function Root() {
-  const [recipes, setRecipes] = useState([...recipeInstructions]);
+function Root({ recipes }) {
   const [showList, setShowList] = useState(false);
   const [showCook, setShowCook] = useState(false);
   const [cookRecipe, setCookRecipe] = useState({ title: '', desc: '', num: 0 });
@@ -106,6 +105,7 @@ function Root() {
   const handleCloseCook = () => {
     setShowCook(false);
   };
+
   // Redirect to the homepage if the user is on the root URL
   useEffect(() => {
     const shouldRedirect = window.location.pathname === '/';
@@ -119,11 +119,12 @@ function Root() {
       setShowCook(false);
     } else {
       const recipeNumber = parseInt(location.pathname.replace('/recipe', ''), 10);
-      if (!isNaN(recipeNumber) && recipeNumber >= 1 && recipeNumber <= recipeInstructions.length) {
-        setCookRecipe(recipeInstructions[recipeNumber - 1]);
+      if (!isNaN(recipeNumber) && recipeNumber >= 1 && recipeNumber <= recipes.length) {
+        setCookRecipe(recipes[recipeNumber - 1]);
       }
     }
-  }, [navigate, location]);
+  }, [navigate, location, recipes]);
+
   const handleCloseList = () => setShowList(false);
   const handleShowList = () => setShowList(true);
 
