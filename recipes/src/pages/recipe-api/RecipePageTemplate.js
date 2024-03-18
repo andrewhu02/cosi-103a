@@ -1,7 +1,38 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Accordion, Card } from 'react-bootstrap';
 
+// define API key here
+const apiKey = process.env.REACT_APP_API_KEY;
+
 export default function RecipePageTemplate({ recipe }) {
+  const [ingredientsWithLinks, setIngredientsWithLinks] = useState([]);
+
+  useEffect(() => {
+    const fetchIngredientLinks = async () => {
+      const ingredientLinks = await Promise.all(
+        recipe.ingredients.map(async (ingredient) => {
+          const response = await fetch(`https://api.nal.usda.gov/fdc/v1/foods/search?query=${ingredient}&api_key=${apiKey}`);
+          const data = await response.json();
+          if (data.foods && data.foods.length > 0) {
+            const firstResult = data.foods[0];
+            return {
+              name: ingredient,
+              fdcId: firstResult.fdcId
+            };
+          } else {
+            return {
+              name: ingredient,
+              fdcId: null
+            };
+          }
+        })
+      );
+      setIngredientsWithLinks(ingredientLinks);
+    };
+
+    fetchIngredientLinks();
+  }, [recipe.ingredients]);
+
   return (
     <Card>
       <h1>{recipe.title}</h1>
@@ -12,11 +43,15 @@ export default function RecipePageTemplate({ recipe }) {
           <Accordion.Header>Ingredients</Accordion.Header>
           <Accordion.Body>
             <ul>
-              {recipe.ingredients.map((ingredient, index) => (
+              {ingredientsWithLinks.map((ingredient, index) => (
                 <li key={index} style={{ textAlign: 'left' }}>
-                  <a href={`https://fdc.nal.usda.gov/fdc-app.html#/food-details/${ingredient}`} target="_blank" rel="noopener noreferrer">
-                    {ingredient}
-                  </a>
+                  {ingredient.fdcId ? (
+                    <a href={`https://fdc.nal.usda.gov/fdc-app.html#/food-details/${ingredient.fdcId}/nutrients`} target="_blank" rel="noopener noreferrer">
+                      {ingredient.name}
+                    </a>
+                  ) : (
+                    ingredient.name
+                  )}
                 </li>
               ))}
             </ul>

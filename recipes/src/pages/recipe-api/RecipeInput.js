@@ -2,6 +2,10 @@ import React, { useState } from 'react';
 import { Form, Stack, Button, Container, Row, Col, Modal } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
 
+// define API key here
+const apiKey = process.env.REACT_APP_API_KEY;
+
+
 const RecipeInput = ({ recipes, setRecipes }) => {
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
@@ -111,15 +115,53 @@ const RecipeInput = ({ recipes, setRecipes }) => {
     setShowPopup(false);
   };
 
+  const handleIngredientLookup = (ingredient) => {
+    fetch(`https://api.nal.usda.gov/fdc/v1/foods/search?query=${ingredient}&api_key=${apiKey}`)
+      .then(response => response.json())
+      .then(data => {
+        if (data.foods && data.foods.length > 0) {
+          const firstResult = data.foods[0];
+          const fdcId = firstResult.fdcId;
+          fetch(`https://api.nal.usda.gov/fdc/v1/food/${fdcId}?api_key=${apiKey}`)
+            .then(response => response.json())
+            .then(data => {
+              const foodDetails = data.description;
+              setIngredients([...ingredients, {
+                name: ingredient,
+                fdcId: fdcId,
+                foodDetails: foodDetails
+              }]);
+            })
+            .catch(error => {
+              console.error('Error retrieving food details:', error);
+              setError('Error retrieving food details.');
+            });
+        } else {
+          setIngredients([...ingredients, {
+            name: ingredient,
+            fdcId: null,
+            foodDetails: null
+          }]);
+        }
+      })
+      .catch(error => {
+        console.error('Error looking up ingredient:', error);
+        setError('Error looking up ingredient.');
+      });
+  };
+  
 
   const AddNewIngredient = () => {
-    setIngredients([...ingredients, newIngredient]);
+    if (newIngredient.trim() !== '') {
+      handleIngredientLookup(newIngredient);
+    }
     setNewIngredient('');
-  }
+  };
+
   const AddNewInstruction = () => {
     setInstructions([...cookingInstructions, newInstruction])
     setNewInstruction('');
-  }
+  };
 
   return (
     <div className="recipe-input-container">
@@ -141,7 +183,6 @@ const RecipeInput = ({ recipes, setRecipes }) => {
                 <Form.Control type="text" value={imageURL} onChange={(e) => setImageUrl(e.target.value)} />
               </Form.Group>
               <Form.Group className='mb-3'>
-
                 <Form.Label> *Ingredients:  </Form.Label>
                 <Stack className='mx-auto' direction='horizontal'>
                   <Form.Control type='text' value={newIngredient} onChange={(e) => { setNewIngredient(e.target.value) }} />
@@ -149,9 +190,13 @@ const RecipeInput = ({ recipes, setRecipes }) => {
                 <ul>
                   {ingredients.map((ingredient, index) => (
                     <li key={index}>
-                      <a href={`https://fdc.nal.usda.gov/fdc-app.html#/food-details/${ingredient}`} target="_blank" rel="noopener noreferrer">
-                        {ingredient}
-                      </a>
+                      {ingredient.fdcId ? (
+                        <a href={`https://fdc.nal.usda.gov/fdc-app.html#/food-details/${ingredient.fdcId}`} target="_blank" rel="noopener noreferrer">
+                          {ingredient.name}
+                        </a>
+                      ) : (
+                        ingredient.name
+                      )}
                     </li>
                   ))}
                 </ul>
