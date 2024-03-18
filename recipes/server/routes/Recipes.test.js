@@ -22,15 +22,26 @@ test('get recipe by ID', async() => {
     expect(res.body.id).toEqual(1);
 })
 
-test('post a recipe by ID', async() => {
+test('post a recipe', async() => {
     const recipe = {
         "title": "test recipe",
         "description": "this is a description of the recipe"
     }
-    const res = await request(app).post('/').send(recipe);
+    var res = await request(app).post('/').send(recipe);
     expect(res.statusCode).toBe(201);
     // watch out for this, recipe ID is set automatically
     // based on length of current array of recipes
-    expRec = await request(app).get('/9');
-    expect(expRec.body.title).toEqual("test recipe");
+    res = await request(app).get('/9');
+    expect(res.body.title).toEqual("test recipe");
+})
+
+test('delete a recipe by ID', async() => {
+    var res = await request(app).get('/1');
+    // verify that it didn't return 404, so recipe exists
+    expect(res.statusCode).toBe(200);
+    // delete recipe 1
+    await request(app).delete("/1");
+    // verify it was deleted, should get 404
+    res = await request(app).get('/1');
+    expect(res.statusCode).toBe(404);
 })
