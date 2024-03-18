@@ -1,19 +1,14 @@
 name: Fetch FDA API Key
 
 on:
-  push:
-    branches:
-      - main
+  workflow_dispatch:
 
 jobs:
-  fetch-api-key:
+  build:
     runs-on: ubuntu-latest
+
     steps:
-      - name: Fetch FDA API key from GitHub secrets
+      - name: Fetch FDA API Key from GitHub Secrets
+        run: echo "FDA_API_KEY=$FDA_API_KEY" >> .env
         env:
           FDA_API_KEY: ${{ secrets.FDA_API_KEY }}
-        run: 
-          echo "Fetched FDA_API_KEY: $FDA_API_KEY"
-          echo "FDA_API_KEY=$FDA_API_KEY" >> .env
-          echo "Updated .env file:"
-          cat .env
