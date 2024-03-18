@@ -1,18 +1,18 @@
 name: Fetch FDA API Key
 
 on:
+  push:
+    branches:
+      - main
   workflow_dispatch:
 
 jobs:
   build:
     runs-on: ubuntu-latest
 
-    defaults:
-      run:
-        working-directory: ./recipes/
-
     steps:
       - name: Create .env file and inject FDA API Key
+        working-directory: ./recipes
         run: |
           echo "FDA_API_KEY=${{ secrets.FDA_API_KEY }}" > .env
           cat .env
