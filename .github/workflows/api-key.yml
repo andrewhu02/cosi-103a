@@ -4,15 +4,17 @@ on:
   push:
     branches:
       - main
-  workflow_dispatch:
 
 jobs:
-  build:
+  fetch-api-key:
     runs-on: ubuntu-latest
-
+    defaults:
+      run:
+        working-directory: ./recipes/
     steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
       - name: Create .env file and inject FDA API Key
-        working-directory: recipes
         run: |
           echo "FDA_API_KEY=${{ secrets.FDA_API_KEY }}" > .env
-          cat .env
