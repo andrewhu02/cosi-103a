@@ -2,7 +2,7 @@ import pesto from '../../img/food/pesto.jpg';
 import pesto2 from '../../img/food/pesto2.jpg';
 import '../../App.css';
 import React from 'react';
-import RecipeStep from './RecipeStep';
+import RecipeStep from '../recipe-api/RecipeStep';
 
 export const pastaInstructions = [
   {

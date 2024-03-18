@@ -7,8 +7,8 @@ import AboutUs from './pages/AboutUs';
 import ContainerCards from './pages/Homepage';
 import GroceryList from './shared/components/grocery_list/GroceryList';
 import CookingModeDisplay from './shared/components/cooking_mode/CookingMode';
-import RecipeInput from './pages/recipe/RecipeInput';
-import RecipeDetails from './pages/recipe/RecipeDetails';
+import RecipeInput from './pages/recipe-api/RecipeInput';
+import RecipeDetails from './pages/recipe-api/RecipeDetails';
 import {
   Chicken,
   Guacamole,
@@ -20,7 +20,6 @@ import {
   Pho,
   recipeInstructions,
 } from './pages/recipe';
-
 
 export default function App() {
   const [recipes, setRecipes] = useState([...recipeInstructions]);
@@ -38,7 +37,7 @@ export default function App() {
           element: <ContainerCards />,
         },
         {
-          path: '/recipe-input',
+          path: '/add-new-recipe',
           element: <RecipeInput recipes={recipes} setRecipes={setRecipes} />,
         },
         {
@@ -78,7 +77,7 @@ export default function App() {
           element: <AboutUs />,
         },
         {
-          path: '/recipe-details',
+          path: '/all-recipes',
           element: <RecipeDetails recipes={recipes} />,
         }
       ],
@@ -91,8 +90,7 @@ export default function App() {
   );
 }
 
-function Root() {
-  const [recipes, setRecipes] = useState([...recipeInstructions]);
+function Root({ recipes }) {
   const [showList, setShowList] = useState(false);
   const [showCook, setShowCook] = useState(false);
   const [cookRecipe, setCookRecipe] = useState({ title: '', desc: '', num: 0 });
@@ -107,6 +105,7 @@ function Root() {
   const handleCloseCook = () => {
     setShowCook(false);
   };
+
   // Redirect to the homepage if the user is on the root URL
   useEffect(() => {
     const shouldRedirect = window.location.pathname === '/';
@@ -120,11 +119,12 @@ function Root() {
       setShowCook(false);
     } else {
       const recipeNumber = parseInt(location.pathname.replace('/recipe', ''), 10);
-      if (!isNaN(recipeNumber) && recipeNumber >= 1 && recipeNumber <= recipeInstructions.length) {
-        setCookRecipe(recipeInstructions[recipeNumber - 1]);
+      if (!isNaN(recipeNumber) && recipeNumber >= 1 && recipeNumber <= recipes.length) {
+        setCookRecipe(recipes[recipeNumber - 1]);
       }
     }
-  }, [navigate, location]);
+  }, [navigate, location, recipes]);
+
   const handleCloseList = () => setShowList(false);
   const handleShowList = () => setShowList(true);
 

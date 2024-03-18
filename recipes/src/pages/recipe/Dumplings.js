@@ -1,7 +1,7 @@
 import dumplings from '../../img/food/soup_dumplings.jpg';
 import '../../App.css';
 import React from 'react';
-import RecipeStep from './RecipeStep';
+import RecipeStep from '../recipe-api/RecipeStep';
 
 export const dumplingsInstructions = [
   {
