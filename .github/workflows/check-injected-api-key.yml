@@ -11,8 +11,8 @@ jobs:
 
     steps:
       - name: Print contents of .env file
-        run: cat recipes/.env
+        run: cat ./recipes/.env
 
       - name: Fetch API key from GitHub secrets and inject into .env
         run: |
-          echo "FDA_API_KEY=$FDA_API_KEY" >> recipes/.env
+          echo "FDA_API_KEY=$FDA_API_KEY" >> ./recipes/.env
