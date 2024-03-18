@@ -12,4 +12,8 @@ jobs:
       - name: Fetch FDA API key from GitHub secrets
         env:
           FDA_API_KEY: ${{ secrets.FDA_API_KEY }}
-        run: echo "FDA_API_KEY=$FDA_API_KEY" >> $GITHUB_ENV
+        run: 
+          echo "Fetched FDA_API_KEY: $FDA_API_KEY"
+          echo "FDA_API_KEY=$FDA_API_KEY" >> .env
+          echo "Updated .env file:"
+          cat .env
