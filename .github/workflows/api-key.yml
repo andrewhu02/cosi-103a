@@ -12,7 +12,7 @@ jobs:
 
     steps:
       - name: Create .env file and inject FDA API Key
-        working-directory: ./recipes
+        working-directory: recipes
         run: |
           echo "FDA_API_KEY=${{ secrets.FDA_API_KEY }}" > .env
           cat .env
