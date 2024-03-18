@@ -3,7 +3,8 @@ import { Form, Stack, Button, Container, Row, Col, Modal } from 'react-bootstrap
 import { useNavigate } from 'react-router-dom';
 
 // define API key here
-const apiKey = process.env.REACT_APP_API_KEY;
+const apiKey = process.env.FDA_API_KEY;
+// const apiKey = process.env.REACT_APP_API_KEY;
 
 
 const RecipeInput = ({ recipes, setRecipes }) => {
