@@ -1,7 +1,10 @@
 const express = require('express');
 const router = express.Router();
+const bodyParser = require('body-parser');
 
 const recipes = require("../recipes.json"); // recipes stored here
+
+router.use(bodyParser.json());
 
 // endpoint to get all recipes
 router.get('/', (req, res) => {
