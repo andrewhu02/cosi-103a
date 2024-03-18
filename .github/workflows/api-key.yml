@@ -8,7 +8,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Fetch FDA API Key from GitHub Secrets
-        run: echo "FDA_API_KEY=$FDA_API_KEY" >> .env
-        env:
-          FDA_API_KEY: ${{ secrets.FDA_API_KEY }}
+      - name: Create .env file and inject FDA API Key
+        run: |
+          echo "FDA_API_KEY=${{ secrets.FDA_API_KEY }}" > .env
+          cat .env
