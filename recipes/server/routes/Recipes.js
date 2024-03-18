@@ -8,7 +8,7 @@ router.get('/', (req, res) => {
     res.json(recipes);
 });
 
-// endpoint to get one recipe
+// endpoint to get one recipe by ID
 router.get('/:id', (req, res) => {
     const recipeId = parseInt(req.params.id);
 
