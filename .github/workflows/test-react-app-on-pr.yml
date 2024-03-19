@@ -14,5 +14,6 @@ jobs:
               with:
                 node-version-file: './package.json'
             - run: npm install # install dependencies
+            - run: npm run build # server uses built app to serve files
             - run: CI=true npm test # run ALL tests in .test.js files
             - run: npm run test-server # run tests in /server file
