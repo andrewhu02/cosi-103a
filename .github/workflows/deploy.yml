@@ -35,8 +35,6 @@ jobs:
       # Build and deploy Container App
       - name: Build and deploy Container App
         uses: azure/container-apps-deploy-action@v1
-        env: 
-          API_SECRET: ${{secrets.FDA_API_KEY}}
         with:
           appSourcePath: ${{ github.workspace }}/recipes
           dockerfilePath: Dockerfile
@@ -44,4 +42,4 @@ jobs:
           containerAppName: recipes-test # change to recipes when ready to merge
           resourceGroup: cosi-103a-test
           environmentVariables: |
-            REACT_APP_FDA_API_KEY=secretref:$API_SECRET
+            REACT_APP_FDA_API_KEY=${{secrets.FDA_API_KEY}}
