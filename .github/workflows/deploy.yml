@@ -42,4 +42,4 @@ jobs:
           containerAppName: recipes
           resourceGroup: cosi-103a-test
           environmentVariables: |
-            secretref: REACT_APP_FDA_API_KEY=${{secrets.FDA_API_KEY}}
+            REACT_APP_FDA_API_KEY=secretref:${{secrets.FDA_API_KEY}}
