@@ -17,12 +17,11 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
-      # Inject FDA_API_KEY into .env file
-      - name: Inject FDA_API_KEY key into .env file
-        run: |
-          echo "REACT_APP_FDA_API_KEY=${{ secrets.FDA_API_KEY }}" >> recipes/.env
-          cat recipes/.env  # Print the contents of .env file
+      # Set FDA_API_KEY as an environment variable
+      - name: Set FDA_API_KEY environment variable
+        run: echo "REACT_APP_FDA_API_KEY=${{ secrets.FDA_API_KEY }}" >> $GITHUB_ENV
 
+      # Log into Azure
       - name: Log into Azure
         uses: azure/login@v1
         with:
@@ -30,6 +29,7 @@ jobs:
           tenant-id: ${{ secrets.AZURE_TENANT_ID }}
           subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
 
+      # Build and deploy Container App
       - name: Build and deploy Container App
         uses: azure/container-apps-deploy-action@v1
         with:
