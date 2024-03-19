@@ -35,3 +35,10 @@ Use `npm test` in the recipes directory to launch the test runner.
 * Testing for React components will run when a pull request is made to main
 * Recipe data pulls from a recipe API on an express.js server
 
+## Azure Alerts
+
+We set up 3 alerts on Azure to cover some scenarios or error conditions that are likely for our application. For these metrics, we define these parameters: check every - how often the alert rule will check if the condition is met, and lookback period - the time period to look back at each time the data is checked. For example, with a check every of 1 minute and lookback of 1 hour, we will check the metric every one minute, at each check, looking back the past 1 hour.
+
+* **Number of requests per hour:** send an alert (level 2 - warning) when the number of requests made through the app exceeds 1000 per hour. Check every 1 minute, lookback 1 hour.
+* **Number of replica:** the number of copies of an image that will be kept in a region. Send an alert (level 3 - informational) when the number of image replica exceeds 1. Check every 1 hour, lookback 1 hour.
+* **Average CPU core usage:** send an alert (level 3 - informational) when the average CPU core usage exceeds 1. Check every 1 hour, lookback 24 hours.
