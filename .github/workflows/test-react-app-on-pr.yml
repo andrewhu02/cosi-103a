@@ -10,9 +10,9 @@ jobs:
             working-directory: ./recipes/ # npm test must be run from this directory
         steps:
             - uses: actions/checkout@v4
-            - uses: actions/setup-node@v3 # install node
+            - uses: actions/setup-node@v4 # install node
               with:
-                node-version: '14'
+                node-version-file: './package.json'
             - run: npm install # install dependencies
             - run: CI=true npm test # run ALL tests in .test.js files
-            - run: npm run test-server
+            - run: npm run test-server # run tests in /server file
