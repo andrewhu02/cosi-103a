@@ -12,7 +12,7 @@ jobs:
             - uses: actions/checkout@v4
             - uses: actions/setup-node@v4 # install node
               with:
-                node-version-file: '.recipes/package.json'
+                node-version-file: './recipes/package.json'
             - run: npm install # install dependencies
             - run: npm run build # server uses built app to serve files
             - run: CI=true npm test # run ALL tests in .test.js files
