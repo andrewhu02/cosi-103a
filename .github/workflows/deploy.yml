@@ -18,10 +18,11 @@ jobs:
         uses: actions/checkout@v3
 
       # Inject FDA_API_KEY into .env file
-      - name: Inject FDA_API_KEY key into .env file
+      - name: Create env file
         run: |
+          touch recipes/.env
           echo "REACT_APP_FDA_API_KEY=${{ secrets.FDA_API_KEY }}" >> recipes/.env
-          cat recipes/.env  # Print the contents of .env file
+          cat recipes/.env
 
       - name: Log into Azure
         uses: azure/login@v1
