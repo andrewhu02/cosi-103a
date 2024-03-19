@@ -1,41 +1,42 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Accordion, Card } from 'react-bootstrap';
 
-// define API key here
-const apiKey = process.env.REACT_APP_FDA_API_KEY;
-
-export default function RecipePageTemplate({ recipe }) {
+const RecipePageTemplate = ({ recipe }) => {
   const [ingredientsWithLinks, setIngredientsWithLinks] = useState([]);
+  const [linksFetched, setLinksFetched] = useState(false);
 
-  useEffect(() => {
-    const fetchIngredientLinks = async () => {
-      const ingredientLinks = await Promise.all(
-        recipe.ingredients.map(async (ingredient) => {
-          // Remove non-alphabetic characters from the ingredient string
-          const cleanedIngredient = ingredient.replace(/[^a-zA-Z\s]/g, '');
-          
-          const response = await fetch(`https://api.nal.usda.gov/fdc/v1/foods/search?query=${cleanedIngredient}&api_key=${apiKey}`);
-          const data = await response.json();
-          if (data.foods && data.foods.length > 0) {
-            const firstResult = data.foods[0];
-            return {
-              name: ingredient,
-              fdcId: firstResult.fdcId
-            };
-          } else {
-            return {
-              name: ingredient,
-              fdcId: null
-            };
-          }
-        })
-      );
-      setIngredientsWithLinks(ingredientLinks);
-    };
+  const fetchIngredientLinks = async () => {
+    if (!recipe) return;
 
-    fetchIngredientLinks();
-  }, [recipe.ingredients]);
-  
+    const ingredientLinks = await Promise.all(
+      recipe.ingredients.map(async (ingredient) => {
+        // Remove non-alphabetic characters from the ingredient string
+        const cleanedIngredient = ingredient.replace(/[^a-zA-Z\s]/g, '');
+
+        const response = await fetch(`https://api.nal.usda.gov/fdc/v1/foods/search?query=${cleanedIngredient}&api_key=${process.env.REACT_APP_FDA_API_KEY}`);
+        const data = await response.json();
+        if (data.foods && data.foods.length > 0) {
+          const firstResult = data.foods[0];
+          return {
+            name: ingredient,
+            fdcId: firstResult.fdcId
+          };
+        } else {
+          return {
+            name: ingredient,
+            fdcId: null
+          };
+        }
+      })
+    );
+    setIngredientsWithLinks(ingredientLinks);
+  };
+
+  // Render only if recipe is available
+  if (!recipe) {
+    return null;
+  }
+
   return (
     <Card>
       <h1>{recipe.title}</h1>
@@ -43,7 +44,12 @@ export default function RecipePageTemplate({ recipe }) {
       <p>{recipe.description}</p>
       <Accordion>
         <Accordion.Item eventKey="0">
-          <Accordion.Header>Ingredients</Accordion.Header>
+          <Accordion.Header onClick={() => {
+            if (!linksFetched) {
+              fetchIngredientLinks();
+              setLinksFetched(true);
+            }
+          }}>Ingredients</Accordion.Header>
           <Accordion.Body>
             <ul>
               {ingredientsWithLinks.map((ingredient, index) => (
@@ -75,4 +81,6 @@ export default function RecipePageTemplate({ recipe }) {
       </Accordion>
     </Card>
   );
-}
+};
+
+export default RecipePageTemplate;
