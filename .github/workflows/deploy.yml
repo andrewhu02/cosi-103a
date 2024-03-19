@@ -4,11 +4,9 @@ on:
     branches:
       - main
 
-
 permissions:
   id-token: write 
   contents: read  
-
 
 jobs:
   build:
@@ -18,6 +16,10 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
+
+      # Inject FDA_API_KEY into .env file
+      - name: Inject FDA_API_KEY key into .env file
+        run: echo "REACT_APP_FDA_API_KEY=${{ secrets.FDA_API_KEY }}" >> recipes/.env
 
       - name: Log into Azure
         uses: azure/login@v1
@@ -34,4 +36,3 @@ jobs:
           acrName: cosi103test
           containerAppName: recipes
           resourceGroup: cosi-103a-test
-
