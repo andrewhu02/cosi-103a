@@ -17,6 +17,7 @@ const RecipeInput = ({ recipes, setRecipes }) => {
   const [cookingInstructions, setInstructions] = useState([]);
   const [showPopup, setShowPopup] = useState(false);
   const [error, setError] = useState('');
+  // eslint-disable-next-line
   const navigate = useNavigate();
 
   const handleSubmit = (e) => {

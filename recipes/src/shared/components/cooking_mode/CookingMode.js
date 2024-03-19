@@ -12,6 +12,7 @@ export default function CookingModeDisplay({ instructionArr, show, handleClose }
     setShowModal(show);
   }, [show]);
 
+  // eslint-disable-next-line
   const handleShow = () => setShowModal(true);
   const handleSelect = (selectedIndex, e) => {
     setIndex(selectedIndex);
