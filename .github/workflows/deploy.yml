@@ -19,7 +19,9 @@ jobs:
 
       # Inject FDA_API_KEY into .env file
       - name: Inject FDA_API_KEY key into .env file
-        run: echo "REACT_APP_FDA_API_KEY=${{ secrets.FDA_API_KEY }}" >> recipes/.env
+        run: |
+          echo "REACT_APP_FDA_API_KEY=${{ secrets.FDA_API_KEY }}" >> recipes/.env
+          cat recipes/.env  # Print the contents of .env file
 
       - name: Log into Azure
         uses: azure/login@v1
