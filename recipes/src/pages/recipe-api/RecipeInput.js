@@ -12,7 +12,10 @@ const RecipeInput = ({ recipes, setRecipes }) => {
   const [imageURL, setImageUrl] = useState('');
   const [JSONText, setJSONText] = useState('');
   const [newIngredient, setNewIngredient] = useState('');
+  // holds extra info about recipes to include links on RecipeInput page
   const [ingredients, setIngredients] = useState([]);
+  // holds only ingredient names to be used in a recipe object posted using API
+  const [ingredientNames, setIngredientNames] = useState([]);
   const [newInstruction, setNewInstruction] = useState('');
   const [cookingInstructions, setInstructions] = useState([]);
   const [showPopup, setShowPopup] = useState(false);
@@ -36,7 +39,7 @@ const RecipeInput = ({ recipes, setRecipes }) => {
       title,
       description,
       imageSrc: imageURL || '/img/food/food.jpg',
-      ingredients,
+      ingredients: ingredientNames, // only post names, not food API info
       cookingInstructions,
     };
 
@@ -117,6 +120,8 @@ const RecipeInput = ({ recipes, setRecipes }) => {
   };
 
   const handleIngredientLookup = (ingredient) => {
+    // fetch from API to display link on RecipeInput page
+    // the ingredients objects contain more than just the name
     fetch(`https://api.nal.usda.gov/fdc/v1/foods/search?query=${ingredient}&api_key=${apiKey}`)
       .then(response => response.json())
       .then(data => {
@@ -150,11 +155,13 @@ const RecipeInput = ({ recipes, setRecipes }) => {
         setError('Error looking up ingredient.');
       });
   };
-  
+
 
   const AddNewIngredient = () => {
     if (newIngredient.trim() !== '') {
       handleIngredientLookup(newIngredient);
+      // add new ingredient name to list to be pushed to API
+      setIngredientNames([...ingredientNames, newIngredient]);
     }
     setNewIngredient('');
   };
