@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Accordion, Card } from 'react-bootstrap';
 
 // define API key here
-const apiKey = process.env.REACT_APP_API_KEY;
+const apiKey = process.env.REACT_APP_FDA_API_KEY;
 
 export default function RecipePageTemplate({ recipe }) {
   const [ingredientsWithLinks, setIngredientsWithLinks] = useState([]);
@@ -32,7 +32,6 @@ export default function RecipePageTemplate({ recipe }) {
 
     fetchIngredientLinks();
   }, [recipe.ingredients]);
-
   return (
     <Card>
       <h1>{recipe.title}</h1>
