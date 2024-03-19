@@ -24,6 +24,7 @@ jobs:
           echo "REACT_APP_FDA_API_KEY=${{ secrets.FDA_API_KEY }}" >> recipes/.env
           cat recipes/.env
 
+      # Log into Azure
       - name: Log into Azure
         uses: azure/login@v1
         with:
@@ -31,6 +32,7 @@ jobs:
           tenant-id: ${{ secrets.AZURE_TENANT_ID }}
           subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
 
+      # Build and deploy Container App
       - name: Build and deploy Container App
         uses: azure/container-apps-deploy-action@v1
         with:
