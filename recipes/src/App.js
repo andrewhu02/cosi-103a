@@ -24,6 +24,7 @@ import {
 export default function App() {
   const [recipes, setRecipes] = useState([...recipeInstructions]);
 
+  // eslint-disable-next-line
   const addRecipe = (newRecipe) => {
     setRecipes([...recipes, newRecipe]);
   };
