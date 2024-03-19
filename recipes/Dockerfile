@@ -13,6 +13,7 @@ RUN npm install
 COPY src/ ./src
 COPY public/ ./public
 COPY server/ ./server
+COPY .env ./.env
 
 # RUN npm run build 
 EXPOSE 3002
