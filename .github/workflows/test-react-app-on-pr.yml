@@ -1,9 +1,9 @@
-name: test-react-app
-run-name: testing React app
+name: test-application
+run-name: testing app
 
 on: [pull_request]
 jobs: 
-    test-react-components: 
+    test-application: 
         runs-on: ubuntu-latest
         defaults:
           run:
