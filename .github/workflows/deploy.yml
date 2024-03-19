@@ -17,11 +17,12 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
-      # Set FDA_API_KEY as an environment variable
-      - name: Set FDA_API_KEY environment variable
-        env: 
-          REACT_APP_FDA_API_KEY: ${{ secrets.FDA_API_KEY }}
-        run: echo "REACT_APP_FDA_API_KEY=${{ secrets.FDA_API_KEY }}" >> $GITHUB_ENV
+      # Inject FDA_API_KEY into .env file
+      - name: Create env file
+        run: |
+          touch recipes/.env
+          echo "REACT_APP_FDA_API_KEY=${{ secrets.FDA_API_KEY }}" >> recipes/.env
+          cat recipes/.env
 
       # Log into Azure
       - name: Log into Azure
