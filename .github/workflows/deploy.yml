@@ -19,7 +19,11 @@ jobs:
 
       # Set FDA_API_KEY as an environment variable
       - name: Set FDA_API_KEY environment variable
-        run: echo "REACT_APP_FDA_API_KEY=${{ secrets.FDA_API_KEY }}" >> $GITHUB_ENV
+        with: # Set the secret as an input
+          REACT_APP_FDA_API_KEY: ${{ secrets.FDA_API_KEY }}
+        env: # Or as an environment variable
+          REACT_APP_FDA_API_KEY: ${{ secrets.FDA_API_KEY }}
+        # run: echo "REACT_APP_FDA_API_KEY=${{ secrets.FDA_API_KEY }}" >> $GITHUB_ENV
 
       # Log into Azure
       - name: Log into Azure
