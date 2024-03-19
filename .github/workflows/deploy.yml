@@ -17,12 +17,12 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
-      # Inject FDA_API_KEY into .env file
-      - name: Create env file
-        run: |
-          touch recipes/.env
-          echo "REACT_APP_FDA_API_KEY=${{ secrets.FDA_API_KEY }}" >> recipes/.env
-          cat recipes/.env
+      # # Inject FDA_API_KEY into .env file
+      # - name: Create env file
+      #   run: |
+      #     touch recipes/.env
+      #     echo "REACT_APP_FDA_API_KEY=${{ secrets.FDA_API_KEY }}" >> recipes/.env
+      #     cat recipes/.env
 
       # Log into Azure
       - name: Log into Azure
@@ -41,3 +41,4 @@ jobs:
           acrName: cosi103test
           containerAppName: recipes
           resourceGroup: cosi-103a-test
+          environmentVariables: secretref:REACT_APP_FDA_API_KEY=${{secrets.FDA_API_KEY}}
