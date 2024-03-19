@@ -11,7 +11,10 @@ export default function RecipePageTemplate({ recipe }) {
     const fetchIngredientLinks = async () => {
       const ingredientLinks = await Promise.all(
         recipe.ingredients.map(async (ingredient) => {
-          const response = await fetch(`https://api.nal.usda.gov/fdc/v1/foods/search?query=${ingredient}&api_key=${apiKey}`);
+          // Remove non-alphabetic characters from the ingredient string
+          const cleanedIngredient = ingredient.replace(/[^a-zA-Z\s]/g, '');
+          
+          const response = await fetch(`https://api.nal.usda.gov/fdc/v1/foods/search?query=${cleanedIngredient}&api_key=${apiKey}`);
           const data = await response.json();
           if (data.foods && data.foods.length > 0) {
             const firstResult = data.foods[0];
@@ -32,6 +35,7 @@ export default function RecipePageTemplate({ recipe }) {
 
     fetchIngredientLinks();
   }, [recipe.ingredients]);
+  
   return (
     <Card>
       <h1>{recipe.title}</h1>
