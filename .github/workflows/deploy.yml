@@ -2,7 +2,7 @@ name: Azure Container Apps Deploy
 on:
   push:
     branches:
-      - deploy-change # change to main when ready to merge
+      - main
 
 permissions:
   id-token: write 
@@ -16,13 +16,6 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
-
-      # # Inject FDA_API_KEY into .env file
-      # - name: Create env file
-      #   run: |
-      #     touch recipes/.env
-      #     echo "REACT_APP_FDA_API_KEY=${{ secrets.FDA_API_KEY }}" >> recipes/.env
-      #     cat recipes/.env
 
       # Log into Azure
       - name: Log into Azure
@@ -39,7 +32,7 @@ jobs:
           appSourcePath: ${{ github.workspace }}/recipes
           dockerfilePath: Dockerfile
           acrName: cosi103test
-          containerAppName: recipes-test # change to recipes when ready to merge
+          containerAppName: recipes
           resourceGroup: cosi-103a-test
           environmentVariables: |
             REACT_APP_FDA_API_KEY=${{secrets.FDA_API_KEY}}
