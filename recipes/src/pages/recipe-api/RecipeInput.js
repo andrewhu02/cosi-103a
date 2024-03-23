@@ -37,10 +37,11 @@ const RecipeInput = ({ recipes, setRecipes }) => {
 
     const newRecipe = {
       title,
+      category: "user",
       description,
       imageSrc: imageURL || '/img/food/food.jpg',
       ingredients: ingredientNames, // only post names, not food API info
-      cookingInstructions,
+      cookingInstructions
     };
 
     fetch('/api/recipes', {
