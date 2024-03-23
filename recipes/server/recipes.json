@@ -2,6 +2,7 @@
     {
         "recipe_id": 1,
         "title": "Halal Guys Chicken and Rice",
+        "category": "default",
         "description": "A delicious street food dish from NYC.",
         "imageSrc": "img/food/chickenandrice.jpg",
         "ingredients": [
@@ -35,6 +36,7 @@
     {
         "recipe_id": 2,
         "title": "Guacamole",
+        "category": "default",
         "description": "A classic Mexican avocado dip, perfect as a snack or appetizer.",
         "imageSrc": "img/food/guac.jpg",
         "ingredients": [
@@ -61,6 +63,7 @@
     {
         "recipe_id": 3,
         "title": "Pasta with Pesto",
+        "category": "default",
         "description": "A simple yet flavorful Italian dish, featuring pasta coated in a rich basil pesto sauce.",
         "imageSrc": "img/food/pesto.jpg",
         "ingredients": [
@@ -86,6 +89,7 @@
     {
         "recipe_id": 4,
         "title": "Nigerian Meat Pies",
+        "category": "default",
         "description": "Savory pastry snacks filled with seasoned minced meat.",
         "imageSrc": "img/food/nigerian_meatpie.jpg",
         "url": "/recipe4",
@@ -114,6 +118,7 @@
     {
         "recipe_id": 5,
         "title": "Chocolate Chip Cookies",
+        "category": "default",
         "description": "A classic chocolatey sweet indulgence.",
         "imageSrc": "img/food/choc_chip_cookies.jpg",
         "url": "/recipe5",
@@ -139,6 +144,7 @@
     {
         "recipe_id": 6,
         "title": "Creole Jambalaya",
+        "category": "default",
         "description": "A soulful and savory dish deeply rooted in Louisiana's culinary culture.",
         "imageSrc": "img/food/jambalaya.jpg",
         "url": "/recipe6",
@@ -172,6 +178,7 @@
     {
         "recipe_id": 7,
         "title": "Soup Dumplings",
+        "category": "default",
         "description": "Soup dumplings are a celebrated Chinese delicacy that encapsulate a rich, savory broth and a tender meat filling, typically pork, inside a thin, delicate dough wrapper.",
         "imageSrc": "img/food/soup_dumplings.jpg",
         "url": "/recipe7",
@@ -196,6 +203,7 @@
     {
         "recipe_id": 8,
         "title": "Pho",
+        "category": "default",
         "description": "A beloved Vietnamese dish.",
         "imageSrc": "img/food/pho.jpg",
         "url": "/recipe8",
