@@ -19,7 +19,7 @@ test('get recipe by ID', async() => {
     const res = await request(app).get('/1');
     expect(res.statusCode).toBe(200);
     // change this if needed
-    expect(res.body.id).toEqual(1);
+    expect(res.body.recipe_id).toEqual(1);
 })
 
 test('post a recipe', async() => {

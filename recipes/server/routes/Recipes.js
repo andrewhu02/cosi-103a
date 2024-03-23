@@ -12,11 +12,11 @@ router.get('/', (req, res) => {
 });
 
 // endpoint to get one recipe by ID
-router.get('/:id', (req, res) => {
-    const recipeId = parseInt(req.params.id);
+router.get('/:recipe_id', (req, res) => {
+    const recipeId = parseInt(req.params.recipe_id);
 
     // find the index of the recipe with the specified ID
-    const recipeIndex = recipes.findIndex((recipe) => recipe.id === recipeId);
+    const recipeIndex = recipes.findIndex((recipe) => recipe.recipe_id === recipeId);
 
     // check if the recipe exists
     if (recipeIndex === -1) {
@@ -37,18 +37,18 @@ router.post('/', (req, res) => {
     }
 
     // add the new recipe to the list
-    newRecipe.id = recipes.length + 1;
+    newRecipe.recipe_id = recipes.length + 1;
     recipes.push(newRecipe);
 
     res.status(201).json(newRecipe);
 });
 
 // endpoint to delete a recipe by ID
-router.delete('/:id', (req, res) => {
-    const recipeId = parseInt(req.params.id);
+router.delete('/:recipe_id', (req, res) => {
+    const recipeId = parseInt(req.params.recipe_id);
 
     // find the index of the recipe with the specified ID
-    const recipeIndex = recipes.findIndex((recipe) => recipe.id === recipeId);
+    const recipeIndex = recipes.findIndex((recipe) => recipe.recipe_id === recipeId);
 
     // check if the recipe exists
     if (recipeIndex === -1) {
