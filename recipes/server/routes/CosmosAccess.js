@@ -18,14 +18,24 @@ class CosmosAccess {
         };
         
         var response = await container.items.query(querySpec).fetchAll();
-        for (var item of response.resources) {
-            console.log(item);
-        }
+        
+        // for (var item of response.resources) {
+        //     console.log(item);
+        // }
 
         var read_items = response.resources;
 
         return read_items;
     }
+
+    static async add_item(container, item) {
+        var response = await container.items.upsert(item);
+        return response;
+    }
+
+    // static async get_by_recipe_id(container, recipe_id) {
+        
+    // }
 }
 
 module.exports = CosmosAccess;

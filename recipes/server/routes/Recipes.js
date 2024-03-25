@@ -35,7 +35,11 @@ router.get('/', (req, res) => {
     // res.json(recipes);
 });
 
-// endpoint to get one recipe by ID
+// add endpoint to get default recipes
+
+// add endpoint to get user-added recipes
+
+// endpoint to get one recipe by recipe_id
 router.get('/:recipe_id', (req, res) => {
     const recipeId = parseInt(req.params.recipe_id);
 
@@ -62,9 +66,10 @@ router.post('/', (req, res) => {
 
     // add the new recipe to the list
     newRecipe.recipe_id = recipes.length + 1;
-    recipes.push(newRecipe);
-
-    res.status(201).json(newRecipe);
+    newRecipe.category = "user";
+    CosmosAccess.add_item(container, newRecipe).then(response => {
+        res.status(201).json(newRecipe);
+    });
 });
 
 // endpoint to delete a recipe by ID
