@@ -43,16 +43,21 @@ router.get('/', (req, res) => {
 router.get('/:recipe_id', (req, res) => {
     const recipeId = parseInt(req.params.recipe_id);
 
-    // find the index of the recipe with the specified ID
-    const recipeIndex = recipes.findIndex((recipe) => recipe.recipe_id === recipeId);
+    // this method doesn't protect against multiple recipes having the same recipe_id
+    CosmosAccess.get_by_recipe_id(container, recipeId).then(item => {
+        res.json(item);
+    })
 
-    // check if the recipe exists
-    if (recipeIndex === -1) {
-        return res.status(404).json({ error: 'Recipe not found' });
-    }
+    // // find the index of the recipe with the specified ID
+    // const recipeIndex = recipes.findIndex((recipe) => recipe.recipe_id === recipeId);
 
-    // respond with requested recipe
-    res.json(recipes[recipeIndex]);
+    // // check if the recipe exists
+    // if (recipeIndex === -1) {
+    //     return res.status(404).json({ error: 'Recipe not found' });
+    // }
+
+    // // respond with requested recipe
+    // res.json(recipes[recipeIndex]);
 })
 
 // endpoint to add a new recipe

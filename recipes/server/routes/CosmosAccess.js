@@ -33,9 +33,19 @@ class CosmosAccess {
         return response;
     }
 
-    // static async get_by_recipe_id(container, recipe_id) {
-        
-    // }
+    static async get_by_recipe_id(container, recipe_id) {
+        const querySpec = {
+            query: 'SELECT * FROM c WHERE c.recipe_id = @recipe_id',
+            parameters: [
+                {
+                    name: '@recipe_id',
+                    value: recipe_id
+                }
+            ]
+        };
+        var response = await container.items.query(querySpec).fetchAll();
+        return response.resources;
+    }
 }
 
 module.exports = CosmosAccess;
