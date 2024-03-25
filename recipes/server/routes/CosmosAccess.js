@@ -46,6 +46,24 @@ class CosmosAccess {
         var response = await container.items.query(querySpec).fetchAll();
         return response.resources;
     }
+
+    static async delete_by_recipe_id(container, recipe_id) {
+        // get the item using recipe_id
+        const querySpec = {
+            query: 'SELECT * FROM c WHERE c.recipe_id = @recipe_id',
+            parameters: [
+                {
+                    name: '@recipe_id',
+                    value: recipe_id
+                }
+            ]
+        };
+        var response = await container.items.query(querySpec).fetchAll();
+        const id = response.resources[0].id;
+        const { resource: result } = await container.item(id, recipe_id).delete();
+
+        return result;
+    }
 }
 
 module.exports = CosmosAccess;

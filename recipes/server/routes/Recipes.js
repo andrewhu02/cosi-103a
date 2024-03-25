@@ -81,18 +81,21 @@ router.post('/', (req, res) => {
 router.delete('/:recipe_id', (req, res) => {
     const recipeId = parseInt(req.params.recipe_id);
 
-    // find the index of the recipe with the specified ID
-    const recipeIndex = recipes.findIndex((recipe) => recipe.recipe_id === recipeId);
+    CosmosAccess.delete_by_recipe_id(container, recipeId).then(response => {
+        res.json({ message: 'Recipe deleted'});
+    })
 
-    // check if the recipe exists
-    if (recipeIndex === -1) {
-        return res.status(404).json({ error: 'Recipe not found' });
-    }
+    // // find the index of the recipe with the specified ID
+    // const recipeIndex = recipes.findIndex((recipe) => recipe.recipe_id === recipeId);
 
-    // remove the recipe from the array
-    recipes.splice(recipeIndex, 1);
+    // // check if the recipe exists
+    // if (recipeIndex === -1) {
+    //     return res.status(404).json({ error: 'Recipe not found' });
+    // }
 
-    res.json({ message: 'Recipe deleted successfully' });
+    // // remove the recipe from the array
+    // recipes.splice(recipeIndex, 1);
+
 });
 
 module.exports = router;
