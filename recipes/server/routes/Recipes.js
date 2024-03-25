@@ -29,7 +29,10 @@ router.get('/test', (req, res) => {
 
 // endpoint to get all recipes
 router.get('/', (req, res) => {
-    res.json(recipes);
+    CosmosAccess.get_all(container).then(items => {
+        res.json(items);
+    })
+    // res.json(recipes);
 });
 
 // endpoint to get one recipe by ID

@@ -11,6 +11,21 @@ class CosmosAccess {
 
         return read_item;
     }
+
+    static async get_all(container) {
+        const querySpec = {
+            query: 'SELECT * FROM c',
+        };
+        
+        var response = await container.items.query(querySpec).fetchAll();
+        for (var item of response.resources) {
+            console.log(item);
+        }
+
+        var read_items = response.resources;
+
+        return read_items;
+    }
 }
 
 module.exports = CosmosAccess;
