@@ -1,10 +1,30 @@
 const express = require('express');
 const router = express.Router();
 const bodyParser = require('body-parser');
+const identity = require('@azure/identity');
+const cosmos = require('@azure/cosmos');
+const CosmosAccess = require('./CosmosAccess');
 
 const recipes = require("../recipes.json"); // recipes stored here
 
+const endpoint = 'https://group-j-db.documents.azure.com:443/'
+const credential = new identity.DefaultAzureCredential();
+
+const client = new cosmos.CosmosClient({
+    endpoint,
+    aadCredentials: credential
+});
+
+const database = client.database('recipe-site')
+const container = database.container('recipes');
+
 router.use(bodyParser.json());
+
+// temp endpoint to test getting a certain item from Database
+router.get('/test', (req, res) => {
+    CosmosAccess.test_get(container);
+    res.json(recipes);
+});
 
 // endpoint to get all recipes
 router.get('/', (req, res) => {
