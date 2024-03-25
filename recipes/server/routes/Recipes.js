@@ -20,13 +20,6 @@ const container = database.container('recipes');
 
 router.use(bodyParser.json());
 
-// temp endpoint to test getting a certain item from Database
-router.get('/test', (req, res) => {
-    CosmosAccess.test_get(container).then(item => {
-        res.json(item);
-    })
-});
-
 // endpoint to get all recipes
 router.get('/', (req, res) => {
     CosmosAccess.get_all(container).then(items => {
