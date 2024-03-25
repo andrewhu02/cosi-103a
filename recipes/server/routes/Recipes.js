@@ -22,8 +22,9 @@ router.use(bodyParser.json());
 
 // temp endpoint to test getting a certain item from Database
 router.get('/test', (req, res) => {
-    CosmosAccess.test_get(container);
-    res.json(recipes);
+    CosmosAccess.test_get(container).then(item => {
+        res.json(item);
+    })
 });
 
 // endpoint to get all recipes

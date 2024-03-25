@@ -7,7 +7,9 @@ class CosmosAccess {
         var response = await container.item(id, partitionKey).read();
         var read_item = response.resource;
 
-        console.log(read_item);
+        // console.log(read_item);
+
+        return read_item;
     }
 }
 
