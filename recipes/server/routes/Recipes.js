@@ -70,7 +70,7 @@ router.post('/', (req, res) => {
     }
 
     // add the new recipe to the list
-    newRecipe.recipe_id = recipes.length + 1;
+    newRecipe.recipe_id = Date.now(); // generates a unique recipe_id
     newRecipe.category = "user";
     CosmosAccess.add_item(container, newRecipe).then(response => {
         res.status(201).json(newRecipe);
