@@ -8,17 +8,20 @@ jobs:
         defaults:
           run:
             working-directory: ./recipes/ # npm test must be run from this directory
-        steps:
+        steps:  
             - uses: actions/checkout@v4
-            
             # Log into Azure
             - name: Log into Azure
+              env:
+                CLIENT-ID: ${{ secrets.AZURE_CLIENT_ID }}
+                TENANT-ID: ${{ secrets.AZURE_TENANT_ID }}
+                SUB-ID: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
               uses: azure/login@v1
               with:
-                client-id: ${{ secrets.AZURE_CLIENT_ID }}
-                tenant-id: ${{ secrets.AZURE_TENANT_ID }}
-                subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
-                
+                client-id: CLIENT-ID
+                tenant-id: TENANT-ID
+                subscription-id: SUB-ID
+
             - uses: actions/setup-node@v4 # install node
               with:
                 node-version-file: './recipes/package.json'
