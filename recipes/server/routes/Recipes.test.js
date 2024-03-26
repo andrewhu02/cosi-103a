@@ -23,7 +23,7 @@ test('get recipe by ID', async() => {
     expect(recipes[0].recipe_id).toEqual(1);
 })
 
-test('post/detele a recipe by recipe_id', async() => {
+test('post/delete a recipe by recipe_id', async() => {
     const recipe = {
         "title": "test recipe",
         "description": "this is a description of the recipe"
