@@ -2,6 +2,7 @@ name: test-application
 run-name: testing app
 
 on: [pull_request]
+
 jobs: 
     test-application: 
         runs-on: ubuntu-latest
@@ -16,4 +17,11 @@ jobs:
             - run: npm install # install dependencies
             - run: npm run build # server uses built app to serve files
             - run: CI=true npm test # run ALL tests in .test.js files
+
+            # Log into Azure
+            - name: Log into Azure
+              uses: azure/login@v1
+              with:
+                creds: ${{ secrets.AZURE_CREDENTIALS }}
+
             - run: npm run test-server # run tests in /server file
