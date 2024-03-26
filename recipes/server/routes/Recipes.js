@@ -1,22 +1,29 @@
 const express = require('express');
 const router = express.Router();
 const bodyParser = require('body-parser');
-const identity = require('@azure/identity');
 const cosmos = require('@azure/cosmos');
 const CosmosAccess = require('./CosmosAccess');
 
 const recipes = require("../recipes.json"); // recipes stored here
 
-const endpoint = 'https://group-j-db.documents.azure.com:443/'
-const credential = new identity.DefaultAzureCredential();
+const endpoint = 'https://group-j-db.documents.azure.com:443/';
 
-const client = new cosmos.CosmosClient({
-    endpoint,
-    aadCredentials: credential
-});
+let container; // Container will be defined based on whether in testing or production
 
-const database = client.database('recipe-site')
-const container = database.container('recipes');
+if (process.env.NODE_ENV === 'test') {
+    // If in testing environment, use mock container
+    container = null; // Mock container
+} else {
+    // If not in testing environment, initialize actual Cosmos DB client
+    const identity = require('@azure/identity');
+    const credential = new identity.DefaultAzureCredential();
+    const client = new cosmos.CosmosClient({
+        endpoint,
+        aadCredentials: credential
+    });
+    const database = client.database('recipe-site');
+    container = database.container('recipes');
+}
 
 router.use(bodyParser.json());
 
