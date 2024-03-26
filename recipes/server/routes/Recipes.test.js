@@ -1,21 +1,28 @@
 const express = require('express');
 const request = require('supertest');
-const nock = require('nock'); // Import Nock for mocking HTTP requests
 const router = require('./Recipes');
 
-const app = new express();
+const app = express();
 app.use('/', router);
 
 // Mocking external services using Nock
 beforeAll(() => {
-    // Mocking Azure Cosmos DB API endpoints
-    nock('https://group-j-db.documents.azure.com:443/')
-        .get('/api/recipes')
-        .reply(200, [
+    // Mocking the CosmosAccess module to return mock data
+    jest.mock('./CosmosAccess', () => ({
+        get_all: jest.fn(() => Promise.resolve([
             { recipe_id: 1, title: 'Mocked Recipe 1', description: 'Mocked description 1' },
             { recipe_id: 2, title: 'Mocked Recipe 2', description: 'Mocked description 2' }
-        ]);
-    // Add more nock mocks as needed for other endpoints
+        ])),
+        get_by_recipe_id: jest.fn((container, recipeId) => {
+            const mockRecipes = [
+                { recipe_id: 1, title: 'Mocked Recipe 1', description: 'Mocked description 1' },
+                { recipe_id: 2, title: 'Mocked Recipe 2', description: 'Mocked description 2' }
+            ];
+            return Promise.resolve(mockRecipes.find(recipe => recipe.recipe_id === recipeId));
+        }),
+        add_item: jest.fn((container, newRecipe) => Promise.resolve(newRecipe)),
+        delete_by_recipe_id: jest.fn((container, recipeId) => Promise.resolve({ message: 'Recipe deleted' }))
+    }));
 });
 
 // Test cases

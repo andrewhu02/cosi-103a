@@ -1,44 +1,31 @@
 const express = require('express');
 const router = express.Router();
 const bodyParser = require('body-parser');
+const identity = require('@azure/identity');
 const cosmos = require('@azure/cosmos');
 const CosmosAccess = require('./CosmosAccess');
 
 const recipes = require("../recipes.json"); // recipes stored here
 
-const endpoint = 'https://group-j-db.documents.azure.com:443/';
-let client, container;
+const endpoint = 'https://group-j-db.documents.azure.com:443/'
+const credential = new identity.DefaultAzureCredential();
 
-// Check if environment variables for authentication are available
-if (process.env.AZURE_TENANT_ID && process.env.AZURE_CLIENT_ID && process.env.AZURE_CLIENT_SECRET) {
-    const { DefaultAzureCredential } = require('@azure/identity');
-    const credential = new DefaultAzureCredential();
+const client = new cosmos.CosmosClient({
+    endpoint,
+    aadCredentials: credential
+});
 
-    // Initialize Cosmos DB client with Azure AD credentials
-    client = new cosmos.CosmosClient({
-        endpoint,
-        credential
-    });
-
-    const database = client.database('recipe-site');
-    container = database.container('recipes');
-}
+const database = client.database('recipe-site')
+const container = database.container('recipes');
 
 router.use(bodyParser.json());
 
 // endpoint to get all recipes
 router.get('/', (req, res) => {
-    // If container is not initialized, return an error response
-    if (!container) {
-        return res.status(501).json({ error: 'Cosmos DB authentication failed' });
-    }
-
     CosmosAccess.get_all(container).then(items => {
         res.json(items);
-    }).catch(err => {
-        console.error('Error fetching recipes:', err);
-        res.status(500).json({ error: 'Internal server error' });
-    });
+    })
+    // res.json(recipes);
 });
 
 // add endpoint to get default recipes
@@ -47,28 +34,27 @@ router.get('/', (req, res) => {
 
 // endpoint to get one recipe by recipe_id
 router.get('/:recipe_id', (req, res) => {
-    // If container is not initialized, return an error response
-    if (!container) {
-        return res.status(501).json({ error: 'Cosmos DB authentication failed' });
-    }
-
     const recipeId = parseInt(req.params.recipe_id);
 
+    // this method doesn't protect against multiple recipes having the same recipe_id
     CosmosAccess.get_by_recipe_id(container, recipeId).then(item => {
         res.json(item);
-    }).catch(err => {
-        console.error('Error fetching recipe by ID:', err);
-        res.status(500).json({ error: 'Internal server error' });
-    });
-});
+    })
+
+    // // find the index of the recipe with the specified ID
+    // const recipeIndex = recipes.findIndex((recipe) => recipe.recipe_id === recipeId);
+
+    // // check if the recipe exists
+    // if (recipeIndex === -1) {
+    //     return res.status(404).json({ error: 'Recipe not found' });
+    // }
+
+    // // respond with requested recipe
+    // res.json(recipes[recipeIndex]);
+})
 
 // endpoint to add a new recipe
 router.post('/', (req, res) => {
-    // If container is not initialized, return an error response
-    if (!container) {
-        return res.status(501).json({ error: 'Cosmos DB authentication failed' });
-    }
-
     const newRecipe = req.body;
 
     // validate that the received data is a valid recipe
@@ -81,27 +67,28 @@ router.post('/', (req, res) => {
     newRecipe.category = "user";
     CosmosAccess.add_item(container, newRecipe).then(response => {
         res.status(201).json(newRecipe);
-    }).catch(err => {
-        console.error('Error adding new recipe:', err);
-        res.status(500).json({ error: 'Internal server error' });
     });
 });
 
 // endpoint to delete a recipe by ID
 router.delete('/:recipe_id', (req, res) => {
-    // If container is not initialized, return an error response
-    if (!container) {
-        return res.status(501).json({ error: 'Cosmos DB authentication failed' });
-    }
-
     const recipeId = parseInt(req.params.recipe_id);
 
     CosmosAccess.delete_by_recipe_id(container, recipeId).then(response => {
         res.json({ message: 'Recipe deleted'});
-    }).catch(err => {
-        console.error('Error deleting recipe by ID:', err);
-        res.status(500).json({ error: 'Internal server error' });
-    });
+    })
+
+    // // find the index of the recipe with the specified ID
+    // const recipeIndex = recipes.findIndex((recipe) => recipe.recipe_id === recipeId);
+
+    // // check if the recipe exists
+    // if (recipeIndex === -1) {
+    //     return res.status(404).json({ error: 'Recipe not found' });
+    // }
+
+    // // remove the recipe from the array
+    // recipes.splice(recipeIndex, 1);
+
 });
 
 module.exports = router;
