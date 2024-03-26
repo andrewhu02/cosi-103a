@@ -6,7 +6,9 @@ Aimuan Erhabor (aimuanerhabor@brandeis.edu)\
 Moses Gordon (mosesgordon@brandeis.edu)
 
 # Recipes Website 
-This is a website for browsing and reading recipes.
+
+This is a website for browsing and reading recipes. Link to deployed app: https://recipes.braveground-31806d43.eastus.azurecontainerapps.io/homepage
+
 Current features:
 * Landing page displaying a picture and description of each recipe with a link to that recipe's page
 * Recipe pages describing each recipe and how to make it
@@ -14,7 +16,7 @@ Current features:
 * Grocery list which persists across page changes
 * User can add items, remove items, and clear the list
 * Cooking mode which can be activated on any recipe page, showing instructions on a large slideshow
-* User can add new recipes (recipe title, description, image (option) and some text
+* User can add new recipes (recipe title, description, image (option) and some text)
 
 ## Setup
 
@@ -34,6 +36,11 @@ Use `npm test` in the recipes directory to launch the test runner.
 * shared directory contains components displayed on multiple pages
 * Testing for React components will run when a pull request is made to main
 * Recipe data pulls from a recipe API on an express.js server
+
+## Database Development
+
+* We deployed an Azure Cosmos database that stores 8 default recipes. The app's backend has been migrated to fetch/store recipes from/to the database.
+* When the user adds a new recipe through the deployed app, the recipe will persist across app development because it has been added to the backend database. 
 
 ## Azure Alerts
 
