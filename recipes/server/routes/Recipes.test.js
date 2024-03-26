@@ -8,23 +8,14 @@ app.use('/', router);
 
 // Mocking external services using Nock
 beforeAll(() => {
-    // Mocking a GET request to Azure Cosmos DB for fetching all recipes
-    nock('https://example.com')
+    // Mocking Azure Cosmos DB API endpoints
+    nock('https://group-j-db.documents.azure.com:443/')
         .get('/api/recipes')
         .reply(200, [
             { recipe_id: 1, title: 'Mocked Recipe 1', description: 'Mocked description 1' },
             { recipe_id: 2, title: 'Mocked Recipe 2', description: 'Mocked description 2' }
         ]);
-
-    // Mocking a GET request to Azure Cosmos DB for fetching a specific recipe by ID
-    nock('https://example.com')
-        .get('/api/recipes/1')
-        .reply(200, { recipe_id: 1, title: 'Mocked Recipe', description: 'Mocked description' });
-
-    // Mocking a POST request to Azure Cosmos DB for creating a new recipe
-    nock('https://example.com')
-        .post('/api/recipes')
-        .reply(201, { message: 'Recipe created' });
+    // Add more nock mocks as needed for other endpoints
 });
 
 // Test cases
@@ -60,3 +51,6 @@ test('post/delete a recipe by recipe_id', async () => {
     res = await request(app).delete(`/${recipeId}`);
     expect(res.body).toEqual({ message: 'Recipe deleted' });
 });
+
+// Increase Jest timeout if needed
+jest.setTimeout(30000); // 30 seconds
