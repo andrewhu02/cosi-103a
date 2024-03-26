@@ -1,57 +1,62 @@
-class CosmosAccess {
+const CosmosAccess = {
+    async get_all(container) {
+        if (!container) {
+            // Return an empty array or mock data when container is not available
+            return [];
+        }
 
-    static async get_all(container) {
         const querySpec = {
-            query: 'SELECT * FROM c',
+            query: 'SELECT * from c'
         };
         
-        var response = await container.items.query(querySpec).fetchAll();
-        
-        // for (var item of response.resources) {
-        //     console.log(item);
-        // }
-
-        var read_items = response.resources;
-
-        return read_items;
-    }
-
-    static async add_item(container, item) {
-        var response = await container.items.upsert(item);
-        return response;
-    }
-
-    static async get_by_recipe_id(container, recipe_id) {
-        const querySpec = {
-            query: 'SELECT * FROM c WHERE c.recipe_id = @recipe_id',
-            parameters: [
-                {
-                    name: '@recipe_id',
-                    value: recipe_id
-                }
-            ]
-        };
-        var response = await container.items.query(querySpec).fetchAll();
+        const response = await container.items.query(querySpec).fetchAll();
         return response.resources;
-    }
+    },
+    
+    async get_by_recipe_id(container, recipeId) {
+        if (!container) {
+            // Return null when container is not available
+            return null;
+        }
 
-    static async delete_by_recipe_id(container, recipe_id) {
-        // get the item using recipe_id
         const querySpec = {
-            query: 'SELECT * FROM c WHERE c.recipe_id = @recipe_id',
-            parameters: [
-                {
-                    name: '@recipe_id',
-                    value: recipe_id
-                }
-            ]
+            query: 'SELECT * from c WHERE c.recipe_id = @recipeId',
+            parameters: [{ name: '@recipeId', value: recipeId }]
         };
-        var response = await container.items.query(querySpec).fetchAll();
-        const id = response.resources[0].id;
-        const { resource: result } = await container.item(id, recipe_id).delete();
+        
+        const response = await container.items.query(querySpec).fetchAll();
+        return response.resources[0]; // Assuming recipe_id is unique
+    },
+    
+    async add_item(container, item) {
+        if (!container) {
+            // Return null when container is not available
+            return null;
+        }
 
+        const response = await container.items.upsert(item);
+        return response;
+    },
+
+    async delete_by_recipe_id(container, recipeId) {
+        if (!container) {
+            // Return null when container is not available
+            return null;
+        }
+
+        const querySpec = {
+            query: 'SELECT * from c WHERE c.recipe_id = @recipeId',
+            parameters: [{ name: '@recipeId', value: recipeId }]
+        };
+
+        const { resources: [recipe] } = await container.items.query(querySpec).fetchAll();
+        if (!recipe) {
+            throw new Error('Recipe not found');
+        }
+
+        const { resource: result } = await container.item(recipe.id).delete();
         return result;
     }
-}
+};
 
 module.exports = CosmosAccess;
