@@ -1,29 +1,30 @@
 name: test-application
 run-name: testing app
 
-on: [pull_request]
+on:
+  pull_request
 
 jobs: 
-    test-application: 
-        runs-on: ubuntu-latest
-        defaults:
-          run:
-            working-directory: ./recipes/ # npm test must be run from this directory
-        steps:
-            - uses: actions/checkout@v4
-            - uses: actions/setup-node@v4 # install node
-              with:
-                node-version-file: './recipes/package.json'
-            - run: npm install # install dependencies
-            - run: npm run build # server uses built app to serve files
-            - run: CI=true npm test # run ALL tests in .test.js files
+  test-application: 
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./recipes/ # npm test must be run from this directory
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4 # install node
+        with:
+          node-version-file: './recipes/package.json'
+      - run: npm install # install dependencies
+      - run: npm run build # server uses built app to serve files
 
-            # Log into Azure
-            - name: Log into Azure
-              uses: azure/login@v1
-              with:
-                creds: ${{ secrets.AZURE_CREDENTIALS }}
-                tenant-id: ${{ secrets.AZURE_TENANT_ID }}
-                client-id: ${{ secrets.AZURE_CLIENT_ID }}
+      # Log into Azure
+      - name: Log into Azure
+        uses: azure/login@v1
+        with:
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
+          tenant-id: ${{ secrets.AZURE_TENANT_ID }}
+          client-id: ${{ secrets.AZURE_CLIENT_ID }}
 
-            - run: npm run test-server # run tests in /server file
+      - run: CI=true npm test # run ALL tests in .test.js files
+      - run: npm run test-server # run tests in /server file
