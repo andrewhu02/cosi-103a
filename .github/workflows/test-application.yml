@@ -3,17 +3,38 @@ run-name: testing app
 
 on: [pull_request]
 jobs: 
-    test-application: 
-        runs-on: ubuntu-latest
-        defaults:
-          run:
-            working-directory: ./recipes/ # npm test must be run from this directory
-        steps:
-            - uses: actions/checkout@v4
-            - uses: actions/setup-node@v4 # install node
-              with:
-                node-version-file: './recipes/package.json'
-            - run: npm install # install dependencies
-            - run: npm run build # server uses built app to serve files
-            - run: CI=true npm test # run ALL tests in .test.js files
-            - run: npm run test-server # run tests in /server file
+    test-react-app: 
+      name: Run npm test to test react frontend
+      runs-on: ubuntu-latest
+      defaults:
+        run:
+          working-directory: ./recipes/ # npm test must be run from this directory
+      steps:
+        - uses: actions/checkout@v4
+        - uses: actions/setup-node@v4 # install node
+          with:
+            node-version-file: './recipes/package.json'
+        - run: npm install # install dependencies
+        - run: npm run build # server uses built app to serve files
+        - run: CI=true npm test # run ALL tests in .test.js files
+        # - run: npm run test-server # run tests in /server file
+    test-server:
+      name: Run jest tests for server
+      runs-on: windows-latest
+      defaults:
+        run:
+          working-directory: ./recipes/
+      steps:
+        - name: Checkout (GitHub)
+          uses: actions/checkout@v3
+        - name: Start Azure Cosmos DB emulator
+          run: >-
+            Write-Host "Launching Cosmos DB Emulator"
+            Import-Module "$env:ProgramFiles\Azure Cosmos DB Emulator\PSModules\Microsoft.Azure.CosmosDB.Emulator"
+            Start-CosmosDbEmulator
+        - name: Install dependencies
+          run: npm install
+        - name: build app
+          run: npm run build
+        - name: Run tests
+          run: npm run test-server
