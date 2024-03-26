@@ -27,36 +27,53 @@ beforeAll(() => {
 
 // Test cases
 test('get all recipes', async () => {
-    const res = await request(app).get('/');
-    expect(res.statusCode).toBe(200);
-    expect(res.body.length).toBe(2); // Assuming we have 2 mocked recipes
+    try {
+        const res = await request(app).get('/');
+        console.log('Response:', res.body);
+        expect(res.statusCode).toBe(200);
+        expect(res.body.length).toBe(2); // Assuming we have 2 mocked recipes
+    } catch (error) {
+        console.error('Error in get all recipes test:', error);
+        throw error;
+    }
 });
 
 test('get recipe by ID', async () => {
-    const res = await request(app).get('/1');
-    expect(res.statusCode).toBe(200);
-    expect(res.body.recipe_id).toBe(1); // Assuming the mocked recipe has ID 1
+    try {
+        const res = await request(app).get('/1');
+        console.log('Response:', res.body);
+        expect(res.statusCode).toBe(200);
+        expect(res.body.recipe_id).toBe(1); // Assuming the mocked recipe has ID 1
+    } catch (error) {
+        console.error('Error in get recipe by ID test:', error);
+        throw error;
+    }
 });
 
 test('post/delete a recipe by recipe_id', async () => {
-    const newRecipe = {
-        title: 'New Test Recipe',
-        description: 'Description for the new test recipe'
-    };
-    let res = await request(app).post('/').send(newRecipe);
-    expect(res.statusCode).toBe(201);
+    try {
+        const newRecipe = {
+            title: 'New Test Recipe',
+            description: 'Description for the new test recipe'
+        };
+        let res = await request(app).post('/').send(newRecipe);
+        console.log('Create Response:', res.body);
+        expect(res.statusCode).toBe(201);
 
-    // Assuming the response contains the newly created recipe's ID
-    const recipeId = res.body.recipe_id;
-    
-    // Fetch the newly created recipe and verify its details
-    res = await request(app).get(`/${recipeId}`);
-    expect(res.statusCode).toBe(200);
-    expect(res.body.title).toEqual(newRecipe.title);
+        const recipeId = res.body.recipe_id;
 
-    // Delete the newly created recipe and verify deletion
-    res = await request(app).delete(`/${recipeId}`);
-    expect(res.body).toEqual({ message: 'Recipe deleted' });
+        res = await request(app).get(`/${recipeId}`);
+        console.log('Get Response:', res.body);
+        expect(res.statusCode).toBe(200);
+        expect(res.body.title).toEqual(newRecipe.title);
+
+        res = await request(app).delete(`/${recipeId}`);
+        console.log('Delete Response:', res.body);
+        expect(res.body).toEqual({ message: 'Recipe deleted' });
+    } catch (error) {
+        console.error('Error in post/delete a recipe by recipe_id test:', error);
+        throw error;
+    }
 });
 
 // Increase Jest timeout if needed
