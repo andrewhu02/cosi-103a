@@ -30,7 +30,7 @@ router.use(bodyParser.json());
 router.get('/', (req, res) => {
     // If container is not initialized, return an error response
     if (!container) {
-        return res.status(500).json({ error: 'Cosmos DB authentication failed' });
+        return res.status(501).json({ error: 'Cosmos DB authentication failed' });
     }
 
     CosmosAccess.get_all(container).then(items => {
@@ -49,7 +49,7 @@ router.get('/', (req, res) => {
 router.get('/:recipe_id', (req, res) => {
     // If container is not initialized, return an error response
     if (!container) {
-        return res.status(500).json({ error: 'Cosmos DB authentication failed' });
+        return res.status(501).json({ error: 'Cosmos DB authentication failed' });
     }
 
     const recipeId = parseInt(req.params.recipe_id);
@@ -66,7 +66,7 @@ router.get('/:recipe_id', (req, res) => {
 router.post('/', (req, res) => {
     // If container is not initialized, return an error response
     if (!container) {
-        return res.status(500).json({ error: 'Cosmos DB authentication failed' });
+        return res.status(501).json({ error: 'Cosmos DB authentication failed' });
     }
 
     const newRecipe = req.body;
@@ -91,7 +91,7 @@ router.post('/', (req, res) => {
 router.delete('/:recipe_id', (req, res) => {
     // If container is not initialized, return an error response
     if (!container) {
-        return res.status(500).json({ error: 'Cosmos DB authentication failed' });
+        return res.status(501).json({ error: 'Cosmos DB authentication failed' });
     }
 
     const recipeId = parseInt(req.params.recipe_id);
