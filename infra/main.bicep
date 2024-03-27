@@ -22,6 +22,16 @@ resource deploymentApp 'Microsoft.App/containerApps@2023-11-02-preview' = {
       ingress: {
         external: true
         targetPort: 3002
+        traffic: [
+          {
+            revisionName: '${appName}--${currentCommitId}'
+            weight: 0
+          }
+          {
+            revisionName: 'recipes--cgbzlxc'
+            weight: 100
+          }
+        ]
       }
     }
     template: {
@@ -30,6 +40,10 @@ resource deploymentApp 'Microsoft.App/containerApps@2023-11-02-preview' = {
         {
           image: 'cosi103test.azurecr.io/github-action/container-app:latest'
           name: appName
+          resources: {
+            cpu: json('0.5')
+            memory: '1.0Gi'
+          }
           env: [
             {
               name: 'REVISION_COMMIT_ID'
@@ -41,3 +55,6 @@ resource deploymentApp 'Microsoft.App/containerApps@2023-11-02-preview' = {
     }
   }
 }
+
+output fqdn string = deploymentApp.properties.configuration.ingress.fqdn
+output latestRevisionName string = deploymentApp.properties.latestRevisionName
