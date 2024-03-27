@@ -38,7 +38,7 @@ resource deploymentApp 'Microsoft.App/containerApps@2023-11-02-preview' = {
       revisionSuffix: currentCommitId
       containers: [
         {
-          image: 'cosi103test.azurecr.io/github-action/container-app:latest'
+          image: 'cosi103test.azurecr.io/repository:recipes-tag'
           name: appName
           resources: {
             cpu: json('0.5')
