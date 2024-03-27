@@ -8,6 +8,8 @@ az containerapp update --name recipes \
   --set-env-vars REVISION_COMMIT_ID=test-workflow
 
 # label that new revision with the green label
+# this will not work if a revision already has the 'green' label
+# since labels must be unique
 az containerapp revision label add \
     --name recipes \
     --resource-group cosi-103a-test \
