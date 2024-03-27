@@ -32,6 +32,6 @@ jobs:
                 resourceGroupName: cosi-103a-test
                 template: infra/main.bicep
                 deploymentName: deploy-test
-                parameters: 'appName=recipes containerAppEnvironmentName=managedEnvironment-cosi103atest-9eaf currentCommitId=test'
+                parameters: 'appName=recipes-test containerAppEnvironmentName=managedEnvironment-cosi103atest-9eaf currentCommitId=test'
                 deploymentMode: Incremental
                 failOnStdErr: true
