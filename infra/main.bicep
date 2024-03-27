@@ -28,7 +28,7 @@ resource deploymentApp 'Microsoft.App/containerApps@2023-11-02-preview' = {
       revisionSuffix: currentCommitId
       containers: [
         {
-          image: 'cosi103test.azurecr.io/github-action/container-app:8440849078.1'
+          image: 'cosi103test.azurecr.io/github-action/container-app:latest'
           name: appName
           env: [
             {
