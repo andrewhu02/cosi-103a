@@ -25,5 +25,7 @@ jobs:
           tenant-id: ${{ secrets.AZURE_TENANT_ID }}
           subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
 
+      - name: Make script executable
+        run: chmod +x ./scripts/blue-green.sh
       - name: Run test script
         run: ./scripts/blue-green.sh
