@@ -17,6 +17,7 @@ resource deploymentApp 'Microsoft.App/containerApps@2023-11-02-preview' = {
   properties: {
     environmentId: containerAppsEnvironment.id
     configuration: {
+      maxInactiveRevisions: 10
       activeRevisionsMode: 'Multiple'
       ingress: {
         external: true
