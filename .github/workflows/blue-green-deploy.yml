@@ -24,7 +24,7 @@ jobs:
                 tenant-id: ${{ secrets.AZURE_TENANT_ID }}
                 subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
 
-          - name: Deploy current commit to new revision
+          - name: Deploy existing to new revision # will change later
             id: deploy
             uses: azure/arm-deploy@v1
             with:
