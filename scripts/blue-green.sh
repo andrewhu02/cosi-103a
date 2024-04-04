@@ -5,7 +5,7 @@ docker buildx build -t recipes-image recipes/
 
 # upload image to registry
 docker tag recipes-image cosi103test.azurecr.io/recipes-image:$GREEN_COMMIT_ID
-docker image push cosi103test.azurecr.io/recipes-image
+docker image push cosi103test.azurecr.io/recipes-image:$GREEN_COMMIT_ID
 
 # deploy new revision to container
 # eventually this will somehow alternate between green and blue
