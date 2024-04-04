@@ -25,7 +25,13 @@ jobs:
           tenant-id: ${{ secrets.AZURE_TENANT_ID }}
           subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
 
+      # must add step here which builds the image from the dockerfile
+      # and puts it in an azure container registry
+
+      # run script which deploys from existing image and sets the label to green
       - name: Make script executable
         run: chmod +x ./scripts/blue-green.sh
       - name: Run test script
         run: ./scripts/blue-green.sh
+        env: 
+          GREEN_COMMIT_ID: $(git rev-parse --short "$GITHUB_SHA")
