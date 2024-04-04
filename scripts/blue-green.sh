@@ -24,4 +24,4 @@ az containerapp revision label add \
   # set up labels to swap correctly
 # if tests fail
   # fail deploy action
-  # shouldn't need to do anything else here?
+  # shouldn't need to do anything else here
