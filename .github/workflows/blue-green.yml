@@ -49,8 +49,8 @@ jobs:
           CURRENT_COMMIT_ID: ${{ steps.params.outputs.current_commit_id }}
         
       # Deactivate old revision and label new one blue or green
-      - name: Deploy current commit
-        run: cat ${{ github.workspace }}/output.txt
+      - name: Deactivate old revision
+        run: echo ${{ steps.params.outputs.production_label }}
         env: 
           CURRENT_COMMIT_ID: ${{ steps.params.outputs.current_commit_id }}
       
