@@ -1,17 +1,17 @@
 #!/bin/bash
 
 # build image for this commit
-docker buildx build -t $GREEN_COMMIT_ID recipes/
+docker buildx build -t recipes-image recipes/
 
 # upload image to registry
-docker tag $GREEN_COMMIT_ID cosi103test.azurecr.io/repository
-docker image push cosi103test.azurecr.io/repository
+docker tag recipes-image cosi103test.azurecr.io/recipes-image:$GREEN_COMMIT_ID
+docker image push cosi103test.azurecr.io/recipes-image
 
 # deploy new revision to container
 # eventually this will somehow alternate between green and blue
 az containerapp update --name recipes \
   --resource-group cosi-103a-test \
-  --image cosi103test.azurecr.io/repository:$GREEN_COMMIT_ID \
+  --image cosi103test.azurecr.io/recipes-image:$GREEN_COMMIT_ID \
   --revision-suffix $GREEN_COMMIT_ID  \
   --set-env-vars REVISION_COMMIT_ID=$GREEN_COMMIT_ID
 
