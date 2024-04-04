@@ -35,21 +35,29 @@ jobs:
         run: ./scripts/set-params.sh
         shell: bash
 
-      # Step to build image for current commit and push it to the azure registry
+      # Build image for current commit and push it to the azure registry
       - name: Build and push image
         env:
           CURRENT_COMMIT_ID: ${{ steps.params.outputs.current_commit_id }}
         run: ./scripts/push-image.sh
         shell: bash
 
-      #   # Run script which deploys the current commit based on parameters set above
-      # - name: Run test script
-      #   run: ./scripts/blue-green.sh
-      #   env: 
-      #     GREEN_COMMIT_ID: ${{ env.green_id }}
-      #     # I can use the parameters set above here to have them in my script
+      # Deploys current commit to new revision
+      - name: Deploy current commit
+        run: az containerapp update --name recipes \
+                --resource-group cosi-103a-test \
+                --image cosi103test.azurecr.io/recipes-image:$CURRENT_COMMIT_ID \
+                --revision-suffix $CURRENT_COMMIT_ID  \
+                --set-env-vars REVISION_COMMIT_ID=$CURRENT_COMMIT_ID
+        env: 
+          CURRENT_COMMIT_ID: ${{ steps.params.outputs.current_commit_id }}
         
-      # If deployment succeeds, step to deactivate old revision and label new one blue or green
+      # Deactivate old revision and label new one blue or green
+      - name: Deploy current commit
+        run: cat ${{ github.workspace }}/output.txt
+        env: 
+          CURRENT_COMMIT_ID: ${{ steps.params.outputs.current_commit_id }}
+      
 
       # Step to test new revision
 
