@@ -2,7 +2,7 @@ name: Blue Green Deploy
 on:
   push:
     branches:
-      - blue-green-2 # change this to main
+      - blue-green-2 # Change this to main before merge
 
 permissions:
   id-token: write 
@@ -17,7 +17,6 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
-      # Log into Azure
       - name: Log into Azure
         uses: azure/login@v1
         with:
@@ -25,17 +24,33 @@ jobs:
           tenant-id: ${{ secrets.AZURE_TENANT_ID }}
           subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
 
-      # must add step here which builds the image from the dockerfile
-      # and puts it in an azure container registry
-
-      # run script which deploys from existing image and sets the label to green
-      - name: Make script executable
-        run: chmod +x ./scripts/blue-green.sh
-      - name: Set variables
+      # Set params based on current deployment
+      - name: Set params
+        id: params
+        env:
+          GITHUB_OUTPUT: ${{ github.workspace }}/output.txt
+          GITHUB_SHA: ${{ github.sha }}
+          RESOURCE_GROUP: cosi-103a-test
+          APP_NAME: recipes
+        run: ./scripts/set-params.sh
         shell: bash
-        run: |
-          echo "green_id=$(git rev-parse --short "$GITHUB_SHA")" >> "$GITHUB_ENV"
-      - name: Run test script
-        run: ./scripts/blue-green.sh
-        env: 
-          GREEN_COMMIT_ID: ${{ env.green_id }}
+
+      # Step to build image for current commit and push it to the azure registry
+      - name: Build and push image
+        env:
+          CURRENT_COMMIT_ID: ${{ steps.params.outputs.current_commit_id }}
+        run: ./scripts/push-image.sh
+        shell: bash
+
+      #   # Run script which deploys the current commit based on parameters set above
+      # - name: Run test script
+      #   run: ./scripts/blue-green.sh
+      #   env: 
+      #     GREEN_COMMIT_ID: ${{ env.green_id }}
+      #     # I can use the parameters set above here to have them in my script
+        
+      # If deployment succeeds, step to deactivate old revision and label new one blue or green
+
+      # Step to test new revision
+
+      # Step to switch traffic to current commit (if tests pass)
