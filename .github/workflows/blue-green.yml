@@ -44,11 +44,7 @@ jobs:
 
       # Deploys current commit to new revision
       - name: Deploy current commit
-        run: az containerapp update --name recipes \
-                --resource-group cosi-103a-test \
-                --image cosi103test.azurecr.io/recipes-image:$CURRENT_COMMIT_ID \
-                --revision-suffix $CURRENT_COMMIT_ID  \
-                --set-env-vars REVISION_COMMIT_ID=$CURRENT_COMMIT_ID
+        run: az containerapp update --name recipes --resource-group cosi-103a-test --image cosi103test.azurecr.io/recipes-image:$CURRENT_COMMIT_ID --revision-suffix $CURRENT_COMMIT_ID --set-env-vars REVISION_COMMIT_ID=$CURRENT_COMMIT_ID
         env: 
           CURRENT_COMMIT_ID: ${{ steps.params.outputs.current_commit_id }}
         
