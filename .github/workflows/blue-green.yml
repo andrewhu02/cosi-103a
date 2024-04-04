@@ -50,7 +50,7 @@ jobs:
         
       # Deactivate old revision and label new one blue or green
       - name: Deactivate old revision
-        run: echo ${{ steps.params.outputs.production_label }}
+        run: cat ./output.txt
         env: 
           CURRENT_COMMIT_ID: ${{ steps.params.outputs.current_commit_id }}
       
