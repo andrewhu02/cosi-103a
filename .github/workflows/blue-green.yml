@@ -35,32 +35,32 @@ jobs:
         run: ./scripts/set-params.sh
         shell: bash
 
-      # # Build image for current commit and push it to the azure registry
-      # - name: Build and push image
-      #   env:
-      #     CURRENT_COMMIT_ID: ${{ steps.params.outputs.current_commit_id }}
-      #   run: ./scripts/push-image.sh
-      #   shell: bash
+      # Build image for current commit and push it to the azure registry
+      - name: Build and push image
+        env:
+          CURRENT_COMMIT_ID: ${{ steps.params.outputs.current_commit_id }}
+        run: ./scripts/push-image.sh
+        shell: bash
 
-      # # Deploys current commit to new revision
-      # - name: Deploy current commit
-      #   run: az containerapp update --name recipes --resource-group cosi-103a-test --image cosi103test.azurecr.io/recipes-image:$CURRENT_COMMIT_ID --revision-suffix $CURRENT_COMMIT_ID --set-env-vars REVISION_COMMIT_ID=$CURRENT_COMMIT_ID
-      #   env: 
-      #     CURRENT_COMMIT_ID: ${{ steps.params.outputs.current_commit_id }}
+      # Deploys current commit to new revision
+      - name: Deploy current commit
+        run: az containerapp update --name recipes --resource-group cosi-103a-test --image cosi103test.azurecr.io/recipes-image:$CURRENT_COMMIT_ID --revision-suffix $CURRENT_COMMIT_ID --set-env-vars REVISION_COMMIT_ID=$CURRENT_COMMIT_ID
+        env: 
+          CURRENT_COMMIT_ID: ${{ steps.params.outputs.current_commit_id }}
         
-      # # Deactivate old revision
-      # - name: Deactivate old revision
-      #   run: az containerapp revision deactivate -g cosi-103a-test --revision recipes--$DEACTIVATE
-      #   env: 
-      #     DEACTIVATE: ${{ steps.params.outputs.deactivate }}
+      # Deactivate old revision
+      - name: Deactivate old revision
+        run: az containerapp revision deactivate -g cosi-103a-test --revision recipes--$DEACTIVATE
+        env: 
+          DEACTIVATE: ${{ steps.params.outputs.deactivate }}
       
-      # # Label new revision
-      # - name: Label new revision
-      #   run: az containerapp revision label add --name recipes --resource-group cosi-103a-test --label $LABEL  --revision recipes--$CURRENT_COMMIT_ID
-      #   env:
-      #     CURRENT_COMMIT_ID: ${{ steps.params.outputs.current_commit_id }}
-      #     LABEL: ${{ steps.params.outputs.label}}
+      # Label new revision
+      - name: Label new revision
+        run: az containerapp revision label add --name recipes --resource-group cosi-103a-test --label $LABEL  --revision recipes--$CURRENT_COMMIT_ID
+        env:
+          CURRENT_COMMIT_ID: ${{ steps.params.outputs.current_commit_id }}
+          LABEL: ${{ steps.params.outputs.label}}
 
-      # # Step to test new revision
+      # Step to test new revision
 
-      # # Step to switch traffic to current commit (if tests pass)
+      # Step to switch traffic to current commit (if tests pass)
