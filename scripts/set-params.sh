@@ -14,7 +14,7 @@ echo "green_commit_id=$green_commit_id" >> $GITHUB_OUTPUT
 production_label=$(echo $tags | jq '.productionLabel')
 echo "production_label=$production_label" >> $GITHUB_OUTPUT
 
-if ["$production_label"="blue"]; then
+if [ $production_label = 'blue' ]; then
     echo "deactivate=$green_commit_id" >> $GITHUB_OUTPUT
     echo "label='green'" >> $GITHUB_OUTPUT
 else
