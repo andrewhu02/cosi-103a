@@ -48,12 +48,18 @@ jobs:
         env: 
           CURRENT_COMMIT_ID: ${{ steps.params.outputs.current_commit_id }}
         
-      # Deactivate old revision and label new one blue or green
+      # Deactivate old revision
       - name: Deactivate old revision
-        run: cat ./output.txt
+        run: az containerapp revision deactivate -g cosi-103a-test --revision recipes--$DEACTIVATE
         env: 
-          CURRENT_COMMIT_ID: ${{ steps.params.outputs.current_commit_id }}
+          DEACTIVATE: ${{ steps.params.outputs.deactivate }}
       
+      # Label new revision
+      - name: Label new revision
+        run: az containerapp revision label add --name recipes --resource-group cosi-103a-test --label $LABEL  --revision recipes--$CURRENT_COMMIT_ID
+        env:
+          CURRENT_COMMIT_ID: ${{ steps.params.outputs.current_commit_id }}
+          LABEL: ${{ steps.params.outputs.label}}
 
       # Step to test new revision
 

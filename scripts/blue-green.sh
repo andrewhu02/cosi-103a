@@ -10,11 +10,7 @@
 # label that new revision with the green label
 # this will not work if a revision already has the 'green' label
 # since labels must be unique
-az containerapp revision label add \
-    --name recipes \
-    --resource-group cosi-103a-test \
-    --label green \
-    --revision recipes--$CURRENT_COMMIT_ID
+az containerapp revision label add --name recipes --resource-group cosi-103a-test --label green  --revision recipes--$CURRENT_COMMIT_ID
 
 # runs tests on that revision
 
