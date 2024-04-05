@@ -16,8 +16,8 @@ echo "production_label=$production_label" >> $GITHUB_OUTPUT
 
 if [ $production_label = 'blue' ]; then
     echo "deactivate=$green_commit_id" >> $GITHUB_OUTPUT
-    echo "label='green'" >> $GITHUB_OUTPUT
+    echo "label=green" >> $GITHUB_OUTPUT
 else
     echo "deactivate=$blue_commit_id" >> $GITHUB_OUTPUT
-    echo "label='blue'" >> $GITHUB_OUTPUT
+    echo "label=blue" >> $GITHUB_OUTPUT
 fi
