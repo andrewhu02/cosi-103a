@@ -52,7 +52,7 @@ jobs:
 
       # Remove the label from that revision (duplicate labels are not allowed)
       - name: Remove label from old revision
-        run: az containerapp revision label remove -n recipes--$DEACTIVATE -g cosi-103a-test --label $LABEL
+        run: az containerapp revision label remove -n recipes -g cosi-103a-test --label $LABEL
         env:
           LABEL: ${{ steps.params.outputs.label}}
           DEACTIVATE: ${{ steps.params.outputs.deactivate }}
