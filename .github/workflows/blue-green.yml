@@ -73,5 +73,10 @@ jobs:
       # Step to test new revision
 
       # Step to switch traffic to current commit (if tests pass)
-
+      - name: Swap traffic
+        run: az containerapp ingress traffic set --name recipes --resourcegroup cosi-103a-test --label-weight $PRODUCTION=100 $OTHER=0
+        env:
+          PRODUCTION: ${{ steps.params.output.label }}
+          OTHER: ${{ steps.params.output.production_label }}
+          
       # Make sure to update the tags appropriately 
