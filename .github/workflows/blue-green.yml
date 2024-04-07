@@ -35,7 +35,7 @@ jobs:
         run: ./scripts/set-params.sh
         shell: bash
 
-      # Build image for current commit and push it to the azure registry
+      # Build image for current commit and push it to the Azure registry
       - name: Build and push image
         env:
           CURRENT_COMMIT_ID: ${{ steps.params.outputs.current_commit_id }}
