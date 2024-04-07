@@ -20,13 +20,35 @@ import {
   Pho,
   recipeInstructions,
 } from './pages/recipe';
+import RecipePage from './pages/recipe/RecipePage';
+
 export default function App() {
   const [recipes, setRecipes] = useState([...recipeInstructions]);
+
+  useEffect(() => {
+    // Fetch recipes from API or database
+    const fetchData = async () => {
+      try {
+        const response = await fetch('/api/recipes');
+        if (!response.ok) {
+          throw new Error('Failed to fetch recipes');
+        }
+        const data = await response.json();
+        setRecipes(data);
+        console.log('Fetched recipes:', data); // Print fetched recipes to the console
+      } catch (error) {
+        console.error('Error fetching recipes:', error);
+      }
+    };
+
+    fetchData();
+  }, []);
 
   // eslint-disable-next-line
   const addRecipe = (newRecipe) => {
     setRecipes([...recipes, newRecipe]);
   };
+
   const router = createBrowserRouter([
     {
       path: '/',
@@ -79,7 +101,11 @@ export default function App() {
         {
           path: '/all-recipes',
           element: <RecipeDetails recipes={recipes} />,
-        }
+        },
+        ...recipes.map((recipe, index) => ({
+          path: `/recipe/${index + 1}`,
+          element: <RecipePage key={index} recipe={recipe} />,
+        })),
       ],
     },
   ]);

@@ -1,6 +1,5 @@
-const CosmosAccess = require('./CosmosAccess');
+const CosmosAccess = require('../../utils/CosmosAccess');
 
-// function to fetch a recipe by its ID
 async function getRecipeById(recipeId) {
   try {
     const recipe = await CosmosAccess.get_by_recipe_id(recipeId);
