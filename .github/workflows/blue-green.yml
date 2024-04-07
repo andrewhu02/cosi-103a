@@ -79,4 +79,10 @@ jobs:
           PRODUCTION: ${{ steps.params.output.label }}
           OTHER: ${{ steps.params.output.production_label }}
 
-      # Make sure to update the tags appropriately 
+      # Update container tags for next deployment
+      - name: Update tags
+        run: az tag create --resource-id $resource --tags blueCommitId=$BLUE greenCommitId=$GREEN productionLabel=$PROD_LABEL
+        env:
+          GREEN: ${{steps.params.output.new_green_id}}
+          BLUE: ${{steps.params.output.new_blue_id}}
+          PROD_LABEL: ${{ steps.params.output.label }}

@@ -17,7 +17,14 @@ echo "production_label=$production_label" >> $GITHUB_OUTPUT
 if [ $production_label = 'blue' ]; then
     echo "deactivate=$green_commit_id" >> $GITHUB_OUTPUT
     echo "label=green" >> $GITHUB_OUTPUT
+    echo "new_blue_id=$blue_commit_id" >> $GITHUB_OUTPUT
+    echo "new_green_id=$current_commit_id" >> $GITHUB_OUTPUT
 else
     echo "deactivate=$blue_commit_id" >> $GITHUB_OUTPUT
     echo "label=blue" >> $GITHUB_OUTPUT
+    echo "new_blue_id=$current_commit_id" >> $GITHUB_OUTPUT
+    echo "new_green_id=$green_commit_id" >> $GITHUB_OUTPUT
 fi
+
+resource=$(az resource show --resource-group cosi-103a-test --name recipes  --resource-type "Microsoft.App/containerApps" --query "id" --output tsv)
+echo "resource=$resource" >> $GITHUB_OUTPUT
