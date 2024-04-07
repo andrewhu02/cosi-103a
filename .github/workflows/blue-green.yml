@@ -76,13 +76,13 @@ jobs:
       - name: Swap traffic
         run: az containerapp ingress traffic set --name recipes --resource-group cosi-103a-test --label-weight $PRODUCTION=100 $OTHER=0
         env:
-          PRODUCTION: ${{ steps.params.output.label }}
-          OTHER: ${{ steps.params.output.production_label }}
+          PRODUCTION: ${{ steps.params.outputs.label }}
+          OTHER: ${{ steps.params.outputs.production_label }}
 
       # Update container tags for next deployment
       - name: Update tags
         run: az tag create --resource-id $resource --tags blueCommitId=$BLUE greenCommitId=$GREEN productionLabel=$PROD_LABEL
         env:
-          GREEN: ${{steps.params.output.new_green_id}}
-          BLUE: ${{steps.params.output.new_blue_id}}
-          PROD_LABEL: ${{ steps.params.output.label }}
+          GREEN: ${{ steps.params.outputs.new_green_id }}
+          BLUE: ${{ steps.params.outputs.new_blue_id }}
+          PROD_LABEL: ${{ steps.params.outputs.label }}
