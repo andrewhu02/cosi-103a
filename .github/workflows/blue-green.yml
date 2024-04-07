@@ -48,8 +48,6 @@ jobs:
         env: 
           CURRENT_COMMIT_ID: ${{ steps.params.outputs.current_commit_id }}
         
-      
-
       # Remove the label from that revision (duplicate labels are not allowed)
       - name: Remove label from old revision
         run: az containerapp revision label remove -n recipes -g cosi-103a-test --label $LABEL
@@ -70,7 +68,7 @@ jobs:
           CURRENT_COMMIT_ID: ${{ steps.params.outputs.current_commit_id }}
           LABEL: ${{ steps.params.outputs.label}}
 
-      # Step to test new revision
+      # Add testing here
 
       # Step to switch traffic to current commit (if tests pass)
       - name: Swap traffic
