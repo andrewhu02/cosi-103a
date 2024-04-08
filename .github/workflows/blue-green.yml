@@ -2,7 +2,7 @@ name: Blue Green Deploy
 on:
   push:
     branches:
-      - blue-green-2 # Change this to main before merge
+      - main
 
 permissions:
   id-token: write 
