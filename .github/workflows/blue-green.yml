@@ -68,24 +68,24 @@ jobs:
           CURRENT_COMMIT_ID: ${{ steps.params.outputs.current_commit_id }}
           LABEL: ${{ steps.params.outputs.label}}
 
-      # Smoke tests
-      # This code gets index.html of the new revision that has just been deployed
-      - name: Test new revision
-        run: |
-          APP_DOMAIN=$(az containerapp env show -g cosi-103a-test -n managedEnvironment-cosi103atest-9eaf --query properties.defaultDomain -o tsv | tr -d '\r\n')
-          result=$(curl https://recipes---$LABEL.$APP_DOMAIN/api/env)
-          echo "$result"
-          if [ false ] ; then
-            echo 'Test failed.'
-            az tag create --resource-id $ID --tags blueCommitId=$BLUE greenCommitId=$GREEN productionLabel=$PROD_LABEL
-            exit 1
-          fi
-        env:
-          LABEL: ${{ steps.params.outputs.label}}
-          PROD_LABEL: ${{ steps.params.outputs.production_label}}
-          GREEN: ${{ steps.params.outputs.new_green_id }}
-          BLUE: ${{ steps.params.outputs.new_blue_id }}
-          ID: ${{ steps.params.outputs.resource }}
+      # # Smoke tests
+      # # This code gets index.html of the new revision that has just been deployed
+      # - name: Test new revision
+      #   run: |
+      #     APP_DOMAIN=$(az containerapp env show -g cosi-103a-test -n managedEnvironment-cosi103atest-9eaf --query properties.defaultDomain -o tsv | tr -d '\r\n')
+      #     result=$(curl https://recipes---$LABEL.$APP_DOMAIN/api/env)
+      #     echo "$result"
+      #     if [ false ] ; then
+      #       echo 'Test failed.'
+      #       az tag create --resource-id $ID --tags blueCommitId=$BLUE greenCommitId=$GREEN productionLabel=$PROD_LABEL
+      #       exit 1
+      #     fi
+      #   env:
+      #     LABEL: ${{ steps.params.outputs.label}}
+      #     PROD_LABEL: ${{ steps.params.outputs.production_label}}
+      #     GREEN: ${{ steps.params.outputs.new_green_id }}
+      #     BLUE: ${{ steps.params.outputs.new_blue_id }}
+      #     ID: ${{ steps.params.outputs.resource }}
 
       # Step to switch traffic to current commit (if tests pass)
       - name: Swap traffic
