@@ -28,3 +28,5 @@ fi
 
 resource=$(az resource show --resource-group cosi-103a-test --name recipes  --resource-type "Microsoft.App/containerApps" --query "id" --output tsv)
 echo "resource=$resource" >> $GITHUB_OUTPUT
+
+echo $GITHUB_OUTPUT
