@@ -1,6 +1,7 @@
 #!/bin/bash
 
-echo "current_commit_id=$(git rev-parse --short $GITHUB_SHA)" >> $GITHUB_OUTPUT
+current_commit_id=$(git rev-parse --short $GITHUB_SHA)
+echo "current_commit_id=$current_commit_id" >> $GITHUB_OUTPUT
 
 # get the tags of the current deployment - this is in json format
 tags=$(az containerapp show -g cosi-103a-test -n recipes --query tags)
