@@ -54,7 +54,7 @@ const CosmosAccess = {
             throw new Error('Delete failed, recipe not found');
         }
 
-        const { resource: result } = await container.item(recipe.id).delete();
+        const { resource: result } = await container.item(recipe.recipe_id).delete();
         return result;
     }
 };

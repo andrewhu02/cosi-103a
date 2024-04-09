@@ -31,7 +31,7 @@ const RecipePageTemplate = ({ recipe, onUpdateRecipe, onDeleteRecipe }) => {
   };
 
   const handleDeleteRecipe = () => {
-    onDeleteRecipe(recipe.id); // Delete the recipe using its ID
+    onDeleteRecipe(recipe.recipe_id); // Delete the recipe using its ID
   };
 
   if (!recipe) {
