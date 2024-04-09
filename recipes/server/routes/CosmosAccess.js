@@ -51,9 +51,9 @@ const CosmosAccess = {
             return null;
         }
 
-        const response = await container.item(itemToDelete.id, recipeId).delete();
-        return response;
-    },
+        const { resource: result } = await container.item(recipe.recipe_id).delete();
+        return result;
+    }
 };
 
 module.exports = CosmosAccess;

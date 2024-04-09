@@ -77,7 +77,7 @@ router.post('/', (req, res) => {
 
 // endpoint to update a recipe by ID
 router.put('/:recipe_id', (req, res) => {
-    const recipeId = parseInt(req.params.recipe_id);
+    const recipeId = req.params.recipe_id.toString();
     const updatedRecipe = req.body;
 
     // validate that the received data is a valid recipe
@@ -104,7 +104,7 @@ router.put('/:recipe_id', (req, res) => {
 
 // endpoint to delete a recipe by ID
 router.delete('/:recipe_id', async (req, res) => {
-    const recipeId = parseInt(req.params.recipe_id);
+    const recipeId = req.params.recipe_id.toString();
 
     try {
         const item = await CosmosAccess.get_by_recipe_id(container, recipeId);
