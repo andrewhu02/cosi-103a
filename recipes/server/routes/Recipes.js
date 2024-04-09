@@ -75,25 +75,51 @@ router.post('/', (req, res) => {
     });
 });
 
+// endpoint to update a recipe by ID
+router.put('/:recipe_id', (req, res) => {
+    const recipeId = parseInt(req.params.recipe_id);
+    const updatedRecipe = req.body;
+
+    // validate that the received data is a valid recipe
+    if (!updatedRecipe || !updatedRecipe.title || !updatedRecipe.description) {
+        return res.status(400).json({ error: 'Invalid recipe data' });
+    }
+
+    // update the recipe in the database
+    CosmosAccess.get_by_recipe_id(container, recipeId).then(item => {
+        if (!item) {
+            return res.status(404).json({ error: 'Recipe not found' });
+        }
+        // Update the existing item with the new data
+        Object.assign(item, updatedRecipe);
+        CosmosAccess.add_item(container, item).then(response => {
+            res.json(updatedRecipe);
+        });
+    }).catch(error => {
+        console.error('Error updating recipe:', error);
+        res.status(500).json({ error: 'Internal server error' });
+    });
+});
+
+
 // endpoint to delete a recipe by ID
-router.delete('/:recipe_id', (req, res) => {
+router.delete('/:recipe_id', async (req, res) => {
     const recipeId = parseInt(req.params.recipe_id);
 
-    CosmosAccess.delete_by_recipe_id(container, recipeId).then(response => {
-        res.json({ message: 'Recipe deleted'});
-    })
+    try {
+        const item = await CosmosAccess.get_by_recipe_id(container, recipeId);
+        if (!item) {
+            return res.status(404).json({ error: 'Recipe not found' });
+        }
 
-    // // find the index of the recipe with the specified ID
-    // const recipeIndex = recipes.findIndex((recipe) => recipe.recipe_id === recipeId);
-
-    // // check if the recipe exists
-    // if (recipeIndex === -1) {
-    //     return res.status(404).json({ error: 'Recipe not found' });
-    // }
-
-    // // remove the recipe from the array
-    // recipes.splice(recipeIndex, 1);
-
+        await CosmosAccess.delete_by_recipe_id(container, recipeId);
+        
+        res.json({ message: 'Recipe deleted' });
+    } catch (error) {
+        console.error('Error deleting recipe:', error);
+        res.status(500).json({ error: 'Internal server error' });
+    }
 });
+
 
 module.exports = router;

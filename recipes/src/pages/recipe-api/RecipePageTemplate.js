@@ -1,38 +1,39 @@
-import React, { useState } from 'react';
-import { Accordion, Card } from 'react-bootstrap';
+import React, { useState, useEffect } from 'react';
+import { Row, Col, Button, Form, Card, Accordion } from 'react-bootstrap';
 
-const RecipePageTemplate = ({ recipe }) => {
-  const [ingredientsWithLinks, setIngredientsWithLinks] = useState([]);
-  const [linksFetched, setLinksFetched] = useState(false);
+const RecipePageTemplate = ({ recipe, onUpdateRecipe, onDeleteRecipe }) => {
+  const [editing, setEditing] = useState(false);
+  const [editedJSON, setEditedJSON] = useState('');
 
-  const fetchIngredientLinks = async () => {
-    if (!recipe) return;
+  useEffect(() => {
+    if (recipe) {
+      setEditedJSON(JSON.stringify(recipe, null, 2));
+    }
+  }, [recipe]);
 
-    const ingredientLinks = await Promise.all(
-      recipe.ingredients.map(async (ingredient) => {
-        // Remove non-alphabetic characters from the ingredient string
-        const cleanedIngredient = ingredient.replace(/[^a-zA-Z\s]/g, '');
-
-        const response = await fetch(`https://api.nal.usda.gov/fdc/v1/foods/search?query=${cleanedIngredient}&api_key=${process.env.REACT_APP_FDA_API_KEY}`);
-        const data = await response.json();
-        if (data.foods && data.foods.length > 0) {
-          const firstResult = data.foods[0];
-          return {
-            name: ingredient,
-            fdcId: firstResult.fdcId
-          };
-        } else {
-          return {
-            name: ingredient,
-            fdcId: null
-          };
-        }
-      })
-    );
-    setIngredientsWithLinks(ingredientLinks);
+  const toggleEditing = () => {
+    setEditing(!editing);
   };
 
-  // Render only if recipe is available
+  const handleJSONChange = (e) => {
+    setEditedJSON(e.target.value);
+  };
+
+  const handleUpdateRecipe = () => {
+    try {
+      const updatedRecipe = JSON.parse(editedJSON);
+      onUpdateRecipe(updatedRecipe); // Update the recipe data in the parent component
+      toggleEditing();
+    } catch (error) {
+      console.error('Error parsing JSON:', error);
+      // Handle error appropriately (e.g., display error message)
+    }
+  };
+
+  const handleDeleteRecipe = () => {
+    onDeleteRecipe(recipe.recipe_id); // Delete the recipe using its ID
+  };
+
   if (!recipe) {
     return null;
   }
@@ -42,31 +43,22 @@ const RecipePageTemplate = ({ recipe }) => {
       <h1>{recipe.title}</h1>
       <img src={recipe.imageSrc} className="center scaled-image padded-image" alt={recipe.title} />
       <p>{recipe.description}</p>
+
       <Accordion>
         <Accordion.Item eventKey="0">
-          <Accordion.Header onClick={() => {
-            if (!linksFetched) {
-              fetchIngredientLinks();
-              setLinksFetched(true);
-            }
-          }}>Ingredients</Accordion.Header>
+          <Accordion.Header>Ingredients</Accordion.Header>
           <Accordion.Body>
             <ul>
-              {ingredientsWithLinks.map((ingredient, index) => (
+              {recipe.ingredients.map((ingredient, index) => (
                 <li key={index} style={{ textAlign: 'left' }}>
-                  {ingredient.fdcId ? (
-                    <a href={`https://fdc.nal.usda.gov/fdc-app.html#/food-details/${ingredient.fdcId}/nutrients`} target="_blank" rel="noopener noreferrer">
-                      {ingredient.name}
-                    </a>
-                  ) : (
-                    ingredient.name
-                  )}
+                  {ingredient}
                 </li>
               ))}
             </ul>
           </Accordion.Body>
         </Accordion.Item>
       </Accordion>
+
       <Accordion>
         <Accordion.Item eventKey="1">
           <Accordion.Header>Instructions</Accordion.Header>
@@ -79,6 +71,22 @@ const RecipePageTemplate = ({ recipe }) => {
           </Accordion.Body>
         </Accordion.Item>
       </Accordion>
+
+      {editing ? (
+        <div>
+          <Form.Control as="textarea" rows={10} value={editedJSON} onChange={handleJSONChange} />
+          <Button onClick={handleUpdateRecipe}>Update Recipe</Button>
+        </div>
+      ) : (
+        <Row>
+          <Col>
+            <Button variant="primary" onClick={toggleEditing}>Edit Recipe</Button>
+          </Col>
+          <Col>
+            <Button variant="danger" onClick={handleDeleteRecipe}>Delete Recipe</Button> 
+          </Col>
+        </Row>
+      )}
     </Card>
   );
 };

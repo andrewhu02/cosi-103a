@@ -38,25 +38,22 @@ const CosmosAccess = {
         return response;
     },
 
+
     async delete_by_recipe_id(container, recipeId) {
         if (!container) {
             // Return null when container is not available
             return null;
         }
 
-        const querySpec = {
-            query: 'SELECT * from c WHERE c.recipe_id = @recipeId',
-            parameters: [{ name: '@recipeId', value: recipeId }]
-        };
-
-        const { resources: [recipe] } = await container.items.query(querySpec).fetchAll();
-        if (!recipe) {
-            throw new Error('Recipe not found');
+        const itemToDelete = await this.get_by_recipe_id(container, recipeId);
+        if (!itemToDelete) {
+            // If item not found, return null
+            return null;
         }
 
-        const { resource: result } = await container.item(recipe.id).delete();
-        return result;
-    }
+        const response = await container.item(itemToDelete.id, recipeId).delete();
+        return response;
+    },
 };
 
 module.exports = CosmosAccess;
