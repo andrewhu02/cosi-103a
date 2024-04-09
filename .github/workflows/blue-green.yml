@@ -1,0 +1,104 @@
+name: Blue Green Deploy
+on:
+  push:
+    branches:
+      - main
+
+permissions:
+  id-token: write 
+  contents: read  
+
+jobs:
+  build:
+    environment: prd
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Log into Azure
+        uses: azure/login@v1
+        with:
+          client-id: ${{ secrets.AZURE_CLIENT_ID }}
+          tenant-id: ${{ secrets.AZURE_TENANT_ID }}
+          subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
+
+      # Set params based on current deployment
+      - name: Set params
+        id: params
+        env:
+          GITHUB_OUTPUT: ${{ github.workspace }}/output.txt
+          GITHUB_SHA: ${{ github.sha }}
+          RESOURCE_GROUP: cosi-103a-test
+          APP_NAME: recipes
+        run: ./scripts/set-params.sh
+        shell: bash
+
+      # Build image for current commit and push it to the Azure registry
+      - name: Build and push image
+        env:
+          CURRENT_COMMIT_ID: ${{ steps.params.outputs.current_commit_id }}
+        run: ./scripts/push-image.sh
+        shell: bash
+
+      # Deploys current commit to new revision
+      - name: Deploy current commit
+        run: az containerapp update --name recipes --resource-group cosi-103a-test --image cosi103test.azurecr.io/recipes-image:$CURRENT_COMMIT_ID --revision-suffix $CURRENT_COMMIT_ID --set-env-vars REVISION_COMMIT_ID=$CURRENT_COMMIT_ID
+        env: 
+          CURRENT_COMMIT_ID: ${{ steps.params.outputs.current_commit_id }}
+        
+      # Remove the label from that revision (duplicate labels are not allowed)
+      - name: Remove label from old revision
+        run: az containerapp revision label remove -n recipes -g cosi-103a-test --label $LABEL
+        env:
+          LABEL: ${{ steps.params.outputs.label}}
+          DEACTIVATE: ${{ steps.params.outputs.deactivate }}
+
+      # Deactivate old revision
+      - name: Deactivate old revision
+        run: az containerapp revision deactivate -g cosi-103a-test --revision recipes--$DEACTIVATE
+        env: 
+          DEACTIVATE: ${{ steps.params.outputs.deactivate }}
+      
+      # Label new revision
+      - name: Label new revision
+        run: az containerapp revision label add --name recipes --resource-group cosi-103a-test --label $LABEL  --revision recipes--$CURRENT_COMMIT_ID
+        env:
+          CURRENT_COMMIT_ID: ${{ steps.params.outputs.current_commit_id }}
+          LABEL: ${{ steps.params.outputs.label}}
+
+      # # Smoke tests
+      # # This code gets index.html of the new revision that has just been deployed
+      # - name: Test new revision
+      #   run: |
+      #     APP_DOMAIN=$(az containerapp env show -g cosi-103a-test -n managedEnvironment-cosi103atest-9eaf --query properties.defaultDomain -o tsv | tr -d '\r\n')
+      #     result=$(curl https://recipes---$LABEL.$APP_DOMAIN/api/env)
+      #     echo "$result"
+      #     if [ false ] ; then
+      #       echo 'Test failed.'
+      #       az tag create --resource-id $ID --tags blueCommitId=$BLUE greenCommitId=$GREEN productionLabel=$PROD_LABEL
+      #       exit 1
+      #     fi
+      #   env:
+      #     LABEL: ${{ steps.params.outputs.label}}
+      #     PROD_LABEL: ${{ steps.params.outputs.production_label}}
+      #     GREEN: ${{ steps.params.outputs.new_green_id }}
+      #     BLUE: ${{ steps.params.outputs.new_blue_id }}
+      #     ID: ${{ steps.params.outputs.resource }}
+
+      # Step to switch traffic to current commit (if tests pass)
+      - name: Swap traffic
+        run: az containerapp ingress traffic set --name recipes --resource-group cosi-103a-test --label-weight $PRODUCTION=100 $OTHER=0
+        env:
+          PRODUCTION: ${{ steps.params.outputs.label }}
+          OTHER: ${{ steps.params.outputs.production_label }}
+
+      # Update container tags for next deployment
+      - name: Update tags
+        run: az tag create --resource-id $ID --tags blueCommitId=$BLUE greenCommitId=$GREEN productionLabel=$PROD_LABEL
+        env:
+          GREEN: ${{ steps.params.outputs.new_green_id }}
+          BLUE: ${{ steps.params.outputs.new_blue_id }}
+          PROD_LABEL: ${{ steps.params.outputs.label }}
+          ID: ${{ steps.params.outputs.resource }}
