@@ -33,7 +33,7 @@ const RecipeDetails = () => {
       })
       .catch((error) => console.error('Error updating recipe:', error));
   };
-
+  
   const handleDeleteRecipe = (recipeId) => {
     fetch(`/api/recipes/${recipeId}`, { method: 'DELETE' })
       .then(() => {
