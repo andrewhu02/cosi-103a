@@ -1,16 +1,7 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import RecipeStep from '../recipe-api/RecipeStep';
 
-const RecipePage = ({ id, recipes }) => {
-  // Find the recipe with the matching ID
-  const recipe = recipes.find(recipe => recipe.recipe_id === parseInt(id));
-  console.log("RecipePage: ", recipe.recipe_id);
-
-  if (!recipe) {
-    // Handle case where recipe is not found
-    return <p>Recipe not found</p>;
-  }
-
+const RecipePage = ({ recipe }) => {
   const { title, description, imageSrc, ingredients, cookingInstructions } = recipe;
 
   return (
