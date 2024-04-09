@@ -17,6 +17,7 @@ Current features:
 * User can add items, remove items, and clear the list
 * Cooking mode which can be activated on any recipe page, showing instructions on a large slideshow
 * User can add new recipes (recipe title, description, image (option) and some text)
+* User can modify and delete recipes, both existing and user-submitted
 
 ## Setup
 
@@ -40,7 +41,8 @@ Use `npm test` in the recipes directory to launch the test runner.
 ## Database Development
 
 * We deployed an Azure Cosmos database that stores 8 default recipes. The app's backend has been migrated to fetch/store recipes from/to the database.
-* When the user adds a new recipe through the deployed app, the recipe will persist across app development because it has been added to the backend database. 
+* When the user adds a new recipe through the deployed app, the recipe will persist across app development because it has been added to the backend database.
+* When the user modifies or deletes a recipe, those changes will also persist.
 
 ## Azure Alerts
 
