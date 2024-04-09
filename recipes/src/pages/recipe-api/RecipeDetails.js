@@ -12,15 +12,26 @@ const RecipeDetails = () => {
   }, []);
 
   const handleUpdateRecipeData = (updatedRecipe) => {
-    // Find the index of the updated recipe in the recipes array
-    const updatedIndex = recipes.findIndex((recipe) => recipe.recipe_id === updatedRecipe.id);
-    if (updatedIndex !== -1) {
-      // Create a new array with the updated recipe at the corresponding index
-      const updatedRecipes = [...recipes];
-      updatedRecipes[updatedIndex] = updatedRecipe;
-      // Update state with the new array of recipes
-      setRecipes(updatedRecipes);
-    }
+    // Send PUT request to update the recipe on the server
+    fetch(`/api/recipes/${updatedRecipe.recipe_id}`, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(updatedRecipe),
+    })
+      .then((res) => {
+        if (res.ok) {
+          // If update is successful, update the recipe in the state
+          const updatedRecipes = recipes.map((recipe) =>
+            recipe.recipe_id === updatedRecipe.recipe_id ? updatedRecipe : recipe
+          );
+          setRecipes(updatedRecipes);
+        } else {
+          throw new Error('Failed to update recipe');
+        }
+      })
+      .catch((error) => console.error('Error updating recipe:', error));
   };
 
   const handleDeleteRecipe = (recipeId) => {
