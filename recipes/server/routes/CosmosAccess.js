@@ -51,7 +51,7 @@ const CosmosAccess = {
 
         const { resources: [recipe] } = await container.items.query(querySpec).fetchAll();
         if (!recipe) {
-            throw new Error('Recipe not found');
+            throw new Error('Delete failed, recipe not found');
         }
 
         const { resource: result } = await container.item(recipe.id).delete();

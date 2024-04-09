@@ -12,14 +12,23 @@ const RecipeDetails = () => {
   }, []);
 
   const handleUpdateRecipeData = (updatedRecipe) => {
-    const updatedRecipes = recipes.map((r) => (r.id === updatedRecipe.id ? updatedRecipe : r));
-    setRecipes(updatedRecipes);
+    // Find the index of the updated recipe in the recipes array
+    const updatedIndex = recipes.findIndex((recipe) => recipe.id === updatedRecipe.id);
+    if (updatedIndex !== -1) {
+      // Create a new array with the updated recipe at the corresponding index
+      const updatedRecipes = [...recipes];
+      updatedRecipes[updatedIndex] = updatedRecipe;
+      // Update state with the new array of recipes
+      setRecipes(updatedRecipes);
+    }
   };
 
   const handleDeleteRecipe = (recipeId) => {
     fetch(`/api/recipes/${recipeId}`, { method: 'DELETE' })
       .then(() => {
+        // Filter out the deleted recipe from the recipes array
         const updatedRecipes = recipes.filter((recipe) => recipe.id !== recipeId);
+        // Update state with the new array of recipes
         setRecipes(updatedRecipes);
       })
       .catch((error) => console.error('Error deleting recipe:', error));
@@ -30,7 +39,12 @@ const RecipeDetails = () => {
       <Row>
         {recipes.map((recipe, index) => (
           <Col md={6} key={index}>
-            <RecipePageTemplate recipe={recipe} onUpdateRecipe={handleUpdateRecipeData} onDeleteRecipe={handleDeleteRecipe} />
+            {/* Pass handleUpdateRecipeData and handleDeleteRecipe as props */}
+            <RecipePageTemplate
+              recipe={recipe}
+              onUpdateRecipe={handleUpdateRecipeData}
+              onDeleteRecipe={handleDeleteRecipe}
+            />
           </Col>
         ))}
       </Row>
