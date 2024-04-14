@@ -2,7 +2,7 @@ name: Blue Green Deploy
 on:
   push:
     branches:
-      - main
+      - blue-green
 
 permissions:
   id-token: write 
@@ -44,9 +44,10 @@ jobs:
 
       # Deploys current commit to new revision
       - name: Deploy current commit
-        run: az containerapp update --name recipes --resource-group cosi-103a-test --image cosi103test.azurecr.io/recipes-image:$CURRENT_COMMIT_ID --revision-suffix $CURRENT_COMMIT_ID --set-env-vars REVISION_COMMIT_ID=$CURRENT_COMMIT_ID REACT_APP_FDA_API_KEY=${{secrets.FDA_API_KEY}}
+        run: az containerapp update --name recipes --resource-group cosi-103a-test --image cosi103test.azurecr.io/recipes-image:$CURRENT_COMMIT_ID --revision-suffix $CURRENT_COMMIT_ID --set-env-vars REACT_APP_FDA_API_KEY=$API_KEY
         env: 
           CURRENT_COMMIT_ID: ${{ steps.params.outputs.current_commit_id }}
+          API_KEY: ${{secrets.FDA_API_KEY}}
         
       # Remove the label from that revision (duplicate labels are not allowed)
       - name: Remove label from old revision
