@@ -38,8 +38,8 @@ router.get('/', (req, res) => {
 // add endpoint to get user-added recipes
 
 // endpoint to get one recipe by recipe_id
-router.get('/:recipe_id', (req, res) => {
-    const recipeId = parseInt(req.params.recipe_id);
+router.get('/:recipe_id', (req, res) => {   
+    const recipeId = req.params.recipe_id;
 
     // this method doesn't protect against multiple recipes having the same recipe_id
     CosmosAccess.get_by_recipe_id(container, recipeId).then(item => {
@@ -68,7 +68,7 @@ router.post('/', (req, res) => {
     }
 
     // add the new recipe to the list
-    newRecipe.recipe_id = Date.now(); // generates a unique recipe_id
+    newRecipe.recipe_id = Date.now().toString(); // generates a unique recipe_id as string
     newRecipe.category = "user";
     CosmosAccess.add_item(container, newRecipe).then(response => {
         res.status(201).json(newRecipe);
@@ -77,7 +77,7 @@ router.post('/', (req, res) => {
 
 // endpoint to update a recipe by ID
 router.put('/:recipe_id', (req, res) => {
-    const recipeId = parseInt(req.params.recipe_id);
+    const recipeId = req.params.recipe_id;
     const updatedRecipe = req.body;
 
     // validate that the received data is a valid recipe
@@ -104,7 +104,7 @@ router.put('/:recipe_id', (req, res) => {
 
 // endpoint to delete a recipe by ID
 router.delete('/:recipe_id', async (req, res) => {
-    const recipeId = parseInt(req.params.recipe_id);
+    const recipeId = req.params.recipe_id;
 
     try {
         const item = await CosmosAccess.get_by_recipe_id(container, recipeId);
