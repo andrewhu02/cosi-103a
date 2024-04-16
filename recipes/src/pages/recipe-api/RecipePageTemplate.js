@@ -36,8 +36,12 @@ const RecipePageTemplate = ({ recipe, onUpdateRecipe, onDeleteRecipe }) => {
   };
 
   const handleDeleteRecipe = () => {
-    onDeleteRecipe(recipe.recipe_id); // Delete the recipe using its ID
+    const confirmDelete = window.confirm("Are you sure you want to delete this recipe?");
+    if (confirmDelete) {
+      onDeleteRecipe(recipe.recipe_id); // Delete the recipe using its ID
+    }
   };
+  
 
   if (!recipe) {
     return null;
@@ -86,7 +90,7 @@ const RecipePageTemplate = ({ recipe, onUpdateRecipe, onDeleteRecipe }) => {
           </Accordion.Item>
         </Accordion>
       </CardContent>
-      <CardActions>
+      <CardActions sx={{ display: 'flex', justifyContent: 'center', alignItems: 'flex-end' }}>
         {editing ? (
           <div>
             <Form.Control as="textarea" rows={10} value={editedJSON} onChange={handleJSONChange} />
