@@ -1,7 +1,6 @@
 import React from 'react';
 import { render, screen, fireEvent } from '@testing-library/react';
 import '@testing-library/jest-dom/extend-expect'; // For using jest-dom matchers
-import { act } from 'react-dom/test-utils'; // Import act from react-dom/test-utils
 import RecipePageTemplate from '../RecipePageTemplate';
 
 const sampleRecipe = {
@@ -36,10 +35,7 @@ test('Clicking Edit button toggles editing mode', () => {
   render(<RecipePageTemplate recipe={sampleRecipe} />);
 
   const editButton = screen.getByRole('button', { name: /edit recipe/i });
-
-  act(() => {
-    fireEvent.click(editButton);
-  });
+  fireEvent.click(editButton);
 
   // Check if textarea for editing JSON is rendered
   expect(screen.getByRole('textbox')).toBeInTheDocument();
@@ -63,11 +59,7 @@ describe('RecipePageTemplate component', () => {
     test('toggles editing mode on clicking Edit Recipe button', () => {
       render(<RecipePageTemplate recipe={sampleRecipe} />);
       const editButton = screen.getByRole('button', { name: /edit recipe/i });
-
-      act(() => {
-        fireEvent.click(editButton);
-      });
-
+      fireEvent.click(editButton);
       expect(screen.getByRole('textbox', { name: /edited json/i })).toBeInTheDocument();
       expect(screen.getByRole('button', { name: /update recipe/i })).toBeInTheDocument();
     });
@@ -76,23 +68,11 @@ describe('RecipePageTemplate component', () => {
       const onUpdateRecipe = jest.fn();
       render(<RecipePageTemplate recipe={sampleRecipe} onUpdateRecipe={onUpdateRecipe} />);
       const editButton = screen.getByRole('button', { name: /edit recipe/i });
-
-      act(() => {
-        fireEvent.click(editButton);
-      });
-
+      fireEvent.click(editButton);
       const updatedJSONInput = screen.getByRole('textbox', { name: /edited json/i });
-
-      act(() => {
-        fireEvent.change(updatedJSONInput, { target: { value: JSON.stringify(sampleRecipe) } });
-      });
-
+      fireEvent.change(updatedJSONInput, { target: { value: JSON.stringify(sampleRecipe) } });
       const updateButton = screen.getByRole('button', { name: /update recipe/i });
-
-      act(() => {
-        fireEvent.click(updateButton);
-      });
-
+      fireEvent.click(updateButton);
       expect(onUpdateRecipe).toHaveBeenCalledWith(sampleRecipe);
     });
   
@@ -100,11 +80,7 @@ describe('RecipePageTemplate component', () => {
       const onDeleteRecipe = jest.fn();
       render(<RecipePageTemplate recipe={sampleRecipe} onDeleteRecipe={onDeleteRecipe} />);
       const deleteButton = screen.getByRole('button', { name: /delete recipe/i });
-
-      act(() => {
-        fireEvent.click(deleteButton);
-      });
-
+      fireEvent.click(deleteButton);
       expect(onDeleteRecipe).toHaveBeenCalledWith(undefined); // Since recipe_id is not provided, expect undefined
     });
   });
