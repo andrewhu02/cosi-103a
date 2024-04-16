@@ -24,20 +24,3 @@
 .card-column {
   margin: 25px;
 }
-
-.homepage-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding-top: 20px;
-}
-
-.card-container {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Adjust the minimum and maximum width as needed */
-  gap: 20px;
-  justify-content: center;
-  width: 100%; /* Ensure the container takes full width */
-  max-width: 1200px; /* Set a maximum width for better responsiveness */
-}
-
