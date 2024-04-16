@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import './Homepage.css';
+// eslint-disable-next-line no-unused-vars
 import { Link } from 'react-router-dom';
+// eslint-disable-next-line no-unused-vars
 import { Container, Row, Col, Card } from 'react-bootstrap';
 
 function RecipeCard({ title, imageSrc, description, url }) {
