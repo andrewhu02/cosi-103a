@@ -81,9 +81,17 @@ jobs:
         
       - name: Test deployed app
         run: |
-          echo "$INDEX"
+          if [[ $INDEX != *"Web site created using create-react-app"*]]; then
+            echo "Test failed."
+            az tag create --resource-id $ID --tags blueCommitId=$BLUE greenCommitId=$GREEN productionLabel=$PROD_LABEL
+            exit 1
+          fi
         env:
           INDEX: ${{ steps.get.outputs.result }}
+          GREEN: ${{ steps.params.outputs.new_green_id }}
+          BLUE: ${{ steps.params.outputs.new_blue_id }}
+          PROD_LABEL: ${{ steps.params.outputs.production_label }}
+          ID: ${{ steps.params.outputs.resource }}
 
       # Step to switch traffic to current commit (if tests pass)
       - name: Swap traffic
