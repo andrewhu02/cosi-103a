@@ -2,7 +2,7 @@ name: Blue Green Deploy
 on:
   push:
     branches:
-      - blue-green
+      - main
 
 permissions:
   id-token: write 
