@@ -1,19 +1,35 @@
 import React, { useEffect, useState } from 'react';
 import './Homepage.css';
 import { Link } from 'react-router-dom';
-import { Container, Row, Col, Card } from 'react-bootstrap';
+import { Container, Row, Col } from 'react-bootstrap';
+import Card from '@mui/material/Card';
+import CardActions from '@mui/material/CardActions';
+import CardContent from '@mui/material/CardContent';
+import CardMedia from '@mui/material/CardMedia';
+import Button from '@mui/material/Button';
+import Typography from '@mui/material/Typography';
 
 function RecipeCard({ title, imageSrc, description, url }) {
   const defaultImage = '/img/food/food.jpg';
   return (
-    <Card className="recipe-card" border="primary">
-      <Card.Img className="card-image" variant="top" src={imageSrc || defaultImage} alt={title} />
-      <Card.Body className="card-body">
-        <Link to={url}>
-          <Card.Title>{title}</Card.Title>
-        </Link>
-        <Card.Text>{description}</Card.Text>
-      </Card.Body>
+    <Card sx={{ maxWidth: 345 }}>
+      <CardMedia
+        component="img"
+        height="140"
+        image={imageSrc || defaultImage}
+        alt={title}
+      />
+      <CardContent>
+        <Typography gutterBottom variant="h5" component="div">
+          {title}
+        </Typography>
+        <Typography variant="body2" color="text.secondary">
+          {description}
+        </Typography>
+      </CardContent>
+      <CardActions>
+        <Button size="small" component="a" href={url}>View Recipe</Button>
+      </CardActions>
     </Card>
   );
 }
