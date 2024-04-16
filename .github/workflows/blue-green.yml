@@ -78,10 +78,6 @@ jobs:
           echo "result=$result" >> $GITHUB_OUTPUT
         env:
           LABEL: ${{ steps.params.outputs.label}}
-          PROD_LABEL: ${{ steps.params.outputs.production_label}}
-          GREEN: ${{ steps.params.outputs.new_green_id }}
-          BLUE: ${{ steps.params.outputs.new_blue_id }}
-          ID: ${{ steps.params.outputs.resource }}
         
       - name: Test deployed app
         run: |
