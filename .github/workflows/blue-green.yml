@@ -69,23 +69,25 @@ jobs:
           CURRENT_COMMIT_ID: ${{ steps.params.outputs.current_commit_id }}
           LABEL: ${{ steps.params.outputs.label}}
 
-      # Smoke tests
       # This code gets index.html of the new revision that has just been deployed
-      - name: Test new revision
+      - name: Fetch index.html from deployed revision
+        id: get
         run: |
           result=$(curl https://recipes---$LABEL.braveground-31806d43.eastus.azurecontainerapps.io)
           echo "$result"
-          if [ false ]; then
-            echo 'Test failed.'
-            az tag create --resource-id $ID --tags blueCommitId=$BLUE greenCommitId=$GREEN productionLabel=$PROD_LABEL
-            exit 1
-          fi
+          echo "result=$result" >> $GITHUB_OUTPUT
         env:
           LABEL: ${{ steps.params.outputs.label}}
           PROD_LABEL: ${{ steps.params.outputs.production_label}}
           GREEN: ${{ steps.params.outputs.new_green_id }}
           BLUE: ${{ steps.params.outputs.new_blue_id }}
           ID: ${{ steps.params.outputs.resource }}
+        
+      - name: Test deployed app
+        run: |
+          echo "$INDEX"
+        env:
+          INDEX: ${{ steps.get.outputs.result }}
 
       # Step to switch traffic to current commit (if tests pass)
       - name: Swap traffic
