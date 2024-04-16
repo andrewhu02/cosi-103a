@@ -49,7 +49,7 @@ jobs:
           CURRENT_COMMIT_ID: ${{ steps.params.outputs.current_commit_id }}
           API_KEY: ${{secrets.FDA_API_KEY}}
         
-      # Remove the label from that revision (duplicate labels are not allowed)
+      # Remove the label from old revision (duplicate labels are not allowed)
       - name: Remove label from old revision
         run: az containerapp revision label remove -n recipes -g cosi-103a-test --label $LABEL
         env:
@@ -73,10 +73,9 @@ jobs:
       # This code gets index.html of the new revision that has just been deployed
       - name: Test new revision
         run: |
-          APP_DOMAIN=$(az containerapp env show -g cosi-103a-test -n managedEnvironment-cosi103atest-9eaf --query properties.defaultDomain -o tsv | tr -d '\r\n')
-          result=$(curl https://recipes---$LABEL.$APP_DOMAIN/api/env)
+          result=$(curl https://recipes---$LABEL.braveground-31806d43.eastus.azurecontainerapps.io)
           echo "$result"
-          if [ false ] ; then
+          if [ false ]; then
             echo 'Test failed.'
             az tag create --resource-id $ID --tags blueCommitId=$BLUE greenCommitId=$GREEN productionLabel=$PROD_LABEL
             exit 1
