@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import './Homepage.css';
 import { Link } from 'react-router-dom';
-import { Container, Row, Col } from 'react-bootstrap';
+import { Row, Col } from 'react-bootstrap';
 import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
@@ -12,14 +12,15 @@ import Typography from '@mui/material/Typography';
 function RecipeCard({ title, imageSrc, description, url }) {
   const defaultImage = '/img/food/food.jpg';
   return (
-    <Card sx={{ maxWidth: 345 }}>
+    <Card sx={{ width: '80%', marginBottom: '20px', display: 'flex', flexDirection: 'column' }}>
       <CardMedia
         component="img"
-        height="140"
+        height="350px"
         image={imageSrc || defaultImage}
         alt={title}
+        sx={{ width: '100%', height: '350px' }} 
       />
-      <CardContent>
+      <CardContent sx={{ flex: '1 0 auto' }}>
         <Typography gutterBottom variant="h5" component="div">
           {title}
         </Typography>
@@ -27,12 +28,13 @@ function RecipeCard({ title, imageSrc, description, url }) {
           {description}
         </Typography>
       </CardContent>
-      <CardActions>
+      <CardActions sx={{ justifyContent: 'center' }}>
         <Button size="small" component="a" href={url}>View Recipe</Button>
       </CardActions>
     </Card>
   );
 }
+
 
 function Homepage() {
   const [recipeData, setRecipeData] = useState([]);
@@ -58,24 +60,23 @@ function Homepage() {
   }, []);
 
   return (
-    <Container fluid className="d-flex flex-column align-items-center">
-      {loading ? (
-        <p>Loading...</p>
-      ) : (
-        <Row>
-          {recipeData.map((recipe) => (
-            <Col key={recipe.id} className="card-column">
-              <RecipeCard
-                title={recipe.title}
-                imageSrc={recipe.imageSrc}
-                description={recipe.description}
-                url={recipe.url}
-              />
-            </Col>
-          ))}
-        </Row>
-      )}
-    </Container>
+    <div className="homepage-container">
+      <div className="card-container">
+        {loading ? (
+          <p>Loading...</p>
+        ) : (
+          recipeData.map((recipe, index) => (
+            <RecipeCard
+              key={recipe.id}
+              title={recipe.title}
+              imageSrc={recipe.imageSrc}
+              description={recipe.description}
+              url={recipe.url}
+            />
+          ))
+        )}
+      </div>
+    </div>
   );
 }
 
