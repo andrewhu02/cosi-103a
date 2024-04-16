@@ -1,7 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import './Homepage.css';
-import { Link } from 'react-router-dom';
-import { Row, Col } from 'react-bootstrap';
 import { Card, CardActions, CardContent, CardMedia, Button, Typography } from '@mui/material';
 
 
